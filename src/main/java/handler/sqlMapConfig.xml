@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  
+  
+  <configuration>
+  <!-- DB 연결 정보  properties가 가지고 있음 -->
+  <properties resource="handler/dbconnect.properties"/>
+  
+  <!-- DB 연결 -->
+  <environments default="development">
+  	<environment id="development">
+  		<transactionManager type="JDBC"/>
+  		<dataSource type="POOLED">
+  			<property name="driver" value="${driver}"/>
+  			<property name="url" value="${url}"/>
+  			<property name="username" value="${username}"/>
+  			<property name="password" value="${password}"/>
+  			<property name="poolTimeToWait" value="${poolTimeToWait}"/>
+  		</dataSource>
+  	</environment>
+  </environments>
+  
+  <!-- Mapper 연결 -->
+  <mappers>
+  	<mapper resource="member/member.xml"/>
+  	<mapper resource="order/order.xml"/>
+  	<mapper resource="admin/admin.xml"/>
+  	<mapper resource="search/search.xml"/>
+ <!-- 	<mapper resource="board/board.xml"/>   -->
+  </mappers>
+  </configuration>
