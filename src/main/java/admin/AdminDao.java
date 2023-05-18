@@ -1,7 +1,5 @@
 package admin;
 
-
-
 public interface AdminDao {
 	
 	public int check (String email, String password);
@@ -10,4 +8,5 @@ public interface AdminDao {
 	public AdminDataBean getMember(String email);
 	/*public int deleteMember(String id);
 	public int modifyMember(LogonDataBean dto );*/
+	
 }

@@ -25,7 +25,7 @@
   
   <!-- Mapper 연결 -->
   <mappers>
-  	<mapper resource="member/member.xml"/>
+  	<mapper resource="user/user.xml"/>
   	<mapper resource="order/order.xml"/>
   	<mapper resource="admin/admin.xml"/>
   	<mapper resource="search/search.xml"/>

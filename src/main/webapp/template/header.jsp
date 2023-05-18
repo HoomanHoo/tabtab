@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<header id="header">
 <c:set var="where" value="${param.where }"/>
 <c:if test="${where eq null }">
 <div id="header">
@@ -42,5 +43,6 @@
 	${order}
 
 </c:if>
+</header>
 </body>
 </html>
