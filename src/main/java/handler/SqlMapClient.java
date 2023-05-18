@@ -16,6 +16,7 @@ public class SqlMapClient {
 			Reader reader = Resources.getResourceAsReader("/handler/sqlMapConfig.xml");
 			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader);
 			session = factory.openSession(true);
+			System.out.println("sql setting...");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
