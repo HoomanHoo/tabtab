@@ -7,10 +7,11 @@
 
 <h2> ${page_searchlist} ( ${str_count} : ${count} ) </h2>
 
+
 <table>
     <tr>
-        <td colspan="6" style="text-align:right">
-            <a href="searchsearchlist.net">${str_write}</a>&nbsp;&nbsp;&nbsp;
+        <td colspan="8" style="text-align:right">
+            <a href="searchsearchlist.net">${page_searchlist}(${keywrod})</a>&nbsp;&nbsp;&nbsp;
         </td>
     </tr>
     <tr>
@@ -60,10 +61,7 @@
     		    <td style= "text-align:center">
     		        <fmt:formatDate value="${dto.reg_date}" type="both"
     		             pattern="yyyy-MM-dd HH:mm"/>
-    		    </td>   
-    		    <td style= "text-align:center">
-    		        ${dto.ip}
-    		    </td>     
+    		    </td>       		        
     		</tr>
         </c:forEach>
     </c:if>
@@ -71,8 +69,8 @@
 <br>
 <center>
     <c:if test="${startPage gt pageBlock}">
-        <a href="boardlist.do">[◀◀]</a>
-        <a href="boardlist.do?pageNum=${startPage-pageBlock}">[◀]</a>
+        <a href="searchlist.net">[◀◀]</a>
+        <a href="searchlist.net?pageNum=${startPage-pageBlock}">[◀]</a>
     </c:if>
     <c:forEach var="i" begin="${startPage}" end="${endPage}">
         <c:if test="${i eq currentPage}">

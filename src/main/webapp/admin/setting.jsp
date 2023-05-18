@@ -18,8 +18,8 @@
 	
 <c:set var="msg_main" value= "비회원이시면 회원가입을 해주세요"/>
 <c:set var="msg_input" value= "회원정보를 입력해 주세요"/>
-<c:set var="msg_id_x" value= "는 사용할 수 있습니다."/>
-<c:set var="msg_id_o" value= "는 사용할 수 없습니다."/>
+<c:set var="msg_email_x" value= "는 사용할 수 있습니다."/>
+<c:set var="msg_email_o" value= "는 사용할 수 없습니다."/>
 <c:set var="msg_login" value= "회원가입에 성공했습니다."/>
 <c:set var="msg_sub" value= "님 안녕하세요."/>
 <c:set var="msg_passwd" value= "비밀번호를 다시 확인해주세요"/>

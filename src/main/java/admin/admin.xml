@@ -6,27 +6,43 @@
   <mapper namespace="Admin">
 	<!-- 파라미터 타입은 문자열로 아이디 하나 넘어옴>> -->
 	  <select id="checkEmail" parameterType="String" resultType="int">
-		select count(*) from id_default_info where email=#{email}
+		select count(*) from id_default_info where email=#{email, jdbcType=VARCHAR}
+	</select>
+	
+	  
+	<select id="getMember" parameterType="String" resultType="admin.AdminDataBean"><!-- 바구니가 어디 들어있나 -->
+		select * from id_default_info where email=#{email, jdbcType=VARCHAR}	
 	</select>
 	
 	
-	<select id="getMember" parameterType="String" resultType="admin.AdminDataBean">
-		select * from id_default_info where email=#{email}
-	</select>
 	
 	
 	
-	
-	
-	<!-- 로그온에 인풋프로 핸들러가 처리 -->
-	<!--<insert id="insertMember" parameterType="admin.AdminDataBean">--><!-- 바구니가 어디 들어있나 -->
-			<!--insert into id_default_info(mem_code, name, email, password, r_date, mem_desc_code) 
+	 <!-- 로그온에 인풋프로 핸들러가 처리 --><!----><!---->
+	<insert id="insertM" parameterType="admin.AdminDataBean">
+		insert into id_default_info(mem_code, name, email, password, r_date, mem_desc_code) 
 		values( 
-			#{mem_code_seq.NEXTVAL}, #{name}, #{email}, #{password}, #{r_date},
+			mem_code_seq.NEXTVAL, #{name}, #{email, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR}, #{r_date},
 			#{mem_desc_code, jdbcType=VARCHAR}
 		)
-		insert into phar_information(supplier_code, supplier_name) values
-		( #{sup_code_seq.NEXTVAL}, #{supplier_name) )
+	</insert>
+	<select id="selectM" parameterType="admin.AdminDataBean" resultType="int">
+		select mem_code from id_default_info where email=#{email, jdbcType=VARCHAR} 
+	</select>
+	
+	<insert id="insertMember" parameterType="admin.AdminDataBean">
+		insert into supplier_information 
+		values( #{mem_code}, sup_code_seq.NEXTVAL, #{supplier_name} )
+	</insert>
+	
+	
+<!--mem_code_seq
+			insert into supplier_information(supplier_code, supplier_name) values
+			( #{sup_code_seq.NEXTVAL}, #{supplier_name) )
+			
+			<insert id="insertMember" parameterType="admin.AdminDataBean">
+			insert into supplier_information(supplier_code, supplier_name) values
+			( #{sup_code_seq.NEXTVAL}, #{supplier_name) )
 	</insert>
 	-->
 <!--

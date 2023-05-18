@@ -22,4 +22,4 @@
     <c:set var="str_searchlist" value="검색목록"/>
     <c:set var="str_reg_date" value="검색일"/>
     
-     <c:set var="btn_search" value="검색"/>
+    <c:set var="btn_search" value="검색"/>

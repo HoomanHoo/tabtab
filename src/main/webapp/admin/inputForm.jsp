@@ -21,36 +21,36 @@
 		<tr>
 			<th> ${str_email}</th>
 			<td>
-			<input class="input" type="text" name="email1" maxlength="50"
+			<input class="input" type="text" name="email" maxlength="50"
 				style="width:100px">
-			@
+			<!--  @
 			<select name="email2">
 				<option value="0">직접입력 </option>
 				<option value="daum.net">다음 </option>
 				<option value="naver.com">네이버 </option>
 				<option value="gmail.com">구글</option>
 				<option value="nate.com">네이트 </option>
-			</select>
+			</select>-->
 			<input class="inputbutton" type="button" value="${btn_confirm}"
 					onclick="confirmemail()">
 			</td>
 		</tr>
 		<tr>
 			<th> ${str_passwd}</th>
-			<td> <input class="input" type="password" name="passwd" maxlength="30"></td>
+			<td> <input class="input" type="password" name="password" maxlength="30"></td>
 		</tr>
 		
 		<!-- 관리자냐 약사냐  -->
 		<tr>
 			<th> ${str_mem_desc_code}</th>
-			<td> <input class="input" type="text" name="code" maxlength="10"></td>
+			<td> <input class="input" type="text" name="mem_desc_code" maxlength="10"></td>
 		</tr>
 		<tr>
 			<th>${str_mem_desc_code}</th>
 			<td>
 			<select name="code2">
-				<option value="1">관리자</option>
-				<option value="2">약사</option>
+				<option value="1">약사</option>
+				<option value="2">관리자</option>
 			</select>
 			</td>
 		</tr>

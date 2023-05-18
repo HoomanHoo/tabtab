@@ -17,11 +17,11 @@
 			</tr>
 			<tr>
 				<th> ${str_email}</th><!-- 똑같이 입력할 수 없으니 방 하나에 써주고 나중에 그 방안만 고치면 다 고쳐지게 -->
-				<td> <input class="input" type="text" name="id" maxlength="30" autofocus> </td>
+				<td> <input class="input" type="text" name="email" maxlength="30" autofocus> </td>
 			</tr>
 			<tr>
 				<th> ${str_passwd}</th>
-				<td> <input class="input" type="password" name="passwd" maxlength="30"></td>
+				<td> <input class="input" type="password" name="password" maxlength="30"></td>
 			</tr>
 			<tr>
 				<th colspan="2">

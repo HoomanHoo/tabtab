@@ -88,7 +88,7 @@ public class SearchDataBean {
 		this.typeArr = type.split("");
 	}
 	public String[] getTypeArr() {
-		return typeArr;
+		return type == null? new String[] {}: type.split("");
 	}
 	public void setTypeArr(String[] typeArr) {
 		this.typeArr = typeArr;
