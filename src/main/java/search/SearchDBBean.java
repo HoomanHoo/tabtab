@@ -23,5 +23,11 @@ public class SearchDBBean implements SearchDao {
     public List<SearchDataBean> getSearchList(Map<String, Integer>map){
     	return session.selectList("Search.getSearchList", map);
     }
+
+	@Override
+	public int getSearch(int num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
     
 }
