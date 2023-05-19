@@ -10,6 +10,25 @@
   	<select id="mediList" resultType="order.OrderDataBean">
   		select medi_name, supply_value, chief_ingre from medi_information
   	</select>
+  	<select id="getMediCode" parameterType="String" resultType="int">
+  		select medi_code from medi_information where medi_name=#{medi_name}
+  	</select>
+  	<select id="getOrderNum" parameterType="int" resultType="int">
+  		select max(o_num) from order_info where mem_code = #{mem_code}
+  	</select>
+  	<insert id="insertOrder" parameterType="order.OrderDataBean">
+  		insert into order_info values(order_info_seq.nextval, #{mem_code}, #{supplier_code}, default, #{memo}, #{sum_supply_value}, #{sum_order_count})
+  	</insert>
+  	<insert id="detailOrder" parameterType="order.DetailOrderDataBean">
+  		insert into detail_order values(detail_order_seq.nextval, #{o_num}, #{medi_code}, #{order_quan})
+  	</insert>
+  	<select id="getOrderHistory" resultType="order.OrderHistoryDataBean">
+  		select o.o_date, o.o_num, o.sum_order_count, o.sum_supply_value, s.supplier_name, o.memo 
+  		from order_info o
+    	,supplier_information s
+		where o.o_date >= (sysdate - 90)
+		order by o.o_num desc
+  	</select>
   	
   
   

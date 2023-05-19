@@ -22,6 +22,17 @@
 <c:set var="order" value="발주"/>
 <c:set var="sell" value="판매"/>
 <c:set var="search" value="검색"/>
+<c:set var="orderHistory" value="과거 발주 내역"/>
+<c:set var="setPeriod" value="기간 설정"/>
+<c:set var="setOneWeek" value="1주일"/>
+<c:set var="setOneMonth" value="1개월"/>
+<c:set var="setThreeMonth" value="3개월"/>
+<c:set var="orderDate" value="발주일자"/>
+<c:set var="orderNumber" value="발주번호"/>
+<c:set var="sumOrderQuan" value="총 발주량(EA)"/>
+<c:set var="sumSupplyValue" value="총 공급가액(원)"/>
+<c:set var="orderSupplier" value="거래처"/>
+<c:set var="orderMemo" value="메모"/>
 <c:set var="footer" value="소재지: 서울특별시 서초구 서초대로74길33 Tel: 02-4023-0088 Email: vocustomer@tabtab.com"/>
 
 

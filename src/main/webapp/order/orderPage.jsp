@@ -52,15 +52,11 @@
 			</form>
 		</div>
 		<div id="wrapper" style="float:right">
-			<form name="selectList" method="post" action="orderpagepro.net" onsubmit="return checkOrderList()">
+			<form name="selectList" method="post" action="orderpagepro.net" >
 			<div id="orderList">
-				<table>
-					<tr>
-						<td>${textmediName}</td>
-						<td>${textQuantity}</td>
-						<td>${textPrice}</td>
-					</tr>
-				</table>
+				<div id="selectDiv">${textMediName}</div>
+				<div id="selectDiv">${textQuantity}</div>
+				<div id="selectDiv">${textPrice}</div>
 			</div>
 				
 				<div id="buttonArea">
@@ -78,6 +74,7 @@
 </body>
 
 <script type="text/javascript">
+//<!--
 $(document).ready(
 		function(){
 			$("input[name=name]").on("click", function(){
@@ -85,23 +82,53 @@ $(document).ready(
 				var hval = document.getElementById(tval).value; 
 				console.log(tval);
 				console.log(hval);
-				$("#orderList").append("<input type='text' name='mediName' value='" + this.value + "' readonly>"
-					+ "<input type='number' id='" + this.value + "' name='orderQuan' value='1'>"
-					+ "<input type='text' id='" + this.value + "' name='supplyPrice' value='" + hval + "' readonly><br>");
+				$("#orderList").append(
+					"<input type='text' id='" + `this.value` + "1' name='mediName' value='" + this.value + "' readonly>"
+					+ "<input type='number' id='" + `this.value` + "2' name='orderQuan' value='1'>"
+					+ "<input type='text' id='" + `this.value` + "3' name='supplyPrice' value='" + hval + "' readonly>"
+					
+					+ "<br id='" + this.value +"5'>");
+				
+				$("input[name=orderQuan]").on("input", function(){
+					var tid = tval
+					var tid1 = tid + "1";
+					var tid2 = tid + "2";
+					var tid3 = tid + "3";
+				
+					var tid5 = tid + "5";
+					console.log(tid);
+					document.getElementById(tid3).value = document.getElementById(tval).value * document.getElementById(tid2).value;
+					if(document.getElementById(tid2).value <= 0){
+						console.log("0이하로 내려감");
+						$("#" + tid1).remove();
+						$("#" + tid2).remove();
+						$("#" + tid3).remove();
+						
+						$("#" + tid5).remove();
+					}
+					
+				});
+				$("input[name=orderQuan]").on("change", function(){
+					var tid = this.id;
+					var tid1 = tid + '1';
+					var tid2 = tid + "2";
+					var tid3 = tid + "3";
+				;
+					var tid5 = tid + "5";
+					console.log(tid);
+					document.getElementById(tid3).value = document.getElementById(tval).value * document.getElementById(tid2).value;
+					if(document.getElementById(tid2).value <= 0){
+						console.log("0이하로 내려감");
+						$("#" + tid1).remove();
+						$("#" + tid2).remove();
+						$("#" + tid3).remove();
+						
+						$("#" + tid5).remove();
+					}
+				});
+				
 			});
-			
-			$("input[name=orderQuan]").on("change", function(){
-				var tid = this.id;
-				console.log(tid);
-				document.getElementById(tid).value = document.getElementById(tid).value * this.value;
-			});
-			$("input[name=orderQuan]").on("input", function(){
-				var tid = this.id;
-				console.log(tid);
-				document.getElementById(tid).value = document.getElementById(tid).value * this.value;
-			});
-		
-		
 		});
+		//-->
 </script>
 </html>

@@ -80,6 +80,12 @@ body { min-height: 95vh; }
 	text-align: center;
 }
 
+#selectDiv {
+	
+		width:177px;
+		 float:left;
+}
+
 div{
 		text-align:center;
 }
