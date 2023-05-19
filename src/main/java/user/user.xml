@@ -5,11 +5,17 @@
   
   <mapper namespace="user">
   
-  <select id="findPasswd" resultType="String" parameterType="String">
-  	select password from id_default_info where name=#{name} and email=#{email}
-  </select>
+	<select id="findPasswd" resultType="String" parameterType="String">
+  		select password from id_default_info where name=#{name} and email=#{email}
+	</select>
   
-  
-  
+	<select id="checkEmail" parameterType="String" resultType="int">
+		select count(*) from id_default_info where email=#{email, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getMember" parameterType="String" resultType="admin.AdminDataBean"><!-- 바구니가 어디 들어있나 -->
+		select * from id_default_info where email=#{email, jdbcType=VARCHAR}	
+	</select>
+	
   
   </mapper>

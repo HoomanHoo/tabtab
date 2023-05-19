@@ -8,11 +8,15 @@
 
 <c:set var="project" value= "/JavaWebProject/admin/"/>
 
-<c:set var="page_main" value="메 인 페 이 지"/>
 <c:set var="page_input" value= "회 원 가 입"/>
 <c:set var="page_confirm" value= "중 복 확 인"/>
+<c:set var="inventory_page" value= "현 재 재 고"/>
+
+
 <c:set var="admin_page_login" value= "관리자 페이지"/>
-<c:set var="admin_order_R" value= "발주 요청"/>
+<c:set var="admin_order_R" value= "발주 요청 페이지"/>
+
+<c:set var="user_page_login" value= "약사 로그인"/>
 
 <c:set var="page_delete" value= "회 원 탈 퇴"/>
 <c:set var="page_modify" value= "회원 정보 수정"/>
@@ -36,9 +40,11 @@
 <c:set var="btn_login" value= "로그인"/>
 <c:set var="btn_ok" value= "확인"/>
 <c:set var="btn_cancel" value= "취소"/>
-<c:set var="btn_input" value= "회원가입"/>
+<c:set var="btn_input" value= "회원가입신청"/>
 <c:set var="btn_input_cancel" value= "가입취소"/>
 <c:set var="btn_confirm" value= "중복확인"/>
+<c:set var="btn_passwd" value= "비밀번호 찾기"/>
+
 
 <c:set var="btn_ok" value= "확인"/>
 <c:set var="btn_ok_cancel" value= "확인취소"/>

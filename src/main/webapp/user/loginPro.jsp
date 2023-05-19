@@ -3,10 +3,10 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="setting.jsp"%>
-<script src="${project}script_admin.js"></script>
+<script src="${project}script_user.js"></script>
 
 
-<h2>${admin_page_login}</h2>
+<h2>${user_page_login}</h2>
 
 <c:if test="${result == -1}">
 	<script type="text/javascript">
@@ -26,15 +26,5 @@
 
 <c:if test="${result eq 1}">
 	${sessionScope.memEmail = email}
-	<c:redirect url="inventoryinven.net"/>
+	<c:redirect url="adminloginform.net"/>
 </c:if>
-
-
-
-
-
-
-
-
-
-    
