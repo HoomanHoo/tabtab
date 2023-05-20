@@ -29,7 +29,4 @@ function checkOrderList(){
 	}
 }
 
-function addList(){
-	
 
-}

@@ -26,9 +26,12 @@
 
 <c:if test="${result eq 1}">
 	${sessionScope.memEmail = email}
-	<c:redirect url="inventoryinven.net"/>
+	<c:redirect url="adminloginform.net"/>
 </c:if>
 
+
+<!-- sessionScope.memId = requestScope.id
+>>앞에서 셋어트리비트로 받은거 겟으로 받았는데 이거 생략 가능이라 그냥 id로 씀 -->
 
 
 

@@ -4,8 +4,8 @@ body { min-height: 95vh; }
 
 
 #content {
-        width: 77.5%;
-        height: 72vh;
+        width: 82.5%;
+        height: 71.5vh;
         padding: 1%;
         margin-bottom: 15px;
         margin-top: 0px;
@@ -15,7 +15,7 @@ body { min-height: 95vh; }
       }
       
 #topMenu {
-        width: 77.5%;
+        width: 82.5%;
         height: 7vh;
         padding: 1%;
         margin-bottom: 5px;
@@ -26,7 +26,7 @@ body { min-height: 95vh; }
       }
       
 #sidebar {
-        width: 16.5%;
+        width: 12.5%;
         height: 83vh;
         padding: 1%;
         margin-bottom: 15px;

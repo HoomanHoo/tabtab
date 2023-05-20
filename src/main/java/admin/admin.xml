@@ -5,14 +5,17 @@
   
   <mapper namespace="Admin">
 	<!-- 파라미터 타입은 문자열로 아이디 하나 넘어옴>> -->
-	 <select id="checkEmail" parameterType="String" resultType="int">
+	  <select id="checkEmail" parameterType="String" resultType="int">
 		select count(*) from id_default_info where email=#{email, jdbcType=VARCHAR}
 	</select>
 	
-	
+	  
 	<select id="getMember" parameterType="String" resultType="admin.AdminDataBean"><!-- 바구니가 어디 들어있나 -->
 		select * from id_default_info where email=#{email, jdbcType=VARCHAR}	
 	</select>
+	
+	
+	
 	
 	
 	 <!-- 로그온에 인풋프로 핸들러가 처리 --><!----><!---->
@@ -23,16 +26,25 @@
 			#{mem_desc_code, jdbcType=VARCHAR}
 		)
 	</insert>
+	<select id="selectM" parameterType="admin.AdminDataBean" resultType="int">
+		select mem_code from id_default_info where email=#{email, jdbcType=VARCHAR} 
+	</select>
 	
 	<insert id="insertMember" parameterType="admin.AdminDataBean">
-		<selectKey resultType="int" keyProperty="mem_code" order="BEFORE">
-			select mem_code from id_default_info where email=#{email, jdbcType=VARCHAR} 
-		</selectKey>
 		insert into supplier_information 
 		values( #{mem_code}, sup_code_seq.NEXTVAL, #{supplier_name} )
 	</insert>
 	
 	
+<!--mem_code_seq
+			insert into supplier_information(supplier_code, supplier_name) values
+			( #{sup_code_seq.NEXTVAL}, #{supplier_name) )
+			
+			<insert id="insertMember" parameterType="admin.AdminDataBean">
+			insert into supplier_information(supplier_code, supplier_name) values
+			( #{sup_code_seq.NEXTVAL}, #{supplier_name) )
+	</insert>
+	-->
 <!--
 	<delete id="deleteMember" parameterType="String">
 		delete from member where id=#{id}

@@ -7,16 +7,28 @@ import handler.SqlMapClient;
 //디디빈 안은 호출만 해줌
 public class AdminDBBean implements AdminDao{
 	
-	public static SqlSession session = SqlMapClient.getSession();	//디비 연결해서 가져오는거
+	private static SqlSession session = SqlMapClient.getSession();	//디비 연결해서 가져오는거
 
 	//회원가입
 	public int insertMember(AdminDataBean dto) {
 		int result1 = session.insert("Admin.insertM",dto);
+		int mem_code = session.selectOne("Admin.selectM", dto);
 		int result2 = session.insert("Admin.insertMember", dto);
+		
 		return  result2;
 	}
 		//session.insert( "Admin.insertMember", dto );
-	//int mem_code = session.selectOne("Admin.selectM", dto);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -6,7 +6,7 @@ var nameerror = "이름을 입력하세요.";
 //var juminerror = "주민등록번호를 입력하세요.";
 //var telerror = "전화번호를 입력하세요.";
 
-var emailterror = "이메일 형식(@)에 맞지 않습니다.";
+var emailerror = "이메일 형식에 맞지 않습니다.";
 
 var confirmerror = "중복확인을 해주세요.";
 

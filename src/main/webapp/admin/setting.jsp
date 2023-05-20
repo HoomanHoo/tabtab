@@ -6,13 +6,12 @@
 
 
 
-<c:set var="project" value= "/JavaWebProject/admin/"/>
+<c:set var="project" value= "/tabtab/admin/"/>
 
 <c:set var="page_main" value="메 인 페 이 지"/>
 <c:set var="page_input" value= "회 원 가 입"/>
 <c:set var="page_confirm" value= "중 복 확 인"/>
 <c:set var="admin_page_login" value= "관리자 페이지"/>
-<c:set var="admin_order_R" value= "발주 요청"/>
 
 <c:set var="page_delete" value= "회 원 탈 퇴"/>
 <c:set var="page_modify" value= "회원 정보 수정"/>
