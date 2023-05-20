@@ -1,33 +1,39 @@
-package search;
+package inventory;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
 
-public class SearchDataBean {
-
+public class InventoryDataBean {
+    
 	private int num;                 //목록번호
-	private int medi_code;           //약넘버
+	private int mem_code;            //약사넘버
+	private int medi_code;           //약넘버	
 	private String medi_name;        //약품명
 	private int supply_value;        //공급가
 	private int selling_price;       //판매가
-    private String manu_com;         //제조사
+    private int rt_inven;            //남은수량 
+	private String manu_com;         //제조사
     private String chief_ingre;      //주성분
     private int vari_code;           //구분   
     private Timestamp reg_date;      //검색일
     private String keyword;          //검색어
     private String type;             //검색타입
-        
-    public int getNum() {
+	public int getNum() {
 		return num;
 	}
 	public void setNum(int num) {
 		this.num = num;
-	}	
-	public int getMedi_code() {
-		return num;
 	}
-	public void setMedi_code(int num) {
-		this.num = num;
+	public int getMem_code() {
+		return mem_code;
+	}
+	public void setMem_code(int mem_code) {
+		this.mem_code = mem_code;
+	}
+	public int getMedi_code() {
+		return medi_code;
+	}
+	public void setMedi_code(int medi_code) {
+		this.medi_code = medi_code;
 	}
 	public String getMedi_name() {
 		return medi_name;
@@ -47,6 +53,12 @@ public class SearchDataBean {
 	public void setSelling_price(int selling_price) {
 		this.selling_price = selling_price;
 	}
+	public int getRt_inven() {
+		return rt_inven;
+	}
+	public void setRt_inven(int rt_inven) {
+		this.rt_inven = rt_inven;
+	}
 	public String getManu_com() {
 		return manu_com;
 	}
@@ -65,7 +77,6 @@ public class SearchDataBean {
 	public void setVari_code(int vari_code) {
 		this.vari_code = vari_code;
 	}
-	
 	public Timestamp getReg_date() {
 		return reg_date;
 	}
@@ -82,8 +93,7 @@ public class SearchDataBean {
 		return type;
 	}
 	public void setType(String type) {
-		this.type = type;		
-	}			
-
+		this.type = type;
+	}    
+          
 }
-

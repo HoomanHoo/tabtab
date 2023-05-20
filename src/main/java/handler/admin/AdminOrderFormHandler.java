@@ -1,4 +1,4 @@
-package handler.user;
+package handler.admin;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,15 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 
-
 @Controller
-public class UserPasswdHandler implements CommandHandler{
-	@RequestMapping("/userpasswd")
+public class AdminOrderFormHandler implements CommandHandler{
+
+	@RequestMapping("/adminorderform")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return new ModelAndView("user/userPasswd");
+		return new ModelAndView("admin/orderForm");
 	}
+
 }
-
-

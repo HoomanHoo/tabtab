@@ -1,6 +1,4 @@
-package handler.order;
-
-import java.util.List;
+package handler.admin;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -10,25 +8,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.AdminDao;
 import handler.CommandHandler;
-import order.OrderDao;
-import order.OrderHistoryDataBean;
+
 @Controller
-public class OrderHistoryHandler implements CommandHandler{
+public class AdminConfirmEmailHandler implements CommandHandler{
+
+	@Resource(name="adminDao")
+	private AdminDao adminDao;
 	
-	@Resource(name="orderDao")
-	OrderDao orderDao;
-	
-	@RequestMapping("/orderhistory")
+	@RequestMapping("/adminconfirmemail")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		//checkId 구현해야함
-		List<OrderHistoryDataBean> dtos = orderDao.getOrderHistory(); 
 		
-		request.setAttribute("dtos", dtos);
 		
-		return new ModelAndView("order/orderHistory");
+		String email = request.getParameter("email");		
+	
+		int result = adminDao.checkEmail(email);
+		
+		request.setAttribute( "result", result );
+		request.setAttribute( "email", email);
+		
+		return new ModelAndView("admin/confirmEmail");
 	}
 
 }

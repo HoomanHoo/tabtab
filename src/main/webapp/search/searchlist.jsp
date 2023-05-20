@@ -11,7 +11,7 @@
 <table>
     <tr>
         <td colspan="8" style="text-align:right">
-            <a href="searchsearchlist.net">${page_searchlist}(${keywrod})</a>&nbsp;&nbsp;&nbsp;
+            <a href="aosetting.net">${str_ao_setting}</a>&nbsp;&nbsp;&nbsp;
         </td>
     </tr>
     <tr>
@@ -69,8 +69,8 @@
 <br>
 <center>
     <c:if test="${startPage gt pageBlock}">
-        <a href="searchlist.net">[◀◀]</a>
-        <a href="searchlist.net?pageNum=${startPage-pageBlock}">[◀]</a>
+        <a href="searchsearchlist.net">[◀◀]</a>
+        <a href="searchsearchlist.net?pageNum=${startPage-pageBlock}">[◀]</a>
     </c:if>
     <c:forEach var="i" begin="${startPage}" end="${endPage}">
         <c:if test="${i eq currentPage}">

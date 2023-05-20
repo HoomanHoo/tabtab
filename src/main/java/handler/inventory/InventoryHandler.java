@@ -1,4 +1,4 @@
-package handler.search;
+package handler.inventory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,22 +8,20 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import inventory.InventoryDataBean;
 import handler.CommandHandler;
-import search.SearchDao;
-import search.SearchDataBean;
+import inventory.InventoryDao;
 
-public class SearchListHandler implements CommandHandler {
-	@Resource(name="searchDao")
-	private SearchDao searchDao;
-    
-	@RequestMapping("/searchsearchlist")	
+public class InventoryHandler implements CommandHandler {
+
+	@Resource(name="inventoryDao")
+	private InventoryDao inventoryDao;
+	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		
-	    int pageBlock= 3;            //한 번에 출력할 페이지 번호 개수
+		int pageBlock= 3;            //한 번에 출력할 페이지 번호 개수
 	    int pageSize= 10;            //한 페이지에 출력할 글의 개수
 	    int start= 0;                //페이지의 첫 글
 	    int end= 0;                  //페이지의 마지막 글
@@ -34,9 +32,11 @@ public class SearchListHandler implements CommandHandler {
 	    int endPage= 0;              //출력할 페이지 끝 번호
 	    int pageCount= 0;            //전체 페이지 개수
 
-	    int count=searchDao.getCount();
-    	
-	    pageNum= request.getParameter( "pageNum" );
+
+	    
+	    int count= inventoryDao.getCount();
+
+        pageNum= request.getParameter( "pageNum" );
 	    if( pageNum== null ){
 	    	pageNum= "1";
 	    }
@@ -74,10 +74,10 @@ public class SearchListHandler implements CommandHandler {
 	    	Map<String, Integer> map= new HashMap<String, Integer>();
 	    	map.put("start", start);
 	    	map.put("end", end);
-	    	List<SearchDataBean> dtos= searchDao.getSearchList( map );   
+	    	List<InventoryDataBean> dtos= inventoryDao.getInventories( map );  
 	    	request.setAttribute("dtos",dtos);
 	    }
 	    
-        return new ModelAndView("search/searchlist");
-    }
+        return new ModelAndView("inventory/inventory");
+	}
 }

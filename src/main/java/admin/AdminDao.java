@@ -8,5 +8,4 @@ public interface AdminDao {
 	public AdminDataBean getMember(String email);
 	/*public int deleteMember(String id);
 	public int modifyMember(LogonDataBean dto );*/
-	
 }

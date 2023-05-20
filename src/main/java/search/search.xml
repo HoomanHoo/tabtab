@@ -9,22 +9,35 @@
         where medi_name like '%' || #{keyword} || '%' or chief_ingre like '%' || #{keyword} || '%'
     </select>
     
-    <select id="getSearch" parameterType="search.SearchDataBean">   
+    <select id="getSearch" parameterType="map" resultType="search.SearchDataBean">   
         select num, medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date  
 		from medi_information mi, medi_variation mv 
 		where mi.medi_code = mv.medi_code 
 		order by medi_name desc 
 		offset #{start} rows fetch next #{count} rows only
     </select> 
+      <!--  Mapped Statements collection already contains value for Search.getSearchList. please check search/search.xml and search/search.xml 에러 발생   -->
+ <!--   <select id="getSearchList" parameterType="map" resultType="search.SearchDataBean">
+        select * from (
+            select rownum r, num, medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date
+            from(
+                select * from medi_information
+                where medi_name like '%' || #{keyword} || '%' 
+                order by medi_name desc
+            )
+        ) where r where r &gt;= #{start} and r &lt;= #{end}       
+    </select>  
     
     <select id="getSearchList" parameterType="map" resultType="search.SearchDataBean">
         select * from (
             select rownum r, num, medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date
             from(
                 select * from medi_information
-                where medi_name like '%' || #{keyword} || '%' or chief_ingre like '%' || #{keyword} || '%'
+                where chief_ingre like '%' || #{keyword} || '%'
                 order by medi_name desc
             )
         ) where r where r &gt;= #{start} and r &lt;= #{end}       
-    </select>    
+    </select>    -->
+  
+      
 </mapper>

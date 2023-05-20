@@ -1,4 +1,4 @@
-package handler.user;
+package handler.inventory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,15 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 
-
 @Controller
-public class UserPasswdHandler implements CommandHandler{
-	@RequestMapping("/userpasswd")
+public class InvenHandler implements CommandHandler{
+
+	@RequestMapping("/inventoryinven")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return new ModelAndView("user/userPasswd");
+		//약사 로그인 확인용 
+		return new ModelAndView("inventory/inven");
 	}
+
 }
-
-
