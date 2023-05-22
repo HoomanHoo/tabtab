@@ -52,7 +52,7 @@
 			</form>
 		</div>
 		<div id="wrapper" style="float:right">
-			<form name="selectList" method="post" action="orderpagepro.net" >
+			<form name="selectList" method="post" action="orderpagepro.net" onsubmit="return checkOrderList()">
 			<div id="orderList">
 				<div id="selectDiv">${textMediName}</div>
 				<div id="selectDiv">${textQuantity}</div>
@@ -83,7 +83,7 @@ $(document).ready(
 				var hval = document.getElementById(tval).value; 
 				console.log(tval);
 				console.log(hval);
-				if(document.querySelector("#" + tval1) != null){
+				if(document.querySelector("#" + $.escapeSelector(tval1)) != null){
 					alert("이미 추가된 의약품입니다");
 				}
 				else{
@@ -139,6 +139,13 @@ $(document).ready(
 				
 			});
 		});
+		
+function checkOrderList(){
+	if(!document.querySelector("input[name=mediName]")){
+		alert(selectmedi);
+		return false;
+	}
+}
 		//-->
 </script>
 </html>

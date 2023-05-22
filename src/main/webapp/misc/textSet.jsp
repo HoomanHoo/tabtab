@@ -15,6 +15,9 @@
 <c:set var="textPrice" value="발주가"/>
 <c:set var="textMediName" value="제품명"/>
 <c:set var="textChiefIngre" value="주성분"/>
+<c:set var="textVariation" value="구분"/>
+<c:set var="textEtc" value="전문"/>
+<c:set var="textOtc" value="일반"/>
 <c:set var="findPasswd" value="비밀번호 찾기"/>
 <c:set var="myPage" value="마이페이지"/>
 <c:set var="questionBoard" value="문의사항"/>
@@ -33,6 +36,10 @@
 <c:set var="sumSupplyValue" value="총 공급가액(원)"/>
 <c:set var="orderSupplier" value="거래처"/>
 <c:set var="orderMemo" value="메모"/>
+<c:set var="textDeliveryState" value="배송상태"/>
+<c:set var="deliNotYet" value="미배송"/>
+<c:set var="deliStart" value="배송중"/>
+<c:set var="deliEnd" value="배송완료"/>
 <c:set var="footer" value="소재지: 서울특별시 서초구 서초대로74길33 Tel: 02-4023-0088 Email: vocustomer@tabtab.com"/>
 
 
@@ -49,3 +56,5 @@
 <c:set var="btnSetOrder" value="수동발주"/>
 <c:set var="btnCheckOrder" value="발주확인"/>
 <c:set var="btnOrderHistory" value="과거발주이력"/>
+<c:set var="btnBack" value="뒤로가기"/>
+<c:set var="btnWarehousing" value="입고"/>

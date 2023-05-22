@@ -16,20 +16,45 @@
   	<select id="getOrderNum" parameterType="int" resultType="int">
   		select max(o_num) from order_info where mem_code = #{mem_code}
   	</select>
-  	<insert id="insertOrder" parameterType="order.OrderDataBean">
+  	<select id="getOrderHistory" resultType="order.OrderHistoryDataBean">
+  		select o.o_date, o.o_num, o.sum_order_count, o.sum_supply_value, s.supplier_name, o.memo, ds.d_code
+		from order_info o
+    		,supplier_information s
+    		,delivery_state ds
+		where o.o_date >= (sysdate - 90)
+		and o.o_num = ds.o_num
+		and o.supplier_code = s.supplier_code
+		and o.mem_code = #{mem_code}
+		order by o.o_num desc
+  	</select>
+	<select id="getDetailOrderHistory" resultType="order.DetailOrderHistoryDataBean">
+		select d.o_num, mi.medi_name, d.order_quan, (d.order_quan * mi.supply_value) each_supply_value, mv.vari_code, d.medi_code
+		from detail_order d
+    		,medi_information mi
+   			,medi_variation mv
+		where d.medi_code = mi.medi_code
+		and mi.medi_code = mv.medi_code
+		and d.o_num = #{o_num}
+	</select>
+	<select id="getSimpleInven" resultType="order.SimpleInvenDataBean">
+		select mi.medi_name, inv.rt_inven
+		from inventory inv
+    	,medi_information mi
+		where inv.medi_code = mi.medi_code
+		and inv.mem_code = #{mem_code}
+	</select>
+	
+	<insert id="insertOrder" parameterType="order.OrderDataBean">
   		insert into order_info values(order_info_seq.nextval, #{mem_code}, #{supplier_code}, default, #{memo}, #{sum_supply_value}, #{sum_order_count})
   	</insert>
   	<insert id="detailOrder" parameterType="order.DetailOrderDataBean">
   		insert into detail_order values(detail_order_seq.nextval, #{o_num}, #{medi_code}, #{order_quan})
   	</insert>
-  	<select id="getOrderHistory" resultType="order.OrderHistoryDataBean">
-  		select o.o_date, o.o_num, o.sum_order_count, o.sum_supply_value, s.supplier_name, o.memo 
-  		from order_info o
-    	,supplier_information s
-		where o.o_date >= (sysdate - 90)
-		order by o.o_num desc
-  	</select>
-  	
+  	<insert id="warehousing" parameterType="order.WarehousingDataBean">
+  		insert into warehousing_info values(warehousing_info_seq.nextval, #{mem_code}, #{medi_code}, #{w_quan})
+  	</insert>
+
+
   
   
   </mapper>

@@ -22,11 +22,6 @@ function alertShow(msg){
 }
 
 
-function checkOrderList(){
-	if(!selectList.mediName.value){
-		alert(selectmedi);
-		return false;
-	}
-}
+
 
 

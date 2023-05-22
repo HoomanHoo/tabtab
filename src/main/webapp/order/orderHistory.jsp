@@ -54,9 +54,8 @@
 							<td>${sumSupplyValue}</td>
 							<td>${orderSupplier}</td>
 							<td>${orderMemo}</td>
-							<td></td>
+							<td>${textDeliveryState}</td>
 						</tr>
-						<c:set var = "i" value="${1}" />
 		 				<c:forEach var="dto" items="${dtos}">
 		 				<c:set var="orderDate">
 		 					<fmt:formatDate value="${dto.o_date}" pattern="yyyyMMdd"/>
@@ -65,15 +64,23 @@
 		 					<fmt:formatDate value="${dto.o_date}" pattern="yyyy-MM-dd"/>
 		 				</c:set>
 		 				<input type="hidden" name="oDate" value="${orderDateView }"/>
+		 				<c:if test="${dto.d_code eq 10 }">
+		 					<c:set var="deliState" value="${deliNotYet }"/>
+		 				</c:if>
+		 				<c:if test="${dto.d_code eq 11 }">
+		 					<c:set var="deliState" value="${deliStart }"/>
+		 				</c:if>
+		 				<c:if test="${dto.d_code eq 12 }">
+		 					<c:set var="deliState" value="${deliEnd }"/>
+		 				</c:if>
 							<tr>
-								<td><input type="text" name="${orderDate }" value="${orderDateView }" readonly> </td>
-								<td><input type="text" name="${orderDate }" value="${dto.o_num}" readonly></td>
-								<td><input type="text" name="${orderDate }" value="${dto.sum_order_count}" readonly></td>
-								<td><input type="text" name="${orderDate }" value="${dto.sum_supply_value}" readonly></td>
-								<td><input type="text" name="${orderDate }" value="${dto.supplier_name}" readonly></td>
-								<td><input type="text" name="${orderDate }" value="${dto.memo}" readonly></td>
-								<td><input type="text" name="${orderDate }" value="배송상태 값 넣어줘야함" readonly>
-								<c:set var="i" value="${i + 1}"/>
+								<td><input type="text" name="${orderDate }1" value="${orderDateView }" readonly> </td>
+								<td><a href = "orderhistorydetail.net?onum=${dto.o_num}"><input type="text" name="${orderDate }2" value="${dto.o_num}" readonly></a></td>
+								<td><input type="text" name="${orderDate }3" value="${dto.sum_order_count}" readonly></td>
+								<td><input type="text" name="${orderDate }4" value="${dto.sum_supply_value}" readonly></td>
+								<td><input type="text" name="${orderDate }5" value="${dto.supplier_name}" readonly></td>
+								<td><input type="text" name="${orderDate }6" value="${dto.memo}" readonly></td>
+								<td><input type="text" name="${orderDate }7" value="${deliState }" readonly>
 							</tr>
 						</c:forEach>  
 					</table>
@@ -100,7 +107,6 @@
 	var element = document.querySelector("#setPeriod");
 	var oDates = document.querySelectorAll("input[name=oDate]");
 	
-	
 	element.addEventListener("change", calc); 
 	
 	function calc(event){
@@ -120,12 +126,24 @@
 					console.log(oDate);
 					var name = oDate.getFullYear().toString() + ("0" + (oDate.getMonth() + 1)).slice(-2).toString() + ("0" + oDate.getDate()).slice(-2).toString();
 					console.log(name + "삭제");
-					$("input[name=" + name + "]").prop('type', "hidden");
+					$("input[name=" + name + "1]").prop('type', "hidden");
+					$("input[name=" + name + "2]").prop('type', "hidden");
+					$("input[name=" + name + "3]").prop('type', "hidden");
+					$("input[name=" + name + "4]").prop('type', "hidden");
+					$("input[name=" + name + "5]").prop('type', "hidden");
+					$("input[name=" + name + "6]").prop('type', "hidden");
+					$("input[name=" + name + "7]").prop('type', "hidden");
 				}
 				else{
 					var name = oDate.getFullYear().toString() + ("0" + (oDate.getMonth() + 1)).slice(-2).toString() + ("0" + oDate.getDate()).slice(-2).toString();
 					console.log(name + "삭제");
-					$("input[name=" + name + "]").prop('type', "text");
+					$("input[name=" + name + "1]").prop('type', "text");
+					$("input[name=" + name + "2]").prop('type', "text");
+					$("input[name=" + name + "3]").prop('type', "text");
+					$("input[name=" + name + "4]").prop('type', "text");
+					$("input[name=" + name + "5]").prop('type', "text");
+					$("input[name=" + name + "6]").prop('type', "text");
+					$("input[name=" + name + "7]").prop('type', "text");
 				}
 			}
 		}
@@ -140,12 +158,24 @@
 					console.log(oDate);
 					var name = oDate.getFullYear().toString() + ("0" + (oDate.getMonth() + 1)).slice(-2).toString() + ("0" + oDate.getDate()).slice(-2).toString();
 					console.log(name + "삭제");
-					$("input[name=" + name + "]").prop('type', "hidden");
+					$("input[name=" + name + "1]").prop('type', "hidden");
+					$("input[name=" + name + "2]").prop('type', "hidden");
+					$("input[name=" + name + "3]").prop('type', "hidden");
+					$("input[name=" + name + "4]").prop('type', "hidden");
+					$("input[name=" + name + "5]").prop('type', "hidden");
+					$("input[name=" + name + "6]").prop('type', "hidden");
+					$("input[name=" + name + "7]").prop('type', "hidden");
 				}
 				else{
 					var name = oDate.getFullYear().toString() + ("0" + (oDate.getMonth() + 1)).slice(-2).toString() + ("0" + oDate.getDate()).slice(-2).toString();
 					console.log(name + "삭제");
-					$("input[name=" + name + "]").prop('type', "text");
+					$("input[name=" + name + "1]").prop('type', "text");
+					$("input[name=" + name + "2]").prop('type', "text");
+					$("input[name=" + name + "3]").prop('type', "text");
+					$("input[name=" + name + "4]").prop('type', "text");
+					$("input[name=" + name + "5]").prop('type', "text");
+					$("input[name=" + name + "6]").prop('type', "text");
+					$("input[name=" + name + "7]").prop('type', "text");
 				}
 			}
 		}
@@ -161,21 +191,29 @@
 					var name = oDate.getFullYear().toString() + ("0" + (oDate.getMonth() + 1)).slice(-2).toString() + ("0" + oDate.getDate()).slice(-2).toString();
 					console.log(name + "삭제");
 					
-					
-					$("input[name=" + name + "]").prop('type', "hidden");
+					$("input[name=" + name + "1]").prop('type', "hidden");
+					$("input[name=" + name + "2]").prop('type', "hidden");
+					$("input[name=" + name + "3]").prop('type', "hidden");
+					$("input[name=" + name + "4]").prop('type', "hidden");
+					$("input[name=" + name + "5]").prop('type', "hidden");
+					$("input[name=" + name + "6]").prop('type', "hidden");
+					$("input[name=" + name + "7]").prop('type', "hidden");
 				}
 				else{
 					var name = oDate.getFullYear().toString() + ("0" + (oDate.getMonth() + 1)).slice(-2).toString() + ("0" + oDate.getDate()).slice(-2).toString();
 					console.log(name + "삭제");
-					$("input[name=" + name + "]").prop('type', "text");
+					$("input[name=" + name + "1]").prop('type', "text");
+					$("input[name=" + name + "2]").prop('type', "text");
+					$("input[name=" + name + "3]").prop('type', "text");
+					$("input[name=" + name + "4]").prop('type', "text");
+					$("input[name=" + name + "5]").prop('type', "text");
+					$("input[name=" + name + "6]").prop('type', "text");
+					$("input[name=" + name + "7]").prop('type', "text");
 				}
 			}
 		}
 		
 	}
-	
-	
-	
 	//-->
 	</script>
 </html>

@@ -68,11 +68,29 @@ public class OrderDBBean implements OrderDao{
 		return o_num;
 	}
 	
-	public List<OrderHistoryDataBean> getOrderHistory(){
+	public List<OrderHistoryDataBean> getOrderHistory(int mem_code){
 		
-		List<OrderHistoryDataBean> dtos = session.selectList("order.getOrderHistory");
+		List<OrderHistoryDataBean> dtos = session.selectList("order.getOrderHistory", mem_code);
 		
 		return dtos;
+	}
+	
+	public List<DetailOrderHistoryDataBean> getDetailOrderHistory(int o_num){
+		
+		List<DetailOrderHistoryDataBean> dtos 
+			= session.selectList("order.getDetailOrderHistory", o_num);
+		
+		return dtos;
+		
+	}
+	
+	public int warehousing(WarehousingDataBean dto) {
+		
+		return session.insert("order.warehousing", dto);
+	}
+	
+	public List<SimpleInvenDataBean> getSimpleInven(int mem_code){
+		return session.selectList("order.getSimpleInven", mem_code);
 	}
 
 }

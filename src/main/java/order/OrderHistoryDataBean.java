@@ -10,6 +10,14 @@ public class OrderHistoryDataBean {
 	private int sum_supply_value;
 	private String supplier_name;
 	private String memo;
+	private String d_code;
+	
+	public String getD_code() {
+		return d_code;
+	}
+	public void setD_code(String d_code) {
+		this.d_code = d_code;
+	}
 	
 	public Timestamp getO_date() {
 		return o_date;

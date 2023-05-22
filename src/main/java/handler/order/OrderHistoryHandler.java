@@ -24,7 +24,10 @@ public class OrderHistoryHandler implements CommandHandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		//checkId 구현해야함
-		List<OrderHistoryDataBean> dtos = orderDao.getOrderHistory(); 
+		
+		int mem_code = 1;
+		
+		List<OrderHistoryDataBean> dtos = orderDao.getOrderHistory(mem_code); 
 		
 		request.setAttribute("dtos", dtos);
 		
