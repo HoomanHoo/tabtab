@@ -16,7 +16,8 @@ public class SearchDataBean {
     private Timestamp reg_date;      //검색일
     private String keyword;          //검색어
     private String type;             //검색타입
-        
+   
+    
     public int getNum() {
 		return num;
 	}
@@ -83,7 +84,11 @@ public class SearchDataBean {
 	}
 	public void setType(String type) {
 		this.type = type;		
+	}
+	public Object getSearch() {		
+		return null;
 	}			
-
+    
+	
 }
 

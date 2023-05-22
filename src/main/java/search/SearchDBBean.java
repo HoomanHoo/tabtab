@@ -1,11 +1,11 @@
 package search;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import search.SearchDataBean;
 import handler.SqlMapClient;
 import search.SearchDBBean;
 
@@ -13,7 +13,7 @@ import search.SearchDBBean;
 public class SearchDBBean implements SearchDao {
 
     private SqlSession session= SqlMapClient.getSession();
-	
+	          
     public int getCount() {  	
 		return session.selectOne("Search.getCount");		
     }
@@ -22,14 +22,19 @@ public class SearchDBBean implements SearchDao {
     	return session.selectList("Search.getSearchList", map);
     }
     
-    public SearchDataBean getSearch(int num)  {	 				
-	    return session.selectOne("Search.getSearch",num );
+    public SearchDataBean getSearch(String keyword)  {	 				
+	    return session.selectOne("Search.getSearch", keyword);
+    }
+       
+    public SearchDataBean getType(String type) {
+    	return session.selectOne("Search.getType", type);
     }
     
-    public void addCount( int num ) {    			
-        session.update("Search.addCount", num);
+    public int checkSearch(String type) {
+    	return session.selectOne("Search.checkSearch", type);
     }
     
+    /*
     public SearchDataBean getType(String type) {
     	return session.selectOne( "Search.getType", type);
     }
@@ -41,29 +46,38 @@ public class SearchDBBean implements SearchDao {
     public int checkType(String type) {
     	return session.selectOne("Search.checkSearch", type);
     }
+    */
 	
     public int checkSearch( String type, String keyword ) {    	   	
 	    	int result = 0;
-		    if( checkType(type) !=0 ) {
-		         //검색종류가 있다
-		    	int typevalue= Integer.parseInt(type);
+		    if( checkSearch(type) !=0 ) {
+		         //검색 종류가 있다
+		    	//int typevalue= Integer.parseInt(type);
 		    	SearchDataBean dto= getType(type);
-		    	if( type.equals( dto.getType() ) ) {
+		    	if( type.equals( dto.getSearch() ) ) {
 		    	    result= 1;	
 		    	}else {
 		    		result= 0;
 		    	}
 		    }else {
-		    	//검색종류가 없다
+		    	//검색 종류가 없다면
 		    	result= -1;
 		    }    	    	    			
 	       return result;
 	    }  			
 	
-	public int checkMediname( String keyword, String medi_name ) {
+    public SearchDataBean getKeyword(String keyword) {
+    	return session.selectOne( "Search.getKeyword", keyword);
+    }
+    
+    public int checkKeyword(String keyword) {
+    	return session.selectOne("Search.checkKeyword", keyword);
+    }
+    
+    public int checkMediname( String keyword, String medi_name ) {
     	int result = 0;
-    	SearchDataBean dto= getKeyword( medi_name );
-    	if( medi_name.equals( dto.getMedi_name() ) ) {
+    	SearchDataBean dto= getSearch( medi_name );
+    	if( medi_name.equals( dto.getKeyword() ) ) {
     		//약품명이 같다
     		result = 1;
     	} else {
@@ -75,8 +89,8 @@ public class SearchDBBean implements SearchDao {
 	
 	public int checkChiefingre( String keyword, String chief_ingre ) {
     	int result = 0;
-    	SearchDataBean dto= getKeyword( chief_ingre );
-    	if( chief_ingre.equals( dto.getChief_ingre() ) ) {
+    	SearchDataBean dto= getSearch( chief_ingre );
+    	if( chief_ingre.equals( dto.getKeyword() ) ) {
     		//주성분이 같다
     		result = 1;
     	} else {
@@ -84,5 +98,20 @@ public class SearchDBBean implements SearchDao {
     		result = 0;
     	}
     	return result;    	
-    }               
+    }
+
+	public static SearchDBBean getInstance() {
+		// TODO Auto-generated method stub
+		return null;
+	}	          
+
+	public List<SearchDataBean> searchByKeyword(String type, String keyword, int start, int count){
+    	Map<String, Object>map= new HashMap<>();
+    	map.put("type",type);
+    	map.put("keyword", keyword);
+    	map.put("start", start);
+    	map.put("count", count);
+    	
+    	return SearchDao.getSearchList(map);
+    }
 }
