@@ -49,3 +49,43 @@
 <c:set var="btn_del_cancel" value= "탈퇴취소"/>
 <c:set var="btn_mod" value= "수정"/>
 <c:set var="btn_mod_cancel" value= "수정취소"/>
+
+
+
+
+
+<c:set var="admin_signup_list" value= "회원 가입 신청"/>
+<c:set var="page_write" value="글 작 성"/>
+<c:set var="page_content" value="글 보 기"/>
+<c:set var="page_delete" value="글 삭 제"/>
+<c:set var="page_modify" value="글 수 정"/>
+
+<c:set var="msg_list_x" value="회원 가입 신청이 없습니다."/>
+<c:set var="msg_passwd" value="비밀번호를 확인해주세요."/>
+<c:set var="msg_modify" value="수정할 정보를 입력하세요."/>
+
+
+<c:set var="str_memcode" value="회원 번호"/>
+<c:set var="str_email" value="신청자 이메일"/>
+<c:set var="str_info" value="상세 정보 확인"/>
+<c:set var="str_infom" value="상세 정보"/>
+<c:set var="str_list" value="신청목록"/>
+
+<c:set var="btn_write" value="작성"/>
+<c:set var="btn_cancel" value="취소"/>
+<c:set var="btn_list" value="목록"/>
+<c:set var="btn_modify" value="글수정"/>
+<c:set var="btn_delete" value="글삭제"/>
+<c:set var="btn_reply" value="답글"/>
+<c:set var="btn_del" value="삭제"/>
+<c:set var="btn_del_cancel" value="삭제취소"/>
+<c:set var="btn_mod" value="수정"/>
+<c:set var="btn_mod_cancel" value="수정취소"/>
+
+<c:set var="str_passwd" value="비밀번호"/>
+<c:set var="str_writer" value="작성자"/>
+<c:set var="str_readcount" value="조회수"/>
+<c:set var="str_ip" value="IP"/>
+<c:set var="str_r_date" value="신청일"/>
+<c:set var="str_content" value="글내용"/>
+<c:set var="str_count" value="전 체 글"/>

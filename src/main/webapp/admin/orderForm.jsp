@@ -5,5 +5,5 @@
 <script src="${project}script_admin.js"></script>
 
 <h2>${admin_order_R}</h2>
-
-
+<!-- 확인용 발주요청 페이지 -->
+<a href="http://localhost:8080/JavaWebProject/adminsignuplist.net">회원가입 신청</a>

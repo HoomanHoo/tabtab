@@ -25,7 +25,8 @@
 </c:if>
 
 <c:if test="${result eq 1}">
-	${sessionScope.memEmail = email}
+	${sessionScope.memEmail = email}<!-- 세션에 값저장 -->
+		<!-- ${sessionScope.memCode = mem_code} -->
 	<c:redirect url="inventoryinven.net"/>
 </c:if>
 

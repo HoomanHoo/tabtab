@@ -3,19 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="user">
+  <mapper namespace="User">
   
 	<select id="findPasswd" resultType="String" parameterType="String">
   		select password from id_default_info where name=#{name} and email=#{email}
 	</select>
   
-	<select id="checkEmail" parameterType="String" resultType="int">
+	<select id="ucheckEmail" parameterType="String" resultType="int">
 		select count(*) from id_default_info where email=#{email, jdbcType=VARCHAR}
 	</select>
 	
-	<select id="getMember" parameterType="String" resultType="admin.AdminDataBean"><!-- 바구니가 어디 들어있나 -->
+	<select id="ugetMember" parameterType="String" resultType="user.ULogonDataBean"><!-- 바구니가 어디 들어있나 -->
 		select * from id_default_info where email=#{email, jdbcType=VARCHAR}	
 	</select>
 	
+  	<insert id="uinsertM" parameterType="user.ULogonDataBean">
+		insert into id_default_info(mem_code, email, password, r_date) 
+		values( 
+			mem_code_seq.NEXTVAL, #{email, jdbcType=VARCHAR}, default, sysdate
+		)
+	</insert> 
+	
+	<insert id="uinsertMember" parameterType="user.ULogonDataBean">
+		<selectKey resultType="int" keyProperty="mem_code" order="BEFORE">
+			select mem_code from id_default_info where email=#{email, jdbcType=VARCHAR} 
+		</selectKey>
+		insert into  phar_information(mem_code, apply_desc_code, pr_img, pl_img)
+		values( #{mem_code}, default, #{pr_img, jdbcType=VARCHAR}, #{pl_img, jdbcType=VARCHAR})
+	</insert>
   
   </mapper>

@@ -1,5 +1,8 @@
 package admin;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import handler.SqlMapClient;
@@ -15,16 +18,11 @@ public class AdminDBBean implements AdminDao{
 		int result2 = session.insert("Admin.insertMember", dto);
 		return  result2;
 	}
-		//session.insert( "Admin.insertMember", dto );
-	//int mem_code = session.selectOne("Admin.selectM", dto);
-	
-	
 	
 	 //중복확인
 	public int checkEmail( String email) {
 		return session.selectOne( "Admin.checkEmail", email);//email>매개변수
 	}	
-		
 	
 	//로그인>디비처리 없음 겟 멤버 메소드만 호출하면 됨
 	public int check (String email, String password) {
@@ -69,4 +67,12 @@ public class AdminDBBean implements AdminDao{
 						);	
 	 
 	 */
+	
+	public int getCount() {//이름이 안정해져 있음 숫자로 꺼냄?
+		return session.selectOne( "Admin.getCount" );
+	}
+	
+	public List<AdminDataBean> getArticles(Map<String, Integer> map) {
+		return session.selectList( "Admin.getArticles", map);
+	}
 }

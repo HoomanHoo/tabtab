@@ -2,8 +2,8 @@
 var emailerror = "이메일를 입력하세요.";
 var passwderror = "비밀번호를 입력하세요.";
 var repasswderror ="비밀번호가 다릅니다.";
-var nameerror = "이름을 입력하세요.";
-//var juminerror = "주민등록번호를 입력하세요.";
+var pl_imgerror = "약사 면허증을 등록하세요.";
+var pr_imgerror = "사업자등록증을 등록하세요.";
 //var telerror = "전화번호를 입력하세요.";
 
 var emailterror = "이메일 형식(@)에 맞지 않습니다.";
@@ -25,193 +25,90 @@ function erroralert(msg) {
 
 
 //회원정보 수정
-function modifycheck() {
-	if( ! modifyform.password.value) {
+function usermodifycheck() {
+	if( ! usermodifyform.password.value) {
 		alert(passwderror);
-		modifyform.password.focus();
+		usermodifyform.password.focus();
 		return false;
-	}else if (modifyform.password.value != modifyform.repasswd.value) {
+	}else if (usermodifyform.password.value != usermodifyform.repasswd.value) {
 		alert(repasswderror);
-		modifyform.password.focus();
+		usermodifyform.password.focus();
 		return false;
 	}
 }
 
 // 회원탈퇴
-function passwdcheck() {
-	if( ! passwdform.password.value) {
+function userpasswdcheck() {
+	if( ! userpasswdform.password.value) {
 		alert(passwderror);
-		passwdform.password.focus();
+		userpasswdform.password.focus();
 		return false;
 	}
 }
 
 
 //아이디 중복확인
-function confirmemail() {
-	if( ! inputform.email.value) {
+function userconfirmemail() {
+	if( ! userinputform.email.value) {
 		alert(emailerror);
-		inputform.email.focus();
+		userinputform.email.focus();
 	} else {			//새팝업을 띄워라
-		url = "adminconfirmemail.net?email=" + inputform.email.value;	//여기도 url주소가 들어가는 자리confirmId.jsp
+		url = "userconfirmemail.net?email=" + userinputform.email.value;	//여기도 url주소가 들어가는 자리confirmId.jsp
 		open(url, "confirm", "scrollbar=no, statusbar=no, titlebar=no, menubar=no, width=400px, height=250px");
 	}
 }
 	
-function confirmcheck() {
-	if( ! confirmform.email.value) {
+function userconfirmcheck() {
+	if( ! userconfirmform.email.value) {
 		alert(emailerror);
-		confirmform.email.focus();
+		userconfirmform.email.focus();
 		return false;
 	}
 }
 
-function setemail(email) {
-	opener.document.inputform.email.value = email;
-	opener.document.inputform.check.value = "1";
+function usersetemail(email) {
+	opener.document.userinputform.email.value = email;
+	opener.document.userinputform.check.value = "1";
 	window.close();
 }
 
 
 
 //가입페이지
-function inputcheck() {
-	if(inputform.check.value =="0") {
+function userinputcheck() {
+	if(userinputform.check.value =="0") {
 		alert(confirmerror);
-		inputform.name.focus();
+		userinputform.email.focus();
 		return false;
 	}
-	
-	if( ! inputform.name.value ) {
-		alert(nameerror);
-		inputform.name.focus();
-		return false;	
-	} else if(! inputform.email.value) {
+	if(! userinputform.email.value) {
 		alert( emailerror);
-		inputform.email.focus();
+		userinputform.email.focus();
 		return false;	
-	}else if ( ! inputform.password.value) {
-		alert(passwderror);
-		inputform.password.focus();
-		return false;	
-	}else if ( ! inputform.mem_desc_code.value){
-		alert(codeerror);
-		inputform.mem_desc_code.focus();	
+	}else if ( ! userinputform.pr_img.value){
+		alert( pr_imgerror);
+		return false;
+	}else if ( ! userinputform.pl_img.value){
+		alert( pl_imgerror);
+		return false;
 	}
-
-	if(inputform.email.value.indexOf("@") == -1 ) {//-1이면 값이 없다 값있으면 있는 문자열의 위치를 알려줌
+	if(userinputform.email.value.indexOf("@") == -1 ) {//-1이면 값이 없다 값있으면 있는 문자열의 위치를 알려줌
 		alert(emailterror);
-		inputform.email.value="";
-		inputform.email.focus();
+		userinputform.email.value="";
+		userinputform.email.focus();
 		return false;
 	}
 }
-	/*if(inputform.email.value) {
-		if(inputform.email2.value == "0" ) {
-			//직접입력
-			if(inputform.email1.value.indexOf("@") == -1 ) {//-1이면 값이 없다 값있으면 있는 문자열의 위치를 알려줌
-				alert(emailerror);
-				inputform.email.value="";
-				inputform.email.focus();
-				return false;
-			}
-		} else {
-			if(inputform.email.value.indexOf("@")!= -1 ) {//선택입력
-				alert(emailerror);
-				inputform.email.value="";
-				inputform.email1.focus();
-				return false;
-			}
-		}
-	}*/
-
-
 
 //메인페이지>로그인 화면에서 아이디 비번 입력안 했음 경고창을 띄어라//메인폼의 아이디 값이 데이터가 없다면 이프문을 돌아라
-function maincheck() {//매개 변수 넘어오는거 없음
-	if( ! mainform.email.value ) {
+function usermaincheck() {//매개 변수 넘어오는거 없음
+	if( ! usermainform.email.value ) {
 		alert( emailerror );//iderror가 써있는 알림창을 띄워라
-		mainform.email.focus();
+		usermainform.email.focus();
 		return false;
-	} else if ( ! mainform.password.value ) {
+	} else if ( ! usermainform.password.value ) {
 		alert(passwderror );
-		mainform.password.focus();
+		usermainform.password.focus();
 		return false;
 	}
 }
-
-
-/*	
-	
-	
-	//이메일 직접입력일 경우 @가 없으면 경고
-	//선택입력일 경우 @가 있으면 경고 
-
-	//------------
-	if(직접입력일 시) {
-		if(@ 없으면) {
-			경고창 띄움
-		}
-	} else if(@ 있으면) {
-		경고창 띄움
-		}
-	//----------
-	else if( ! inputform.passwd.value != ! inputform.repasswd.value) {
-		alert(repasswderror);
-		inputform.passwd.value = "";
-		inputform.passwd.focus();
-		return false;	
-	}else if(! inputform.jumin1.value || ! inputform.jumin2.value) {
-			alert(juminerror);
-		inputform.jumin1.focus();
-		return false;	
-	} 
-
-
-
-	if(inputform.jumin1.value.length < 6 || inputform.jumin2.value.length < 7) {
-		alert(juminerror);
-		inputform.jumin1.focus();
-		return false;
-	}
-	*/
-	/*
-	if(inputform.tel1.value || inputform.tel2.value || inputform.tel3.value) {
-		if(inputform.tel1.value.length < 3 || inputform.tel2.value.lenght<3 || inputform.tel3.value.length <4) {
-			alert(telerror);
-			inputform.tel1.focus();
-			return false;
-		}
-	}
-	*/
-
-
-/*function nextjumin2() {
-	if(inputform.jumin1.value.length == 6) {
-		inputform.jumin2.focus();
-	}
-}
-function nexttel1() {
-	if(inputform.jumin2.value.length == 7){
-		inputform.tel1.focus();
-	}
-}
-function nexttel2() {
-	if(inputform.tel1.value.length == 3) {
-		inputform.tel2.focus();
-	}
-}
-
-function nexttel3() {
-	if(inputform.tel2.value.length == 4) {
-		inputform.tel3.focus();
-	}
-}
-function nextemail1() {
-	if(inputform.tel3.value.length == 4) {
-		inputform.email1.focus();
-	}
-}
-
-*/
-

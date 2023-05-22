@@ -12,24 +12,22 @@ import handler.CommandHandler;
 import user.ULogonDao;
 
 @Controller
-public class UserLoginProHandler implements CommandHandler{
+public class UserComfirmEmailHandler implements CommandHandler{
 
 	@Resource(name="uLogonDao")
-	public ULogonDao uLogonDao;
+	private ULogonDao uLogonDao;
 	
-	@RequestMapping("/userloginpro")
+	@RequestMapping("/userconfirmemail")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
 		
-		int result = uLogonDao.ucheck(email, password);
+		String email = request.getParameter("email");		
+		int result = uLogonDao.ucheckEmail(email);
 		
-		request.setAttribute("result", result);
+		request.setAttribute( "result", result );
 		request.setAttribute( "email", email);
 		
-		return new ModelAndView("user/loginPro");
+		return new ModelAndView("user/confirmEmail");
 	}
 
 }

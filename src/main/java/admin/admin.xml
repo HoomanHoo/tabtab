@@ -33,6 +33,26 @@
 	</insert>
 	
 	
+	
+
+	
+	<select id="getCount" resultType="int">
+		select count(*) from id_default_info where password='!00000'
+	</select><!-- password가 !00000인 애들의 수>관리자는 직접입력하니까 관리자 제외 수  -->
+
+
+	<select id="getArticles" parameterType="java.util.Map" resultType="admin.AdminDataBean">
+		select num, writer, subject, passwd,
+		reg_date, ref, re_step, re_level, content, ip, readcount, r 
+		from (select num, writer, subject, passwd, reg_date, ref, re_step
+		, re_level, content, ip, readcount, rownum r from 
+		(select num, writer, subject, passwd, reg_date, ref, re_step, re_level 
+		, content, ip, readcount from board order by ref desc, re_step asc) 
+		order by ref desc, re_step asc ) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+
+
+
 <!--
 	<delete id="deleteMember" parameterType="String">
 		delete from member where id=#{id}

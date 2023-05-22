@@ -6,7 +6,7 @@
 
 
 
-<c:set var="project" value= "/JavaWebProject/admin/"/>
+<c:set var="project" value= "/JavaWebProject/user/"/>
 
 <c:set var="page_input" value= "회 원 가 입"/>
 <c:set var="page_confirm" value= "중 복 확 인"/>
@@ -29,6 +29,7 @@
 <c:set var="msg_sub" value= "님 안녕하세요."/>
 <c:set var="msg_passwd" value= "비밀번호를 다시 확인해주세요"/>
 <c:set var="msg_modify" value= "수정할 정보를 입력하세요."/>
+<c:set var="msg_upload" value= "10 MB 이하의 PDF, 이미지 파일만 업로드 가능합니다."/>
 	
 <c:set var="str_supplier_name" value= "회사명"/>
 <c:set var="str_pl_img" value= "약사 면허증 사진"/>

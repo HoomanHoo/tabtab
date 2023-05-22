@@ -18,15 +18,15 @@ public class ULogonDBBean implements ULogonDao{
 		map.put("name", name);
 		map.put("email", email);
 		System.out.println(name);
-		return session.selectOne("user.findPasswd", map);
+		return session.selectOne("User.findPasswd", map);
 	}
 	
 	//로그인
-	public int check (String email, String password) {
+	public int ucheck (String email, String password) {
 		int result = 0;
-		if( checkEmail( email ) != 0 ) {
+		if( ucheckEmail( email ) != 0 ) {
 			//아이디가 있다
-			ULogonDataBean dto = getMember( email );
+			ULogonDataBean dto = ugetMember( email );
 			if(password.equals( dto.getPassword() ) ) {
 				result = 1;
 			}else {
@@ -40,13 +40,20 @@ public class ULogonDBBean implements ULogonDao{
 	}
 	
 	 //중복확인
-	public int checkEmail( String email) {
-		return session.selectOne( "User.checkEmail", email);//email>매개변수
-	}
-	
-	//로그인
-	public ULogonDataBean getMember(String email) {
-		return session.selectOne( "User.getMember", email);
+	public int ucheckEmail( String email) {
+		return session.selectOne( "User.ucheckEmail", email);//email>매개변수
 	}
 
+	
+	//로그인
+	public ULogonDataBean ugetMember(String email) {
+		return session.selectOne( "User.ugetMember", email);
+	}
+	
+	//회원가입
+	public int uinsertMember(ULogonDataBean dto) {
+		int result1 = session.insert("User.uinsertM",dto);
+		int result2 = session.insert("User.uinsertMember", dto);
+		return  result2;
+	}
 }
