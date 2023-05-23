@@ -11,6 +11,8 @@ import admin.AdminDao;
 import misc.SendMail;
 import order.OrderDBBean;
 import order.OrderDao;
+import question.QuestionDBBean;
+import question.QuestionDao;
 import search.SearchDBBean;
 import search.SearchDao;
 import user.ULogonDBBean;
@@ -61,6 +63,9 @@ public class JavaBeans {
 		return new WarehousingDBBean();
 	}
 	
-
+	@Bean
+	public QuestionDao questionDao() {
+		return new QuestionDBBean();
+	}
 	
 }

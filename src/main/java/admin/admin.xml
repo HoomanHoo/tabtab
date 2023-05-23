@@ -33,27 +33,30 @@
 	</insert>
 	
 	
-	
-
-	
 	<select id="getCount" resultType="int">
 		select count(*) from id_default_info where password='!00000'
-	</select><!-- password가 !00000인 애들의 수>관리자는 직접입력하니까 관리자 제외 수  -->
+	</select><!-- password가 !00000인 애들의 수>관리자는 직접입력하니까 관리자 제외 수  >5돌려보냄>값있슴-->
 
 
 	<select id="getArticles" parameterType="java.util.Map" resultType="admin.AdminDataBean">
-		select num, writer, subject, passwd,
-		reg_date, ref, re_step, re_level, content, ip, readcount, r 
-		from (select num, writer, subject, passwd, reg_date, ref, re_step
-		, re_level, content, ip, readcount, rownum r from 
-		(select num, writer, subject, passwd, reg_date, ref, re_step, re_level 
-		, content, ip, readcount from board order by ref desc, re_step asc) 
-		order by ref desc, re_step asc ) where r &gt;= #{start} and r &lt;= #{end}
+		select mem_code, email
+    		from id_default_info 
+    		where password='!00000' 
+    		order by mem_code desc
 	</select>
 
 
+	<select id="selectMember" resultType="admin.AdminDataBean">
+		select *
+		from id_default_info i, phar_information p
+		where i.mem_code = p.mem_code
+		and i.mem_code = #{mem_code}
+	</select><!-- sql은 나옴 아 근데 왜 안나와ㅏㅏ -->
 
-<!--
+
+<!--로그인
+select * from id_default_info where mem_code=#{mem_code}
+
 	<delete id="deleteMember" parameterType="String">
 		delete from member where id=#{id}
 	</delete>
@@ -62,13 +65,41 @@
 		update member set passwd=#{passwd}, 
 		tel=#{tel, jdbcType=VARCHAR}, email=#{email, jdbcType=VARCHAR} where id=#{id}
 	</update>
+
+////////리스트
+
+	
+	
+	<select id="maxNum" resultType="int">
+		select max( num ) from board
+	</select>
+	
+	<update id="insertReply" parameterType="board.BoardDataBean">
+		update board set re_step=re_step+1 where ref=#{ref} and re_step &gt; #{re_step}
+	</update>
+	
+	<insert id="insertArticle" parameterType="board.BoardDataBean">
+		insert into board( num, writer, subject, passwd, reg_date, ref, re_step, re_level, content, ip )
+		values( board_seq.NEXTVAL, #{writer}, #{subject}, #{passwd}, #{reg_date},
+		#{ref}, #{re_step}, #{re_level}, #{content}, #{ip} )
+	</insert>
+	
+	<update id="modifyArticle" parameterType="board.BoardDataBean">
+		update board set subject=#{subject}, content=#{content}, passwd=#{passwd} where num=#{num}		
+	</update>
+	
+	
+	<select id="reply" parameterType="board.BoardDataBean" resultType="int">
+		select count(*) from board where ref=#{ref} and re_step=#{re_step}+1 and re_level &gt; #{re_level}
+	</select>
+	
+	<update id="deleteReply" parameterType="board.BoardDataBean">
+		update board set re_step=re_step-1 where ref=#{ref} and re_step &gt; #{re_step}	
+	</update>
+	
+	
+	<delete id="deleteArticle" parameterType="int">
+		delete from board where num=#{num}
+	</delete>
 -->
-
-
-
-
-
-
-
-
 </mapper>

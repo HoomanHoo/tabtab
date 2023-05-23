@@ -69,7 +69,7 @@ public class SearchListHandler implements CommandHandler {
 	    request.setAttribute( "endPage", endPage );
 	    request.setAttribute( "pageCount", pageCount );
 	    request.setAttribute( "pageBlock", pageBlock );
-/*
+
 	    if(count>0) {
 	    	Map<String, Integer> map= new HashMap<String, Integer>();
 	    	map.put("start", start);
@@ -77,7 +77,7 @@ public class SearchListHandler implements CommandHandler {
 	    	List<SearchDataBean> dtos= searchDao.getSearchList( map );   
 	    	request.setAttribute("dtos",dtos);
 	    }
-	    */
+	    
         return new ModelAndView("search/searchlist");
     }
 }

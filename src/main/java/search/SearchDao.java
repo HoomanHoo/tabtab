@@ -8,9 +8,10 @@ public interface SearchDao {
 	public static List<SearchDataBean> getSearchList(Map<String, Object>map) {
 		// TODO Auto-generated method stub
 		return null;
-	}	
+	}
+
 	public SearchDataBean getSearch(String keyword);
-	//public void addCount( int num );
+	public void addCount( int num );
 	public SearchDataBean getType(String type);
 	
 	//public int checkType(String type);

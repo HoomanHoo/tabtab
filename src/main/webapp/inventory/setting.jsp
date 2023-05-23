@@ -18,7 +18,7 @@
     <c:set var="str_rt_inven" value="남은 수량"/>
     <c:set var="str_manu_com" value="제조사"/>
     <c:set var="str_chief_ingre" value="주성분"/>
-    <c:set var="str_ao_setting_num" value="자동 발주 여부"/>
+    
     <c:set var="str_vari_code" value="구분"/>    
     <c:set var="str_reg_date" value="검색일"/>
    

@@ -7,10 +7,9 @@
 
 <h2> ${page_inventory} ( ${str_count} : ${count} ) </h2>
 
-<form id="inventoryform" action="inventorylist.jsp" method="GET" style="align:right">
+<form id="inventoryform" action="inventory.net" method="GET" style="align:right">
     <select name="type">
 		<option value="">재고현황선택</option>
-		<option value="A">자동발주여부</option>
 		<option value="S">구분:전문</option>
 		<option value="G">구분:일반</option>
     </select>

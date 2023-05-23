@@ -9,8 +9,11 @@ public interface AdminDao {
 	public int insertMember(AdminDataBean dto);
 	public int checkEmail( String email);
 	public AdminDataBean getMember(String email);
-	public int getCount();
-	public List<AdminDataBean> getArticles(Map<String, Integer> map);
 	/*public int deleteMember(String id);
 	public int modifyMember(LogonDataBean dto );*/
+	
+	public int getCount();
+	public List<AdminDataBean> getArticles(Map<String, Integer> map);
+	public AdminDataBean selectMember(int mem_code);
+	
 }

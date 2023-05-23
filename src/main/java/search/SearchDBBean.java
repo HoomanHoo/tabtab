@@ -18,14 +18,17 @@ public class SearchDBBean implements SearchDao {
 		return session.selectOne("Search.getCount");		
     }
     
-    public List<SearchDataBean> getSearchList(Map<String, Integer>map){
+    public List<SearchDataBean> getSearchList(Map<String, Object>map){
     	return session.selectList("Search.getSearchList", map);
     }
     
     public SearchDataBean getSearch(String keyword)  {	 				
 	    return session.selectOne("Search.getSearch", keyword);
     }
-       
+    
+    public void addCount( int num ) {    			
+   	 session.update("Search.addCount", num);
+   	}
     public SearchDataBean getType(String type) {
     	return session.selectOne("Search.getType", type);
     }

@@ -140,6 +140,20 @@ function maincheck() {//매개 변수 넘어오는거 없음
 	}
 }
 
+//승인거부 팝업창 띄워라
+function deletemember() {
+	//새팝업을 띄워라
+	url = "adminsignupdelete.net?email=" + signupd.email.value;	//여기도 url주소가 들어가는 자리confirmId.jsp
+	open(url, "confirm", "scrollbar=no, statusbar=no, titlebar=no, menubar=no, width=400px, height=250px");
+}
+//정보삭제
+function deleteinfo() {
+	if( ! confirmform.email.value) {
+		alert(emailerror);
+		confirmform.email.focus();
+		return false;
+	}
+}
 
 /*	
 	
@@ -156,62 +170,9 @@ function maincheck() {//매개 변수 넘어오는거 없음
 		경고창 띄움
 		}
 	//----------
-	else if( ! inputform.passwd.value != ! inputform.repasswd.value) {
-		alert(repasswderror);
-		inputform.passwd.value = "";
-		inputform.passwd.focus();
-		return false;	
-	}else if(! inputform.jumin1.value || ! inputform.jumin2.value) {
-			alert(juminerror);
-		inputform.jumin1.focus();
-		return false;	
-	} 
+	
 
 
-
-	if(inputform.jumin1.value.length < 6 || inputform.jumin2.value.length < 7) {
-		alert(juminerror);
-		inputform.jumin1.focus();
-		return false;
-	}
-	*/
-	/*
-	if(inputform.tel1.value || inputform.tel2.value || inputform.tel3.value) {
-		if(inputform.tel1.value.length < 3 || inputform.tel2.value.lenght<3 || inputform.tel3.value.length <4) {
-			alert(telerror);
-			inputform.tel1.focus();
-			return false;
-		}
-	}
-	*/
-
-
-/*function nextjumin2() {
-	if(inputform.jumin1.value.length == 6) {
-		inputform.jumin2.focus();
-	}
-}
-function nexttel1() {
-	if(inputform.jumin2.value.length == 7){
-		inputform.tel1.focus();
-	}
-}
-function nexttel2() {
-	if(inputform.tel1.value.length == 3) {
-		inputform.tel2.focus();
-	}
-}
-
-function nexttel3() {
-	if(inputform.tel2.value.length == 4) {
-		inputform.tel3.focus();
-	}
-}
-function nextemail1() {
-	if(inputform.tel3.value.length == 4) {
-		inputform.email1.focus();
-	}
-}
 
 */
 

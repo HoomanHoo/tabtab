@@ -25,7 +25,7 @@
 </c:if>
 
 <c:if test="${result eq 1}">
-	${sessionScope.memEmail = email}<!-- ¼¼¼Ç¿¡ °ªÀúÀå -->
+	${sessionScope.memEmail = email}<!-- ì„¸ì…˜ì— ê°’ì €ìž¥ -->
 		<!-- ${sessionScope.memCode = mem_code} -->
 	<c:redirect url="inventoryinven.net"/>
 </c:if>

@@ -53,7 +53,7 @@ public class AdminSignUpListHandler implements CommandHandler{
 		}
 		
 		number = count - ( currentPage - 1 ) * pageSize;			//50 - ( 2 - 1 ) * 10	40
-		
+	
 		pageCount =( count / pageSize ) + ( count % pageSize > 0 ? 1 : 0 );			//나머지가 남으면 페이지를1더하고 아니면 0을 더해라
 		startPage = (currentPage / pageBlock ) * pageBlock + 1;						//(15/10)*10 +1		11
 		if( currentPage % pageBlock == 0) {
@@ -76,6 +76,7 @@ public class AdminSignUpListHandler implements CommandHandler{
 		request.setAttribute("pageBlock", pageBlock);
 		
 		
+			
 		if(count > 0 ) {
 			//글이 있는경우		
 			Map<String, Integer> map  = new HashMap<String, Integer>();
@@ -83,9 +84,9 @@ public class AdminSignUpListHandler implements CommandHandler{
 			map.put( "end", end);
 			
 			List <AdminDataBean> dtos =  adminDao.getArticles( map );//겟 아티클스 호출>여기서 맵으로 만들어 던짐>>여기가 처리하는자리고 저기 디비빈은 처리하는데가 아니여서 
-			request.setAttribute("dtos", dtos);
+			request.setAttribute("dtos", dtos);//이메일과 멤코드받아와라 그건 dtos라 하겠다 
 		}
-		
+		/**/
 		return new ModelAndView("admin/signUpList");
 	}
 

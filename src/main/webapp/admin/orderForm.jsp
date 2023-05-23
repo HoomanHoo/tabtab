@@ -5,5 +5,5 @@
 <script src="${project}script_admin.js"></script>
 
 <h2>${admin_order_R}</h2>
-<!-- È®ÀÎ¿ë ¹ßÁÖ¿äÃ» ÆäÀÌÁö -->
-<a href="http://localhost:8080/JavaWebProject/adminsignuplist.net">È¸¿ø°¡ÀÔ ½ÅÃ»</a>
+<!-- í™•ì¸ìš© ë°œì£¼ìš”ì²­ í˜ì´ì§€ -->
+<a href="http://localhost:8080/JavaWebProject/adminsignuplist.net">íšŒì›ê°€ì… ì‹ ì²­</a>

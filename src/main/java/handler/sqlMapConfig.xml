@@ -30,6 +30,7 @@
   	<mapper resource="admin/admin.xml"/>
   	<mapper resource="search/search.xml"/>
   	<mapper resource="warehousing/warehousing.xml"/>
+ <!--<mapper resource="question/question.xml/> please delete this annotation when test question directory  --> 	
  <!-- 	<mapper resource="board/board.xml"/>   -->
   </mappers>
   </configuration>

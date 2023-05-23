@@ -10,14 +10,14 @@
 
 <h2>${admin_signup_list}</h2>
 
-<table>
+<table border="1">
 	<tr>
 		<th style="width:15%"> ${str_memcode}</th>
-		<th style="width:40%"> ${str_email}</th>
+		<th style="width:40%"> ${str_semail}</th>
 		<th style="width:15%"> ${str_info}</th>		<!-- %양은 뒤%기준으로 구간을 나눔 -->
 	</tr>
 	
-	<c:if test="${count eq 0}">
+	<c:if test="${count eq 0}"><!-- 글 갯수가 없으면 -->
 		<tr> 
 			<td style="text-align:center" colspan="3">
 			${msg_list_x}
@@ -26,27 +26,24 @@
 	</c:if>
 	
 	<c:if test="${count ne 0}">
-		<c:forEach var="dto" items="${dtos}">
+		<c:forEach var="dto" items="${dtos}"><!-- 겟 아티클스 맵으로 보낸거 리스트로 받은거???=dtos -->
 			<tr>
 				<td style="text-align:center">
-					${mem_code}
-					<c:set var="number" value="${number-1}"/><!-- 하나뺴서 다시 넣어라 여기 댓글 파트 사진>ㄴ이랑 투명한거-->
+					${dto.mem_code}
+					<c:set var="number" value="${number-1}"/><!-- number=출력용 글번호 //하나뺴서 다시 넣어라 여기 댓글 파트 사진>ㄴ이랑 투명한거-->
 				</td>
 				<td>${dto.email}
-					<!--<a href="boardcontent.do?num=${dto.num}&pageNum=${pageNum}&number=${number+1}">
-						 email==memcode 
-					</a>-->
 				</td>
 				<td style="text-align:center">
-					<input class="inputbutton" type="button" value="${str_infom}"
-						onclick="adminsignupd.net?mem_code=${dto.mem_code}&pageNum=${pageNum}&number=${number+1}">
+					<a href="adminsignupd.net?num=${dto.mem_code}&pageNum=${pageNum}&number=${number+1}">
+					${str_infom}
+					</a>
 				</td>
 			</tr>
 		</c:forEach>
 	</c:if>
 </table>
 <br>
-
 <center>
 	<c:if test="${startPage gt pageBlock}">
 

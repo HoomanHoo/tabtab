@@ -21,6 +21,7 @@
 	<context:component-scan base-package="handler.search"/>
 	<context:component-scan base-package="handler.order"/>
 	<context:component-scan base-package="handler.warehousing"/>
+	<context:component-scan base-package="handler.question"/>
 
  	
  	<!-- Ajax 주석문 허가 -->

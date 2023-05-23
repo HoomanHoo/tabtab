@@ -5,9 +5,9 @@
 <script src="${project}script_user.js"></script>
 
 <h2> ${user_signup_page}</h2>
- 
- <form method="post"  enctype="multipart/form-data" action="usersignuppro.net" name="inputform"
- 	onsubmit="return inputcheck()">
+ <!-- enctype="multipart/form-data" -->
+ <form method="post" enctype="multipart/form-data" action="usersignuppro.net" name="userinputform"
+ 	onsubmit="return userinputcheck()">
  	<input type="hidden" name="check" value="0">
 	<table>
 		<tr>
@@ -17,7 +17,7 @@
 			<th> ${str_email}</th>
 			<td> <input class="input" type="text" name="email" maxlength="50">
 			<input class="inputbutton" type="button" value="${btn_confirm}"
-					onclick="confirmemail()">
+					onclick="userconfirmemail()">
 			</td>
 		</tr>
 		<tr>
@@ -28,6 +28,9 @@
 		<tr>
 			<th> ${str_pl_img}</th>
 			<td> <input type="file" name="pl_img"></td>
+		</tr>
+		<tr>
+			<th colspan="2">${msg_upload}</th>
 		</tr>
 		<tr>
 			<th colspan="2">

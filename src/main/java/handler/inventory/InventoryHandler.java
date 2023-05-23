@@ -8,12 +8,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 import inventory.InventoryDataBean;
 import handler.CommandHandler;
 import inventory.InventoryDao;
-
+@Controller
 public class InventoryHandler implements CommandHandler {
 
 	@Resource(name="inventoryDao")

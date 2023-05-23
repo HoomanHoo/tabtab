@@ -42,7 +42,3 @@
 	</form>
 </c:if>
 
-<%--
-	int result = (Integer) request.getAttribute("result");	//getA~가 돌려주는게 오브젝트라 형변환
-	String id = (String) request.getAttribute( "id" );
---%>

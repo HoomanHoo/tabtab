@@ -26,5 +26,5 @@
 
 <c:if test="${result eq 1}">
 	${sessionScope.memEmail = email}
-	<c:redirect url="adminloginform.net"/>
+	<c:redirect url="userloginform.net"/>
 </c:if>

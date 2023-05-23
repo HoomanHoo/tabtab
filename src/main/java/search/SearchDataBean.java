@@ -5,8 +5,7 @@ import java.util.Arrays;
 
 public class SearchDataBean {
 
-	private int num;                 //목록번호
-	private int medi_code;           //약넘버
+	private int num;                 //목록번호	
 	private String medi_name;        //약품명
 	private int supply_value;        //공급가
 	private int selling_price;       //판매가
@@ -16,7 +15,9 @@ public class SearchDataBean {
     private Timestamp reg_date;      //검색일
     private String keyword;          //검색어
     private String type;             //검색타입
-   
+    private String[] typeArr;        //검색타입배열 
+    private int pageSize;            //한 페이지에 출력할 글의 개수
+    private String pageNum;          //현재 페이지
     
     public int getNum() {
 		return num;
@@ -24,12 +25,7 @@ public class SearchDataBean {
 	public void setNum(int num) {
 		this.num = num;
 	}	
-	public int getMedi_code() {
-		return num;
-	}
-	public void setMedi_code(int num) {
-		this.num = num;
-	}
+	
 	public String getMedi_name() {
 		return medi_name;
 	}
@@ -85,10 +81,25 @@ public class SearchDataBean {
 	public void setType(String type) {
 		this.type = type;		
 	}
+	
+	public String[] getTypeArr() {
+		return typeArr;
+	}
+	
+	public void setTypeArr(String[] typeArr) {
+		this.typeArr= typeArr;
+	}
 	public Object getSearch() {		
 		return null;
-	}			
-    
+	}
 	
+	@Override
+	public String toString() {
+		
+		return "[pageNum=" +pageNum+ ",pageSize=" +pageSize
+				+ ",keyword=" +keyword+ ",type=" +type+ ",typeArr="
+				+Arrays.toString(typeArr)+"]";
+	}
+
 }
 

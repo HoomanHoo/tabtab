@@ -26,7 +26,7 @@
 </c:if>        
 <c:if test="${result eq 1}">
     ${sessionScope.keyword = requestScope.keyword}
-    <c:redirect url="searchsearch.net"/>
+    <c:redirect url="search.net"/>
 </c:if>
 <c:if test="${resultCheck eq 0}">
    	<script type="text/javascript">

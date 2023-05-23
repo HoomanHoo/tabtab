@@ -12,11 +12,11 @@
 </head>
 <body>
 	<header>
-		<c:import url="http://localhost:8080/tabtab/header.net?where=5"></c:import>  
+		<c:import url="/template/header.jsp"></c:import>  
 	</header>
 	<div id="sidebar">
 		<nav>
-			<c:import url="http://localhost:8080/tabtab/sidebar.net"/>
+			<c:import url="/template/sidebar.jsp"></c:import>
 		</nav>
 	</div>
 	<div id="topMenu">
@@ -101,7 +101,7 @@
 	</div>
 	<div id="footer">
 		<footer>
-	    	<c:import url="http://localhost:8080/tabtab/footer.net"></c:import>  
+	    	<c:import url="/template/footer.net"></c:import>  
 	    </footer>	
 	</div>
 </body>
