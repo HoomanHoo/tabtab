@@ -13,5 +13,5 @@ public interface OrderDao {
 	public List<OrderHistoryDataBean> getOrderHistory(int mem_code);
 	public List<DetailOrderHistoryDataBean> getDetailOrderHistory(int o_num);
 	public List<SimpleInvenDataBean> getSimpleInven(int mem_code);
-	public int warehousing(WarehousingDataBean dto);
+	
 }

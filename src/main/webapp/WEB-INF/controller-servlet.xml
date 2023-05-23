@@ -14,15 +14,14 @@
 						http://www.springframework.org/schema/mvc 
 						http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">		
 	
-	<!-- <context:component-scan base-package="admin"/> -->
+
 	<context:component-scan base-package="handler"/>
 	<context:component-scan base-package="handler.admin"/>
 	<context:component-scan base-package="handler.user"/>
 	<context:component-scan base-package="handler.search"/>
 	<context:component-scan base-package="handler.order"/>
-	<!-- <context:component-scan base-package="misc"/>  -->
- 	<!--<context:component-scan base-package="order"/>   -->
- 	<!-- <context:component-scan base-package="search"/> -->
+	<context:component-scan base-package="handler.warehousing"/>
+
  	
  	<!-- Ajax 주석문 허가 -->
 	<mvc:annotation-driven/>

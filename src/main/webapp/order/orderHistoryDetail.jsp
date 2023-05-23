@@ -29,6 +29,7 @@
 		</table>
 	</div>
 	<div id="content">
+	<input type="hidden" name="oNum" value="${oNum }">
 		<article>
 			<div id="pageInformation" style="float:left">
 				<b>${orderHistory}</b>
@@ -42,17 +43,18 @@
 							<td>${textMediName }</td>
 							<td>${textQuantity }</td>
 						</tr>
-						<c:forEach var="inven" items="${invenDtos }">
-							<tr>
-								<td><input type="text" value="${inven.medi_name}" readonly></td>
-								<td><input type="text" value="${inven.rt_inven}" readonly></td>
-							</tr>
-						</c:forEach>
+						<tbody id="default">
+							<c:forEach var="inven" items="${invenDtos }">
+								<tr>
+									<td>${inven.medi_name}</td>
+									<td>${inven.rt_inven}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+						<tbody id="newTable">
+						</tbody>
 					</table>
-				
 				</form>
-			
-			
 			</div>
 			<div id="wrapper" style="float:right">
 				<form class="historyList" name="hList">
@@ -87,7 +89,9 @@
 					</div>
 				</form><br>
 				<div>
-					<input type="button" id="warehousing" value="${btnWarehousing }">
+					<c:if test="${deliState eq 11 }">
+						<input type="button" id="warehousing" value="${btnWarehousing }">
+					</c:if>
 					<input type="button" id="back" value="${btnBack }">
 				</div>
 			</div>

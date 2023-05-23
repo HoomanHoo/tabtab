@@ -27,6 +27,7 @@ public class OrderHistoryDetailHanlder implements CommandHandler{
 		//checkId 구현해야함
 		
 		int o_num = Integer.parseInt(request.getParameter("onum"));
+		String deliState = request.getParameter("delistate");
 		int mem_code = 1; 
 		
 		List<DetailOrderHistoryDataBean> dtos = orderDao.getDetailOrderHistory(o_num);
@@ -34,6 +35,8 @@ public class OrderHistoryDetailHanlder implements CommandHandler{
 		
 		request.setAttribute("dtos", dtos);
 		request.setAttribute("invenDtos", invenDtos);
+		request.setAttribute("oNum", o_num);
+		request.setAttribute("deliState", deliState);
 
 		return new ModelAndView("order/orderHistoryDetail");
 	}

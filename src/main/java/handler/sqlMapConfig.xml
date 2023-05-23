@@ -29,6 +29,7 @@
   	<mapper resource="order/order.xml"/>
   	<mapper resource="admin/admin.xml"/>
   	<mapper resource="search/search.xml"/>
+  	<mapper resource="warehousing/warehousing.xml"/>
  <!-- 	<mapper resource="board/board.xml"/>   -->
   </mappers>
   </configuration>

@@ -15,6 +15,8 @@ import search.SearchDBBean;
 import search.SearchDao;
 import user.ULogonDBBean;
 import user.ULogonDao;
+import warehousing.WarehousingDBBean;
+import warehousing.WarehousingDao;
 
 
 
@@ -53,6 +55,10 @@ public class JavaBeans {
 	@Bean
 	public SearchDao searchDao() {
 		return new SearchDBBean();
+	}
+	@Bean
+	public WarehousingDao warehousingDao() {
+		return new WarehousingDBBean();
 	}
 	
 

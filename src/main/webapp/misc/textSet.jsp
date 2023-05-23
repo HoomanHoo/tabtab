@@ -3,6 +3,8 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fnc" uri="http://java.sun.com/jsp/jstl/functions" %>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 
 <%--파일 경로 --%>
@@ -18,6 +20,7 @@
 <c:set var="textVariation" value="구분"/>
 <c:set var="textEtc" value="전문"/>
 <c:set var="textOtc" value="일반"/>
+<c:set var="textPName" value="약국명"/>
 <c:set var="findPasswd" value="비밀번호 찾기"/>
 <c:set var="myPage" value="마이페이지"/>
 <c:set var="questionBoard" value="문의사항"/>
@@ -58,3 +61,4 @@
 <c:set var="btnOrderHistory" value="과거발주이력"/>
 <c:set var="btnBack" value="뒤로가기"/>
 <c:set var="btnWarehousing" value="입고"/>
+<c:set var="btnDetailRequest" value="내용확인"/>

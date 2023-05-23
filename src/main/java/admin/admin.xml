@@ -62,7 +62,13 @@
 		update member set passwd=#{passwd}, 
 		tel=#{tel, jdbcType=VARCHAR}, email=#{email, jdbcType=VARCHAR} where id=#{id}
 	</update>
-
-
 -->
+
+
+
+
+
+
+
+
 </mapper>

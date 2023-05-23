@@ -67,6 +67,7 @@ public class OrderProHandler implements CommandHandler{
 			detailOrder.setO_num(o_num);
 			detailOrder.setMedi_code(mediCodes[i]);
 			detailOrder.setOrder_quan(orderQuan[i]);
+			detailOrder.setSupply_values(supplyPrice[i]);
 
 			detailOrders.add(detailOrder);
 		}

@@ -6,7 +6,22 @@ public class DetailOrderDataBean {
 	private int o_num;
 	private int medi_code;
 	private int order_quan;
+	private int supply_values;
 	
+	public int getSupply_values() {
+		return supply_values;
+	}
+	public void setSupply_values(int supply_values) {
+		this.supply_values = supply_values;
+	}
+	private String memo;
+	
+	public String getMemo() {
+		return memo;
+	}
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
 	public int getDo_number() {
 		return do_number;
 	}

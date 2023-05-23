@@ -75,7 +75,7 @@
 		 				</c:if>
 							<tr>
 								<td><input type="text" name="${orderDate }1" value="${orderDateView }" readonly> </td>
-								<td><a href = "orderhistorydetail.net?onum=${dto.o_num}"><input type="text" name="${orderDate }2" value="${dto.o_num}" readonly></a></td>
+								<td><a href = "orderhistorydetail.net?onum=${dto.o_num}&&delistate=${dto.d_code}"><input type="text" name="${orderDate }2" value="${dto.o_num}" readonly></a></td>
 								<td><input type="text" name="${orderDate }3" value="${dto.sum_order_count}" readonly></td>
 								<td><input type="text" name="${orderDate }4" value="${dto.sum_supply_value}" readonly></td>
 								<td><input type="text" name="${orderDate }5" value="${dto.supplier_name}" readonly></td>
