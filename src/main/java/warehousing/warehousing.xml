@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="warehousing">  
+  
+	<select id="checkInventory" parameterType="warehousing.WarehousingDataBean" resultType="int">
+		select count (*) from inventory where mem_code = #{mem_code} and medi_code = #{medi_code}
+	</select>
+ 
+ 	<select id="getOrderRequest" resultType="warehousing.OrderRequestDataBean">
+		select pi.p_name p_name, o.o_num o_num ,o.o_date o_date
+		from order_info o
+		    ,phar_information pi
+		where o.mem_code = pi.mem_code
+		and o.mem_code = #{mem_code}
+		order by o.o_num desc
+	</select>
+	<select id="getDetailOrderRequest" parameterType="int" resultType="warehousing.DetailOrderRequestDataBean">
+		select mi.medi_name, d.order_quan, d.supply_values
+		from detail_order d
+		    ,medi_information mi
+		where d.medi_code = mi.medi_code
+		and d.o_num = #{o_num}
+	</select>
+ 
+   <insert id="warehousing" parameterType="warehousing.WarehousingDataBean">
+		insert into warehousing_info values(warehousing_info_seq.nextval, #{mem_code}, #{o_num}, sysdate, #{supply_values}, #{warehousing_quans})
+	</insert>
+	<insert id="detailWarehousing" parameterType="warehousing.DetailWarehousingDataBean">
+		insert into detail_warehousing values(detail_warehousing.nextval, #{w_num}, #{medi_code}, #{dw_quan}, #{un_delivery_reason, jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertQuan" parameterType="warehousing.WarehousingDataBean">
+		insert into inventory values(inventory_seq.nextval, #{mem_code}, #{medi_code}, #{rt_inven})
+	</insert>
+	
+	<update id="updateQuan" parameterType="warehousing.WarehousingDataBean">
+		update inventory set rt_inven = (rt_inven + #{rt_inven}) where mem_code = #{mem_code} and medi_code = #{medi_code}
+	</update>
+ 	
+ 	
+ 	
+ 	
+ 	
+ </mapper>
