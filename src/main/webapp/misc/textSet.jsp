@@ -14,7 +14,10 @@
 <c:set var="textName" value="이름"/>
 <c:set var="textEmail" value="이메일"/>
 <c:set var="textQuantity" value="수량"/>
-<c:set var="textPrice" value="발주가"/>
+<c:set var="textOrderQuantity" value="발주수량(EA)"/>
+<c:set var="textDeliveryQuantity" value="공급수량(EA)"/>
+<c:set var="textDeliveryPrice" value="공급가액"/>
+<c:set var="textPrice" value="발주가(원)"/>
 <c:set var="textMediName" value="제품명"/>
 <c:set var="textChiefIngre" value="주성분"/>
 <c:set var="textVariation" value="구분"/>
@@ -40,6 +43,7 @@
 <c:set var="orderSupplier" value="거래처"/>
 <c:set var="orderMemo" value="메모"/>
 <c:set var="textDeliveryState" value="배송상태"/>
+<c:set var="textRemarks" value="비고"/>
 <c:set var="deliNotYet" value="미배송"/>
 <c:set var="deliStart" value="배송중"/>
 <c:set var="deliEnd" value="배송완료"/>
@@ -62,3 +66,4 @@
 <c:set var="btnBack" value="뒤로가기"/>
 <c:set var="btnWarehousing" value="입고"/>
 <c:set var="btnDetailRequest" value="내용확인"/>
+<c:set var="btnDelivery" value="배송"/>

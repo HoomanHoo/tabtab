@@ -18,18 +18,28 @@
 		order by o.o_num desc
 	</select>
 	<select id="getDetailOrderRequest" parameterType="int" resultType="warehousing.DetailOrderRequestDataBean">
-		select mi.medi_name, d.order_quan, d.supply_values
+		select mi.medi_name, d.order_quan, d.supply_values, d.medi_code
 		from detail_order d
 		    ,medi_information mi
 		where d.medi_code = mi.medi_code
 		and d.o_num = #{o_num}
 	</select>
+	<select id="getWarehousingNumber" parameterType="warehousing.WarehousingDataBean" resultType="int">
+		select max(w_num) from warehousing_info where mem_code = #{mem_code} order by w_num desc
+	</select>
+	<select id="getDetailWarehousing" parameterType="int" resultType="warehousing.DetailWarehousingDataBean">
+		select * from detail_warehousing where w_num = #{w_num}
+	</select>
+ 	<select id="getOrderNumber" parameterType="int" resultType="int">
+ 		select w_num from warehousing_info where o_num = #{o_num}
+ 	</select>
+ 
  
    <insert id="warehousing" parameterType="warehousing.WarehousingDataBean">
 		insert into warehousing_info values(warehousing_info_seq.nextval, #{mem_code}, #{o_num}, sysdate, #{supply_values}, #{warehousing_quans})
 	</insert>
 	<insert id="detailWarehousing" parameterType="warehousing.DetailWarehousingDataBean">
-		insert into detail_warehousing values(detail_warehousing.nextval, #{w_num}, #{medi_code}, #{dw_quan}, #{un_delivery_reason, jdbcType=VARCHAR})
+		insert into detail_warehousing values(detail_warehousing_seq.nextval, #{w_num}, #{medi_code}, #{dw_quan}, #{dw_supply_values}, #{un_delivery_reason, jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertQuan" parameterType="warehousing.WarehousingDataBean">
 		insert into inventory values(inventory_seq.nextval, #{mem_code}, #{medi_code}, #{rt_inven})

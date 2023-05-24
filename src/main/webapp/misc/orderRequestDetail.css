@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+tr{
+	width:56%
+}
+
+td{
+	width:10.5%;
+	text-align:center;
+	border:1px solid #bcbcbc;
+}
+form{
+	width:56%;
+	height:80vh;
+}

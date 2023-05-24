@@ -8,6 +8,8 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import admin.AdminDBBean;
 import admin.AdminDao;
+import inventory.InventoryDBBean;
+import inventory.InventoryDao;
 import misc.SendMail;
 import order.OrderDBBean;
 import order.OrderDao;
@@ -66,6 +68,11 @@ public class JavaBeans {
 	@Bean
 	public QuestionDao questionDao() {
 		return new QuestionDBBean();
+	}
+	
+	@Bean
+	public InventoryDao inventoryDao() {
+		return new InventoryDBBean();
 	}
 	
 }

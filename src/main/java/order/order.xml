@@ -43,7 +43,9 @@
 		where inv.medi_code = mi.medi_code
 		and inv.mem_code = #{mem_code}
 	</select>
-	
+	<select id="getDeliveryCode" parameterType="int" resultType="String">
+		select d_code from delivery_state where o_num = #{o_num}
+	</select>
 	
 	<insert id="insertOrder" parameterType="order.OrderDataBean">
   		insert into order_info values(order_info_seq.nextval, #{mem_code}, #{supplier_code}, sysdate, #{memo, jdbcType=VARCHAR}, #{sum_supply_value}, #{sum_order_count})

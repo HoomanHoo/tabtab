@@ -6,7 +6,14 @@ public class DetailOrderRequestDataBean {
 	private String medi_name;
 	private int order_quan;
 	private int supply_values;
+	private String d_code;
 	
+	public String getD_code() {
+		return d_code;
+	}
+	public void setD_code(String d_code) {
+		this.d_code = d_code;
+	}
 	public int getO_num() {
 		return o_num;
 	}

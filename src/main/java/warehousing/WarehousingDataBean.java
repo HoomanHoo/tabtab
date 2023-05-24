@@ -1,18 +1,42 @@
 package warehousing;
 
+import java.sql.Timestamp;
+
 public class WarehousingDataBean {
 	
 	private int w_num;
+	private int o_num;
 	private int mem_code;
 	private int medi_code;
-	private int w_quan;
-	private int rt_inven;
+	private int supply_values;
+	private int warehousing_quans;
+	private Timestamp w_date;
 	
-	public int getRt_inven() {
-		return rt_inven;
+	
+	
+	public int getO_num() {
+		return o_num;
 	}
-	public void setRt_inven(int rt_inven) {
-		this.rt_inven = rt_inven;
+	public void setO_num(int o_num) {
+		this.o_num = o_num;
+	}
+	public int getSupply_values() {
+		return supply_values;
+	}
+	public void setSupply_values(int supply_values) {
+		this.supply_values = supply_values;
+	}
+	public int getWarehousing_quans() {
+		return warehousing_quans;
+	}
+	public void setWarehousing_quans(int warehousing_quans) {
+		this.warehousing_quans = warehousing_quans;
+	}
+	public Timestamp getW_date() {
+		return w_date;
+	}
+	public void setW_date(Timestamp w_date) {
+		this.w_date = w_date;
 	}
 	public int getW_num() {
 		return w_num;
@@ -31,12 +55,6 @@ public class WarehousingDataBean {
 	}
 	public void setMedi_code(int medi_code) {
 		this.medi_code = medi_code;
-	}
-	public int getW_quan() {
-		return w_quan;
-	}
-	public void setW_quan(int w_quan) {
-		this.w_quan = w_quan;
 	}
 	
 	
