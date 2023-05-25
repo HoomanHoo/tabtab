@@ -27,17 +27,17 @@ public class QuestionWriteProHandler implements CommandHandler{
         request.setCharacterEncoding( "utf-8" );
 		
 		QuestionDataBean dto= new QuestionDataBean();
-		dto.setP_name( request.getParameter("p_name"));
+		dto.setMem_code( Integer.parseInt(request.getParameter("mem_code")));
 		dto.setCon_subject( request.getParameter("con_subject"));
 		dto.setContent( request.getParameter("content"));
-		dto.setPasswd( request.getParameter("passwd"));
+		
 		dto.setCon_num( Integer.parseInt(request.getParameter("con_num")));
 		dto.setRef( Integer.parseInt(request.getParameter("ref")));
 		dto.setRe_step( Integer.parseInt(request.getParameter("re_step")));
 		dto.setRe_level( Integer.parseInt(request.getParameter("re_level")));		
 		
 	    dto.setW_date( new Timestamp( System.currentTimeMillis() ) );
-	    dto.setIp( request.getRemoteAddr() );
+	   
 		   
 	    int result= questionDao.insertArticle( dto );
 	    

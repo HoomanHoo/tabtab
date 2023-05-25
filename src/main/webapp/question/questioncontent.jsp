@@ -12,13 +12,11 @@
 <table>
     <tr>
         <th> ${str_con_num} </th>
-        <td style="text-align:center"> ${number} </td>
-        <th> ${str_v_count} </th>
-        <td style="text-align:center"> ${dto.v_count} </td>
+        <td style="text-align:center"> ${number} </td>       
     </tr>
     <tr>
-        <th> ${str_p_name} </th>
-        <td style="text-align:center"> ${dto.p_name} </td>
+        <th> ${str_name} </th>
+        <td style="text-align:center"> ${dto.name} </td>
         <th> ${str_w_date} </th>
         <td style="text-align:center">
             <fmt:formatDate value="${dto.w_date}" type="both"

@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="setting.jsp"%>
-<script src="${project}script.js"></script>
+<script src="${project}script_admin.js"></script>
 
 <h2>${page_input}</h2>
 

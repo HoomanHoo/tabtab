@@ -1,0 +1,36 @@
+package handler.admin;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import admin.AdminDao;
+import admin.AdminDataBean;
+import handler.CommandHandler;
+
+@Controller
+public class AdminSignUpInputHandler implements CommandHandler{
+
+	@Resource(name="adminDao")
+	private AdminDao adminDao;
+	
+	@RequestMapping("/adminsignupinput")
+	@Override
+	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		int mem_code = Integer.parseInt(request.getParameter("num") );
+		String pageNum = request.getParameter("pageNum");
+		
+		AdminDataBean dto = adminDao.selectMember(mem_code);	//getArticle메서드니까?>글하나만 가져오면 됨>보드 디비빈
+			
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("dto", dto);
+		
+		return new ModelAndView("admin/signUpInput");
+	}
+
+}

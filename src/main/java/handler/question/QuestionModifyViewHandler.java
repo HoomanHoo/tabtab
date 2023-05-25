@@ -22,9 +22,9 @@ public class QuestionModifyViewHandler implements CommandHandler {
 		
 		int con_num= Integer.parseInt( request.getParameter( "con_num" ));
 	    String pageNum= request.getParameter( "pageNum" );
-	    String passwd= request.getParameter( "passwd" );  
+	    int mem_code= Integer.parseInt( request.getParameter( "mem_code" ));  
    
-	    int result= questionDao.check( con_num, passwd ); 
+	    int result= questionDao.check( con_num, mem_code ); 
 	    
 	    request.setAttribute("result", result);
 	    request.setAttribute("pageNum", pageNum);

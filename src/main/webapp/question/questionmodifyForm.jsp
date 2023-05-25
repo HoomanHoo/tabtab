@@ -6,16 +6,20 @@
 
 <h2> ${page_modify} </h2>
 
-<form method="post" action="questionmodifyview.net" name="passwdform" onsubmit="return passwdcheck()">
+<form method="post" action="questionmodifyview.net" name="mem_codeform" onsubmit="return mem_codecheck()">
     <input type="hidden" name="con_num" value="${con_num}">
     <input type="hidden" name="pageNum" value="${pageNum}"> 
+    <input type="hidden" name="mem_code" value="${mem_code}">
+    
     <table>
         <tr>
-            <th colspan="2"> ${msg_passwd} </th>
+            <th colspan="2"> ${msg_mem_code} </th>
         </tr>
         <tr>
-            <th> ${str_passwd} </th>
-            <td> <input class="input" type="password" name="passwd" maxlength="50" autofocus>
+            <th> ${str_mem_code} </th>
+            <td> <c:set var="number" value="${mem_code}}"/>
+                <c:out value="${mem_code}"/>
+            </td>
         </tr>       
         <tr>
             <th colspan="2">

@@ -12,7 +12,7 @@
 <c:if test="${result eq 0}">
    	<script type="text/javascript">
    	    //<!--
-   	    erroralert( passerror );
+   	    erroralert( mem_codeerror );
    	    -->
    	</script>
     	
@@ -26,8 +26,8 @@
    	            <th colspan="2"> ${msg_modify} </th>
    	        </tr>
    	        <tr>
-   	            <th> ${str_p_name} </th>
-   	            <td> ${dto.getP_name()} </td>
+   	            <th> ${str_mem_code} </th>
+   	            <td> ${dto.getMem_code()} </td>
    	        </tr>
    	        <tr>
    	            <th> ${str_con_subject} </th>
@@ -37,10 +37,7 @@
    	            <th> ${str_content} </th>
    	            <td> <textarea name="content" rows="10" cols="40">${dto.content}</textarea> 
    	        </tr>
-   	        <tr>
-   	            <th> ${str_passwd} </th>
-   	            <td> <input class="input" type="password" name="passwd" maxlength="50" value="${dto.passwd}"></td>
-   	        </tr>
+   	        
    	        <tr>
    	            <th colspan="2">
    	                <input class="inputbutton" type="submit" value="${btn_mod}">

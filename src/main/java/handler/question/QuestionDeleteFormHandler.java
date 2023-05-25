@@ -17,9 +17,11 @@ public class QuestionDeleteFormHandler implements CommandHandler{
     	int con_num= Integer.parseInt( request.getParameter( "con_num" ) );
 	    String pageNum= request.getParameter( "pageNum" );
 	    
+	    
 	    request.setAttribute("con_num", con_num);
 	    request.setAttribute("pageNum", pageNum);
-
+        
+	    
 		return new ModelAndView("question/questiondeleteForm");
 	}
 }

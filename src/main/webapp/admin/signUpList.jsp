@@ -38,6 +38,8 @@
 					<a href="adminsignupd.net?num=${dto.mem_code}&pageNum=${pageNum}&number=${number+1}">
 					${str_infom}
 					</a>
+					<!--<c:if test="${result eq 1}">
+					</c:if>-->
 				</td>
 			</tr>
 		</c:forEach>

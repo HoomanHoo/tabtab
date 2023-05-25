@@ -27,9 +27,7 @@ public class QuestionContentHandler implements CommandHandler {
 		    
 	    QuestionDataBean dto= questionDao.getArticle( con_num );
 	    
-	    if( ! request.getRemoteAddr().equals( dto.getIp() ) )
-	    questionDao.addCount( con_num ); 
-
+	    
 	    request.setAttribute("number", number);
 	    request.setAttribute("pageNum", pageNum);
 	    request.setAttribute("dto", dto);

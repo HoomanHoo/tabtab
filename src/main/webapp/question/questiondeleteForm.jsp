@@ -6,16 +6,18 @@
 
 <h2> ${page_delete} </h2>
 
-<form method="post" action="questiondeletepro.net" name="passwdform" onsubmit="return passwdcheck()">
+<form method="post" action="questiondeletepro.net" name="mem_codeform" onsubmit="return mem_codecheck()">
     <input type="hidden" name="con_num" value="${con_num}">
     <input type="hidden" name="pageNum" value="${pageNum}"> 
+    <input type="hidden" name="mem_code" value="${mem_code}">
+    
     <table>
         <tr>
-            <th colspan="2"> ${msg_passwd} </th>
+            <th colspan="2"> ${msg_mem_code} </th>
         </tr>
         <tr>
-            <th> ${str_passwd} </th>
-            <td> <input class="input" type="password" name="passwd" maxlength="50" autofocus>
+            <th> ${str_mem_code} </th>
+            <td> <input class="input" type="mem_code" name="mem_code" maxlength="50" autofocus>
         </tr>       
         <tr>
             <th colspan="2">

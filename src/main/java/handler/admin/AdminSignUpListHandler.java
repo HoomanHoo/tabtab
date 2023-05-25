@@ -25,6 +25,7 @@ public class AdminSignUpListHandler implements CommandHandler{
 	@RequestMapping("/adminsignuplist")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
 		
 		int pageBlock = 3;							//한 번에 출력할 페이지 번호 개수
 		int pageSize = 10;							//한 페이지에 출력할 글의 개수
@@ -74,9 +75,18 @@ public class AdminSignUpListHandler implements CommandHandler{
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("pageBlock", pageBlock);
+		/*
+		String apply_desc_code = request.getParameter("apply_desc_code");		
+		int mem_code = Integer.parseInt(request.getParameter("mem_code") );
+		
+		int result = adminDao.selectA(apply_desc_code);
+		
+		request.setAttribute( "result", result );
+		request.setAttribute( "apply_desc_code", apply_desc_code);
+		*/
 		
 		
-			
+		
 		if(count > 0 ) {
 			//글이 있는경우		
 			Map<String, Integer> map  = new HashMap<String, Integer>();
@@ -87,6 +97,10 @@ public class AdminSignUpListHandler implements CommandHandler{
 			request.setAttribute("dtos", dtos);//이메일과 멤코드받아와라 그건 dtos라 하겠다 
 		}
 		/**/
+		
+		
+		
+		
 		return new ModelAndView("admin/signUpList");
 	}
 

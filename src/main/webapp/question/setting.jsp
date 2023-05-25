@@ -13,21 +13,22 @@
 <c:set var="page_modify" value="글 수 정"/>
     
 <c:set var="msg_questionlist_x" value="문의사항을 입력해 주세요"/>
-<c:set var="msg_passwd" value="비밀번호를 확인해 주세요"/>
 <c:set var="msg_modify" value="수정할 내용을 입력하세요"/>
+<c:set var="msg_mem_code" value="본인 글만 변경할 수 있습니다"/>
     
 <c:set var="str_count" value="전체글"/>
 <c:set var="str_con_num" value="글번호"/>
 <c:set var="str_write" value="문의하기"/>
 <c:set var="str_con_subject" value="글제목"/>
 <c:set var="str_content" value="글내용"/>
-<c:set var="str_passwd" value="비밀번호"/>
-<c:set var="str_p_name" value="작성자"/>
+<c:set var="str_mem_code" value="회원번호"/>
+
+
+<c:set var="str_name" value="작성자"/>
 <c:set var="str_w_date" value="작성일"/>
-<c:set var="str_v_count" value="조회수"/>
-<c:set var="str_ip" value="IP"/>
-<c:set var="str_re_content" value="답글내용"/>
-<c:set var="str_re_write_date" value="답글작성일"/>
+
+
+
 <c:set var="str_questionlist" value="문의사항목록"/>
 
 <c:set var="btn_write" value="작성"/>

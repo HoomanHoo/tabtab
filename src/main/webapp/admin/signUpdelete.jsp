@@ -3,13 +3,15 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="setting.jsp"%>
+<link href="${project}style.css" rel="stylesheet" type="text/css">
 <script src="${project}script_admin.js"></script>
 
 <h2 style="text-align:center">${admin_signup_delete}</h2>
 
-<c:if test="${result eq 1}">
+
 <form method="post" action="adminsignupdelete.net" name="signupdelete" 
 		onsubmit="return deleteinfo()">
+	<input type="hidden" name="pageNum" value="${pageNum}">
 		<table>
 			<tr>
 				<th >${msg_signup_x}</th>
@@ -23,6 +25,7 @@
 			</tr>
 		</table>
 	</form>
+<c:if test="${result eq 1}">
 </c:if>
 
 

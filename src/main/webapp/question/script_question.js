@@ -1,13 +1,13 @@
-var writererror= "작성자를 입력하세요";
+
 var subjecterror= "제목을 입력하세요";
 var contenterror= "내용을 입력하세요";
-var passwderror= "비밀번호를 입력하세요";
+var mem_codeerror= "본인이 작성한 글만 변경할 수 있습니다";
 
 var inserterror= "글작성에 실패했습니다\n잠시 후 다시 시도하세요";  
 var modifyerror= "글수정에 실패했습니다\n잠시 후 다시 시도하세요";
 var deleteerror= "글삭제에 실패했습니다\n잠시 후 다시 시도하세요";
 
-var passerror= "입력하신 비밀번호가 다릅니다\n다시 확인하세요";
+//var passerror= "입력하신 비밀번호가 다릅니다\n다시 확인하세요";
 var replyerror= "댓글이 있는 글은 삭제할 수 없습니다";
 
 function erroralert( msg ){
@@ -25,18 +25,18 @@ function modifycheck(){
 		alert( contenterror );
 		modifyform.content.focus();
 		return false;
-	} else if( ! modifyform.passwd.value ){
-		alert( passwderror );
-		modifyform.passwd.focus();
+	} else if( ! modifyform.mem_code.value ){
+		alert( mem_codeerror );
+		modifyform.mem_code.focus();
 		return false;
 	}
 }
 
 //글삭제
-function passwdcheck(){
-	if( ! passwdform.passwd.value ){
-		alert( passwderror );
-		passwdform.passwd.focus();
+function mem_codecheck(){
+	if( ! mem_codeform.mem_code.value ){
+		alert( mem_codeerror );
+		mem_codeform.mem_code.focus();
 		return false;
 	}
 }
@@ -51,12 +51,13 @@ function writecheck(){
 		alert( contenterror );
 		writeform.content.focus();
 		return false;
-	} else if( !writeform.passwd.value ){
-		alert( passwderror );
-		writeform.passwd.focus();
+	} else if( !writeform.mem_code.value ){
+		alert( mem_codeerror );
+		writeform.mem_code.focus();
 		return false;
 	}
 }
+
 
 //글쓰기
 /*

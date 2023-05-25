@@ -25,7 +25,7 @@ public class QuestionModifyProHandler implements CommandHandler{
 	    dto.setCon_num( Integer.parseInt( request.getParameter("con_num")));
 	    dto.setCon_subject( request.getParameter("con_subject"));
 	    dto.setContent( request.getParameter("content"));
-	    dto.setPasswd( request.getParameter("passwd"));
+	    dto.setMem_code( Integer.parseInt( request.getParameter("mem_code")));
 
 	    String pageNum= request.getParameter( "pageNum" );
  

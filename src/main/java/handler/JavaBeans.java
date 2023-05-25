@@ -69,10 +69,8 @@ public class JavaBeans {
 	public QuestionDao questionDao() {
 		return new QuestionDBBean();
 	}
-	
 	@Bean
 	public InventoryDao inventoryDao() {
 		return new InventoryDBBean();
 	}
-	
 }

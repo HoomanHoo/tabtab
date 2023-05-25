@@ -3,8 +3,9 @@ var emailerror = "이메일를 입력하세요.";
 var passwderror = "비밀번호를 입력하세요.";
 var repasswderror ="비밀번호가 다릅니다.";
 var nameerror = "이름을 입력하세요.";
-//var juminerror = "주민등록번호를 입력하세요.";
-//var telerror = "전화번호를 입력하세요.";
+var p_nameerror = "사업장명을 입력하세요.";
+var pr_numerror = "사업자등록번호를 입력하세요.";
+var p_addresserror = "사업장 주소를 입력하세요.";
 
 var emailterror = "이메일 형식(@)에 맞지 않습니다.";
 
@@ -144,17 +145,36 @@ function maincheck() {//매개 변수 넘어오는거 없음
 function deletemember() {
 	//새팝업을 띄워라
 	url = "adminsignupdelete.net?email=" + signupd.email.value;	//여기도 url주소가 들어가는 자리confirmId.jsp
-	open(url, "confirm", "scrollbar=no, statusbar=no, titlebar=no, menubar=no, width=400px, height=250px");
+	open(url, "delete", "scrollbar=no, statusbar=no, titlebar=no, menubar=no, width=400px, height=250px");
 }
 //정보삭제
 function deleteinfo() {
-	if( ! confirmform.email.value) {
-		alert(emailerror);
-		confirmform.email.focus();
-		return false;
-	}
 }
 
+//관리자가 유저 회원가입
+function auinputcheck() {
+	if( ! signin.auname.value ) {
+		alert(nameerror);
+		signin.auname.focus();
+		return false;	
+	} else if(! signin.p_name.value) {
+		alert( p_nameerror);
+		signin.p_name.focus();
+		return false;	
+	}else if ( ! signin.p_address.value) {
+		alert(p_addresserror);
+		signin.p_address.focus();
+		return false;	
+	}else if ( ! signin.pr_num.value){
+		alert(pr_numerror);
+		signin.pr_num.focus();	
+	}
+
+}
+//이메일로 승인완료되었다와 함꼐 비밀번호 보내는거 
+function semail() {
+	
+}
 /*	
 	
 	

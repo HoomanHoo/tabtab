@@ -9,7 +9,10 @@
 <script src = "${project}script_admin.js"></script>
 
 <h2> ${admin_signupD}</h2>
-<form method="post" action="adminsignupd.net" name="signupd">
+
+
+<form method="post" action="adminsignupd.net" name="signupd"
+	onsubmit="return deletemember()">
 	<table border="1">
 		<tr>
 			<th> ${str_semail} </th>
@@ -24,9 +27,8 @@
 		<tr>
 			<th colspan="3">
 				<input class="inputbutton" type="button" value="${btn_sok}"
-					onclick="location='adminsignupinform.net?num=${dto.mem_code}&pageNum=${pageNum}'">
-				<input class="inputbutton" type="submit" value="${btn_sok_cancel}"
-					onclick="deletemember()">
+					onclick="location='adminsignupinput.net?num=${dto.mem_code}&pageNum=${pageNum}'">
+				<input class="inputbutton" type="submit" value="${btn_sok_cancel}">
 				<input class="inputbutton" type="button" value="${btn_cb_list}"
 					onclick="location='adminsignuplist.net?pageNum=${pageNum}'">
 			</th>

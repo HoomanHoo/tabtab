@@ -34,7 +34,7 @@ public class UserSignUpProHandler implements CommandHandler{
 		dto.setPl_img (request.getParameter("pr_img") );
 		dto.setPr_img (request.getParameter("pr_img") );
 		
-		
+		System.out.println(dto.getEmail());
 		int result = uLogonDao.uinsertMember(dto);
 		
 		request.setAttribute("result", result);	//" 리설트"의 값은 리설트이다>>jsp에서 리설트 달라 하니까 담아만 둠

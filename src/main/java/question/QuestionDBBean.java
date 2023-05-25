@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import question.QuestionDataBean;
 import handler.SqlMapClient;
 
 
@@ -16,7 +17,10 @@ private SqlSession session= SqlMapClient.getSession();
 		return session.selectOne("Question.getCount");
     }
        	
-
+    public int getMem_code() {
+    	return session.selectOne("Question.getMem_code");
+    }
+    
     public int insertArticle( QuestionDataBean dto ) {
 	
 		int con_num= dto.getCon_num();       //제목글 0 / 답변글 !0
@@ -59,44 +63,33 @@ private SqlSession session= SqlMapClient.getSession();
 	public QuestionDataBean getArticle( int con_num ) {   				
 		return session.selectOne("Question.getArticle", con_num );
 	}
-	
-	
-	public void addCount( int con_num ) {    			
-	 session.update("Question.addCount", con_num);
-	}
-	
 		
-	public int check( int con_num, String passwd ) {
-
-		int result = 0;
-		QuestionDataBean dto= getArticle( con_num );
-		if( passwd.equals( dto.getPasswd() ) ) {
-			//비밀번호가 같다
-			result = 1;
-		} else {
-			//비밀번호가 다르다
-			result = 0;
-		}
-		return result;    	
-	}
-	
+	public int check( int con_num, int mem_code ) {
+    	int result = 0;
+    	QuestionDataBean dto= getArticle( con_num );
+    	if( mem_code==( dto.getMem_code() ) ) {
+    		//회원 코드가 같다
+    		result = 1;
+    	} else {
+    		//회원 코드가 다르다
+    		result = 0;
+    	}
+    	return result;    	
+    }
 	
 	public int deleteArticle( int con_num ) {
 	
 		QuestionDataBean dto= getArticle( con_num );
-		int ref= dto.getRef();
-		int re_step= dto.getRe_step();
-		int re_level= dto.getRe_level();	
-		
-		int replyCount= session.selectOne("Qeustion.reply", dto );
+				
+		int mem_desc_code= session.selectOne("Qeustion.mem_desc_code", dto );
 		
 		int result= 0;
-		if( replyCount != 0 ) {
-		    //답글이 있다 //삭제 못함	
+		if( mem_desc_code != 2  ) {
+		    //약사다 //답글 삭제 못함	
 			result = -1;
 		} else {
-			//답글이 없다
-			
+			//관리자다  //답글 삭제
+		
 			session.update("Question.deleteReply", dto);											
 			result= session.update("Question.deleteArticle", con_num);     //결과 0 아니면 1
 		}

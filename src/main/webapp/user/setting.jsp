@@ -6,7 +6,7 @@
 
 
 
-<c:set var="project" value= "/JavaWebProject/user/"/>
+<c:set var="project" value= "/TabTab/user/"/>
 
 <c:set var="page_input" value= "회 원 가 입"/>
 <c:set var="page_confirm" value= "중 복 확 인"/>
@@ -17,6 +17,7 @@
 
 <c:set var="user_page_login" value= "약사 로그인"/>
 <c:set var="user_signup_page" value= "화원 가입 신청"/>
+<c:set var="user_mypage" value= "마이페이지"/>
 
 <c:set var="page_delete" value= "회 원 탈 퇴"/>
 <c:set var="page_modify" value= "회원 정보 수정"/>
@@ -37,6 +38,10 @@
 <c:set var="str_email" value= "이메일"/>
 <c:set var="str_reg_date" value= "가입일자"/>
 <c:set var="str_mem_desc_code" value= "관리자면 2를 입력해 주세요"/>
+<c:set var="str_passwd" value= "비밀번호"/>
+<c:set var="str_p_address" value= "사업지 주소"/>
+<c:set var="btn_u_modify" value= "회원정보 수정"/>
+	
 	
 <c:set var="btn_login" value= "로그인"/>
 <c:set var="btn_ok" value= "확인"/>

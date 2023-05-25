@@ -12,6 +12,8 @@
     <input type="hidden" name="ref" value="${ref}">
     <input type="hidden" name="re_step" value="${re_step}">
     <input type="hidden" name="re_level" value="${re_level}">
+    <input type="hidden" name="mem_code" value="${mem_code}">
+    
     <table>
         <tr>
             <th colspan="2" style="text-align:right">
@@ -19,15 +21,15 @@
             </th>
         </tr>
         <tr>
-            <th> ${str_p_name} </th>
+            <th> ${str_mem_code} </th>
             <td>
-                <input class="input" type="text" name="email" autofocus>
+                ${dto.mem_code}               
             </td>
         </tr>
         <tr>
             <th> ${str_con_subject} </th>
             <td>
-                <input class="input" type="text" maxlength="200" name="subject">
+                <input class="input" type="text" maxlength="200" name="subject" autofocus>
             </td>
         </tr>
         <tr>
@@ -36,12 +38,7 @@
                  <textarea name="content" rows="10" cols="40"></textarea>
             </td>
         </tr> 
-        <tr>
-            <th> ${str_passwd} </th>
-            <td>
-                 <input class="input" type="password" name="passwd" maxlength="50">
-            </td>     
-        </tr>    
+         
         <tr>
             <th colspan="2">
                  <input class="inputbutton" type="submit" value="${btn_write}">

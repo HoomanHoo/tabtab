@@ -17,6 +17,7 @@
 		select * from id_default_info where email=#{email, jdbcType=VARCHAR}	
 	</select>
 	
+	
   	<insert id="uinsertM" parameterType="user.ULogonDataBean">
 		insert into id_default_info(mem_code, email, password, r_date) 
 		values( 

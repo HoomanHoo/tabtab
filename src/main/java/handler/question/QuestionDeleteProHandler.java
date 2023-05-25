@@ -19,12 +19,14 @@ public class QuestionDeleteProHandler implements CommandHandler{
 	
 		int con_num= Integer.parseInt( request.getParameter( "con_num" ) );
 	    String pageNum= request.getParameter( "pageNum" );
-	    String passwd= request.getParameter( "passwd" );
-	
-	    int resultCheck= questionDao.check( con_num, passwd );
+	    int mem_code= Integer.parseInt( request.getParameter( "mem_code"));
+	    int mem_desc_code= Integer.parseInt(request.getParameter( "mem_desc_code" ));
+	    
+	    int resultCheck= questionDao.check( con_num, mem_code );
 	    
 	    request.setAttribute("resultCheck", resultCheck);
 	    request.setAttribute("pageNum",pageNum);
+	    request.setAttribute("mem_desc_code", mem_desc_code);
 	    
 	    if( resultCheck== 1 ) {
 	    	int result= questionDao.deleteArticle(con_num);

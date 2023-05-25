@@ -3,20 +3,17 @@ package question;
 import java.sql.Timestamp;
 
 public class QuestionDataBean {
-	private int con_num;              //±Û¹øÈ£	
-	private String con_subject;       //±ÛÁ¦¸ñ
-	private String content;           //±Û³»¿ë
-	private String passwd;            //ºñ¹Ğ¹øÈ£
-	private String p_name;            //ÀÛ¼ºÀÚ
-	private Timestamp w_date;         //ÀÛ¼ºÀÏ
-    private int v_count;              //Á¶È¸¼ö
-    private String ip;                //¾ÆÀÌÇÇ
-    private int ref;                  //±×·ìÈ­¾ÆÀÌµğ
-    private int re_step;              //±Û¼ø¼­
-    private int re_level;             //±Û·¹º§
-    private String re_content;        //´ä±Û³»¿ë        
-    private Timestamp re_write_date;  //´ä±ÛÀÛ¼ºÀÏ
-
+	private int con_num;              //ï¿½Û¹ï¿½È£	
+	private String con_subject;       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String content;           //ï¿½Û³ï¿½ï¿½ï¿½	
+	private String name;            //ï¿½Û¼ï¿½ï¿½ï¿½
+	private Timestamp w_date;         //ï¿½Û¼ï¿½ï¿½ï¿½       
+    private int ref;                  //ï¿½×·ï¿½È­ï¿½ï¿½ï¿½Ìµï¿½
+    private int re_step;              //ï¿½Û¼ï¿½ï¿½ï¿½
+    private int re_level;             //ï¿½Û·ï¿½ï¿½ï¿½
+    private int mem_code;             //íšŒì›ë²ˆí˜¸
+    private int mem_desc_code;        //ê³„ì •êµ¬ë¶„
+    
     public int getCon_num() {
 		return con_num;
 	}
@@ -35,17 +32,12 @@ public class QuestionDataBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getPasswd() {
-		return passwd;
+	
+	public String getName() {
+		return name;
 	}
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
-	}
-	public String getP_name() {
-		return p_name;
-	}
-	public void setP_name(String p_name) {
-		this.p_name = p_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public Timestamp getW_date() {
 		return w_date;
@@ -53,18 +45,7 @@ public class QuestionDataBean {
 	public void setW_date(Timestamp w_date) {
 		this.w_date = w_date;
 	}
-	public int getV_count() {
-		return v_count;
-	}
-	public void setV_count(int v_count) {
-		this.v_count = v_count;
-	}
-	public String getIp() {
-		return ip;
-	}
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
+	
 	public int getRef() {
 		return ref;
 	}
@@ -83,17 +64,18 @@ public class QuestionDataBean {
 	public void setRe_level(int re_level) {
 		this.re_level = re_level;
 	}
-	public String getRe_content() {
-		return re_content;
+	
+	public int getMem_code() {
+		return mem_code;
 	}
-	public void setRe_content(String re_content) {
-		this.re_content = re_content;
+	public void setMem_code(int mem_code) {
+		this.mem_code = mem_code;
 	}
-	public Timestamp getRe_write_date() {
-		return re_write_date;
+	
+	public int getMem_desc_code() {
+		return mem_desc_code;
 	}
-	public void setRe_write_date(Timestamp re_write_date) {
-		this.re_write_date = re_write_date;
+	public void setMem_desc_code(int mem_desc_code) {
+		this.mem_desc_code = mem_desc_code;
 	}
-
 }

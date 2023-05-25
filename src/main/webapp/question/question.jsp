@@ -14,20 +14,19 @@
 
 <table>
     <tr>
-        <td colspan="5" style="text-align:right">
+        <td colspan="4" style="text-align:right">
             <a href="questionwriteform.net">${str_write}</a>&nbsp;&nbsp;&nbsp;
         </td>
     </tr>
     <tr>
         <th style="width:7%"> ${str_con_num} </th>
         <th style="width:55%"> ${str_con_subject} </th>
-        <th style="width:20%"> ${str_p_name} </th>       
-        <th style="width:12%"> ${str_w_date} </th>
-        <th style="width:12%"> ${str_ip} </th>       
+        <th style="width:20%"> ${str_name} </th>       
+        <th style="width:12%"> ${str_w_date} </th>      
     </tr>   
     <c:if test="${count eq 0}"> 
         <tr>
-            <td style="text-align:center" colspan="6">
+            <td style="text-align:center" colspan="4">
                 ${msg_questionlist_x}
             </td>    
         </tr>
@@ -50,20 +49,14 @@
     		        <a href= "questioncontent.net?num=${dto.con_num}&pageNum=${pageNum}&number=${number+1}">
     		            ${dto.con_subject}
                     </a>
-    		    </td>
+    		    </td>   		    
     		    <td style= "text-align:center">
-    		        ${dto.v_count}
-    		    </td>
-    		    <td style= "text-align:center">
-    		        ${dto.p_name}
+    		        ${dto.name}
     		    </td>  		 
     		    <td style= "text-align:center">
     		        <fmt:formatDate value="${dto.w_date}" type="both"
     		             pattern="yyyy-MM-dd HH:mm"/>
-    		    </td>   
-    		    <td style= "text-align:center">
-    		        ${dto.ip}
-    		    </td>     
+    		    </td>      		        
     		</tr>
         </c:forEach>
     </c:if>

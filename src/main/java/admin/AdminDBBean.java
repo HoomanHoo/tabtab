@@ -45,7 +45,20 @@ public class AdminDBBean implements AdminDao{
 	public AdminDataBean getMember(String email) {
 		return session.selectOne( "Admin.getMember", email);
 	}
+	
+	//관리자>유저회원가입
+	public int updateMember(AdminDataBean dto) {
+		int result1 = session.update("Admin.updatePI",dto);
+		int result2 = session.update("Admin.updateIDI", dto);
+		return  result2;
+	}
 	/*
+	public int selectA(String apply_desc_code) {
+		return session.selectOne( "Admin.selectA", apply_desc_code);
+	}
+	
+	
+	
 	
 	public int deleteMember(String id) {
 		return session.delete( "Member.deleteMember", id);
