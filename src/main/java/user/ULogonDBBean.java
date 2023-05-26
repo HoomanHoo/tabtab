@@ -12,7 +12,16 @@ public class ULogonDBBean implements ULogonDao{
 
 	private static SqlSession session = SqlMapClient.getSession();
 	
-	//비밀번호 확인
+	//session
+	public int checkMC( String email) {
+		return  session.selectOne("User.checkMC", email);
+	}
+	//selectMy
+	public ULogonDataBean selectMy(int mem_code) {
+		return  session.selectOne("User.selectMy", mem_code);
+	}
+	
+	//findpasswd
 	public String findPasswd(String name, String email) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("name", name);
@@ -21,7 +30,7 @@ public class ULogonDBBean implements ULogonDao{
 		return session.selectOne("User.findPasswd", map);
 	}
 	
-	//로그인
+	//로그인 
 	public int ucheck (String email, String password) {
 		int result = 0;
 		if( ucheckEmail( email ) != 0 ) {

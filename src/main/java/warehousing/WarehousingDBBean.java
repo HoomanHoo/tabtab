@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import handler.SqlMapClient;
+import inventory.InventoryDataBean;
 import order.DeliStateDataBean;
 
 
@@ -22,15 +23,15 @@ public class WarehousingDBBean implements WarehousingDao{
 		return session.insert("warehousing.detailWarehousing", dto);
 	}
 	
-	public int checkInventory(WarehousingDataBean dto) {
+	public int checkInventory(InventoryDataBean dto) {
 		return session.selectOne("warehousing.checkInventory", dto);
 	}
 	
-	public int updateQuan(WarehousingDataBean dto) {
+	public int updateQuan(InventoryDataBean dto) {
 		return session.update("warehousing.updateQuan", dto);
 	}
 	
-	public int insertQuan(WarehousingDataBean dto) {
+	public int insertQuan(InventoryDataBean dto) {
 		return session.insert("warehousing.insertQuan", dto);
 	}
 	public int updateDeliState(DeliStateDataBean dto) {
@@ -57,5 +58,8 @@ public class WarehousingDBBean implements WarehousingDao{
 	
 	public List<DetailWarehousingDataBean> getDetailWarehousing(int w_num){
 		return session.selectList("warehousing.getOrderNumber", w_num);
+	}
+	public List<OrderRequestDetailAndWarehousingDataBean>getOrderRequestAndWarehousingDetail(int o_num){
+		return session.selectList("warehousing.getOrderRequestAndWarehousingDetail", o_num);
 	}
 }

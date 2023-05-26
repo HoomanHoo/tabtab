@@ -60,7 +60,7 @@ public class OrderRequestDetailProHandler implements CommandHandler{
 				detailWarehousingDataBean.setDw_quan(Integer.parseInt(dwQuan[i]));
 				detailWarehousingDataBean.setDw_supply_values(Integer.parseInt(dwSupplyValue[i]));
 				detailWarehousingDataBean.setUn_delivery_reason(remarks[i]);
-				result = warehousingDao.detailWarehousing(detailWarehousingDataBean);
+				result += warehousingDao.detailWarehousing(detailWarehousingDataBean);
 			}
 			DeliStateDataBean deliStateDataBean = new DeliStateDataBean();
 			deliStateDataBean.setO_num(o_num);
@@ -70,7 +70,7 @@ public class OrderRequestDetailProHandler implements CommandHandler{
 			return new ModelAndView("warehousing/orderRequestDetailPro");
 		}
 		else {
-			String error = "오류가 발생했습니다. 나중에 다시 시도해주십시오";
+			int error = 0;
 			request.setAttribute("result", error);
 			return new ModelAndView("warehousing/orderRequestDetailPro");
 		}

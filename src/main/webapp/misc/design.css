@@ -1,99 +1,11 @@
 @charset "UTF-8";
 
-body { min-height: 95vh; }
-
-
-#content {
-        width: 82.5%;
-        height: 71.5vh;
-        padding: 1%;
-        margin-bottom: 15px;
-        margin-top: 0px;
-        float: right;
-        text-align:center;
-        border: 1px solid #bcbcbc;
-      }
-      
-#topMenu {
-        width: 82.5%;
-        height: 7vh;
-        padding: 1%;
-        margin-bottom: 5px;
-        margin-top: 15px;
-        float: right;
-        text-align:center;
-        border: 1px solid #bcbcbc;
-      }
-      
-#sidebar {
-        width: 12.5%;
-        height: 83vh;
-        padding: 1%;
-        margin-bottom: 15px;
-        margin-top: 15px;
-        float: left;
-        border: 1px solid #bcbcbc;
-      }
-#footer {
-        clear: both;
-        height: 5vh;
-        border: 1px solid #bcbcbc;
-      }
-#findPasswdInput{
-		margin: auto;
-		display: inline-block;
-		text-align:center;
-		border: 1px solid #bcbcbc;
-	
-}
-#viewPage{
-
-		display: grid;
-		place-items: center;
-		text-align:center;
-		height: 100%;
-}
-#header {
-	
-		text-align: center;
-		width: 100%;
-		border: 1px solid #bcbcbc;
-	
-}
-
-#coltable{
-	
-		height: 800px;
-		overflow: auto;
-}
-
-#selectlist, #orderList{
-	
-	height: 56vh;
-	overflow: auto;
+input[type=text]{
+	border:none;
+	outline: none;
 	text-align:center;
-	
 }
-#buttonArea{
-	
-	margin-top:5vh;
-	text-align: center;
+#list, #newList{
+	overflow:auto;
+	overflow-x:hidden;
 }
-
-#selectDiv {
-	
-		width:177px;
-		 float:left;
-}
-
-div{
-		text-align:center;
-}
-form{
-	
-		text-align:center;
-}
-a{
-      	color: inherit;
-      	text-decoration: none;
-      }

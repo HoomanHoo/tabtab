@@ -1,5 +1,5 @@
-var searcherror= "검색조건을 선택하세요"
-var keyworderror= "검색어를 입력하세요"
+var searcherror= "약품명 또는 주성분을 입력하세요"
+//var keyworderror= "검색어를 입력하세요"
 //var medi_nameerror= "검색에 실패했습니다\n약품명을 확인하세요"
 //var chief_ingreerror= "검색에 실패했습니다\n주성분을 확인하세요"
 
@@ -17,8 +17,9 @@ function searchcheck(){
 		return false;
 	}
 }	
-//검색창에 키워드 없이 검색버튼을 클릭했을 때
 
+//검색창에 키워드 없이 검색버튼을 클릭했을 때
+/*
 function keywordcheck(){
 	if (!keywordform.keyword.value){
 		alert( keyworderror );
@@ -26,7 +27,7 @@ function keywordcheck(){
 		return false;
     }	
 }	 
-
+*/
 //	else if (!searchform.keyword.value){
 //		alert( keyworderror );
 //		searchform.keyword.focus();

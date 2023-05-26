@@ -5,8 +5,8 @@
 <script src="${project}script_user.js"></script>
 
 <h2> ${user_signup_page}</h2>
- <!-- enctype="multipart/form-data" -->
- <form method="post" enctype="multipart/form-data" action="usersignuppro.net" name="userinputform"
+ <%-- enctype="multipart/form-data" --%>
+ <form method="post"  action="usersignuppro.net" name="userinputform"
  	onsubmit="return userinputcheck()">
  	<input type="hidden" name="check" value="0">
 	<table>

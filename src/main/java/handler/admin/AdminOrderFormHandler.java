@@ -15,6 +15,13 @@ public class AdminOrderFormHandler implements CommandHandler{
 	@RequestMapping("/adminorderform")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		javax.servlet.http.HttpSession session =  request.getSession();
+		String email = (String)session.getAttribute("email");
+		int mem_code = (Integer)session.getAttribute("mem_code");
+		
+		System.out.println(email);
+		System.out.println(mem_code);
 		return new ModelAndView("admin/orderForm");
 	}
 

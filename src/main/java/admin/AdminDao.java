@@ -5,6 +5,8 @@ import java.util.Map;
 
 public interface AdminDao {
 	
+	public int checkMC(String email);
+	
 	public int check (String email, String password);
 	public int insertMember(AdminDataBean dto);
 	public int checkEmail( String email);

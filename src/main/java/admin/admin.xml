@@ -5,6 +5,11 @@
   
   <mapper namespace="Admin">
 	<!-- 파라미터 타입은 문자열로 아이디 하나 넘어옴>> -->
+	
+	<select id="checkMC" resultType="int">
+		select mem_code from id_default_info where email=#{email, jdbcType=VARCHAR}
+	</select>
+	
 	 <select id="checkEmail" parameterType="String" resultType="int">
 		select count(*) from id_default_info where email=#{email, jdbcType=VARCHAR}
 	</select>

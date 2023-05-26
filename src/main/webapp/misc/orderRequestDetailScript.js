@@ -9,14 +9,13 @@ $(function(){
 				
 				
 				$("#" + $.escapeSelector(tid) + "2").val(dwSupplyValue);
-			}
-			
-			
-			
-			
-			
-			
-			
-			)
+			})
 		});
+		
+let btnBack = document.querySelector("#back");
+btnBack.addEventListener("click", back);
+
+function back(){
+	window.location.href = "/tabtab/orderrequest.net";
+}
 		

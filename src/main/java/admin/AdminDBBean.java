@@ -12,6 +12,12 @@ public class AdminDBBean implements AdminDao{
 	
 	public static SqlSession session = SqlMapClient.getSession();	//디비 연결해서 가져오는거
 
+	//session
+	public int checkMC( String email) {
+		return  session.selectOne("Admin.checkMC", email);
+	}
+
+	
 	//회원가입
 	public int insertMember(AdminDataBean dto) {
 		int result1 = session.insert("Admin.insertM",dto);

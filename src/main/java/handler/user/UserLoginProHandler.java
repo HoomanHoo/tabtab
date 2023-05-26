@@ -20,11 +20,17 @@ public class UserLoginProHandler implements CommandHandler{
 	@RequestMapping("/userloginpro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+		javax.servlet.http.HttpSession session =  request.getSession();//¼¼¼Ç ¸¸µë
+		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
+		int mem_code = uLogonDao.checkMC(email);
+		
 		int result = uLogonDao.ucheck(email, password);
+		
+		session.setAttribute("email", email);
+		session.setAttribute("mem_code", mem_code);
 		
 		request.setAttribute("result", result);
 		request.setAttribute( "email", email);

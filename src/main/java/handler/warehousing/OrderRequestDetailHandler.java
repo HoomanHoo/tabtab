@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import warehousing.DetailOrderRequestDataBean;
-import warehousing.DetailWarehousingDataBean;
+import warehousing.OrderRequestDetailAndWarehousingDataBean;
 import warehousing.WarehousingDao;
 @Controller
 public class OrderRequestDetailHandler implements CommandHandler{
@@ -27,22 +27,24 @@ public class OrderRequestDetailHandler implements CommandHandler{
 		
 		String oNum = request.getParameter("onum");
 		int o_num = Integer.parseInt(oNum);
-		List<DetailOrderRequestDataBean> dtos = warehousingDao.getDetailOrderRequest(o_num);
 		String dCode = warehousingDao.getDeliveryCode(o_num);
 		int d_code = Integer.parseInt(dCode);
 		
 		if(d_code == 10) {
+			List<DetailOrderRequestDataBean> dtos = warehousingDao.getDetailOrderRequest(o_num);
 			request.setAttribute("d_code", d_code);
 			request.setAttribute("o_num", o_num);
 			request.setAttribute("dtos", dtos);
 		}
 		else {
+			List<OrderRequestDetailAndWarehousingDataBean> dtos 
+				= warehousingDao.getOrderRequestAndWarehousingDetail(o_num);
 			int w_num = warehousingDao.getOrderNumber(o_num);
-			List<DetailWarehousingDataBean> dwDtos = warehousingDao.getDetailWarehousing(w_num);
 			request.setAttribute("d_code", d_code);
 			request.setAttribute("o_num", o_num);
 			request.setAttribute("dtos", dtos);
-			request.setAttribute("dwDtos", dwDtos);
+			
+			
 		}
 		return new ModelAndView("warehousing/orderRequestDetail");
 	}

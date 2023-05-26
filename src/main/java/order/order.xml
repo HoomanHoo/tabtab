@@ -8,7 +8,7 @@
   		select count(*) from phar_information where mem_code = #{mem_code}
   	</select>
   	<select id="mediList" resultType="order.OrderDataBean">
-  		select medi_name, supply_value, chief_ingre from medi_information
+  		select medi_code, medi_name, supply_value, chief_ingre from medi_information
   	</select>
   	<select id="getMediCode" parameterType="String" resultType="int">
   		select medi_code from medi_information where medi_name = #{medi_name}
@@ -39,13 +39,24 @@
 	<select id="getSimpleInven" resultType="order.SimpleInvenDataBean">
 		select mi.medi_name, inv.rt_inven
 		from inventory inv
-    	,medi_information mi
+ 	   	,medi_information mi
 		where inv.medi_code = mi.medi_code
 		and inv.mem_code = #{mem_code}
 	</select>
 	<select id="getDeliveryCode" parameterType="int" resultType="String">
 		select d_code from delivery_state where o_num = #{o_num}
 	</select>
+	<select id="getAutoOrderList" parameterType="int" resultType="order.AutoOrderListDataBean">
+		select mi.medi_name, ao.trigger_quan, ao.ao_quan, (mi.supply_value * ao.ao_quan) supply_value
+		from auto_order_setting ao
+	    	,medi_information mi
+		where ao.mem_code = #{mem_code}
+		and ao.medi_code = mi.medi_code
+	</select>
+	
+	
+	
+	
 	
 	<insert id="insertOrder" parameterType="order.OrderDataBean">
   		insert into order_info values(order_info_seq.nextval, #{mem_code}, #{supplier_code}, sysdate, #{memo, jdbcType=VARCHAR}, #{sum_supply_value}, #{sum_order_count})

@@ -5,7 +5,7 @@
   
 <mapper namespace="warehousing">  
   
-	<select id="checkInventory" parameterType="warehousing.WarehousingDataBean" resultType="int">
+	<select id="checkInventory" parameterType="inventory.InventoryDataBean" resultType="int">
 		select count (*) from inventory where mem_code = #{mem_code} and medi_code = #{medi_code}
 	</select>
  
@@ -33,6 +33,20 @@
  	<select id="getOrderNumber" parameterType="int" resultType="int">
  		select w_num from warehousing_info where o_num = #{o_num}
  	</select>
+ 	<select id="getOrderRequestAndWarehousingDetail" parameterType="int" resultType="warehousing.OrderRequestDetailAndWarehousingDataBean">
+	 	select mi.medi_name, dw.medi_code, d.order_quan, d.supply_values, dw.dw_quan, dw.dw_supply_values, dw.un_delivery_reason
+		from detail_order d
+		    ,detail_warehousing dw
+		    ,order_info oi
+		    ,warehousing_info wi
+		    ,medi_information mi
+		where wi.o_num = #{o_num}
+		and wi.w_num = dw.w_num
+		and dw.medi_code = mi.medi_code
+		and mi.medi_code = d.medi_code
+		and wi.o_num = oi.o_num
+		and oi.o_num = d.o_num
+ 	</select>
  
  
    <insert id="warehousing" parameterType="warehousing.WarehousingDataBean">
@@ -41,11 +55,11 @@
 	<insert id="detailWarehousing" parameterType="warehousing.DetailWarehousingDataBean">
 		insert into detail_warehousing values(detail_warehousing_seq.nextval, #{w_num}, #{medi_code}, #{dw_quan}, #{dw_supply_values}, #{un_delivery_reason, jdbcType=VARCHAR})
 	</insert>
-	<insert id="insertQuan" parameterType="warehousing.WarehousingDataBean">
+	<insert id="insertQuan" parameterType="inventory.InventoryDataBean">
 		insert into inventory values(inventory_seq.nextval, #{mem_code}, #{medi_code}, #{rt_inven})
 	</insert>
 	
-	<update id="updateQuan" parameterType="warehousing.WarehousingDataBean">
+	<update id="updateQuan" parameterType="inventory.InventoryDataBean">
 		update inventory set rt_inven = (rt_inven + #{rt_inven}) where mem_code = #{mem_code} and medi_code = #{medi_code}
 	</update>
  	

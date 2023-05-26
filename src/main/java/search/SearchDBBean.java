@@ -18,7 +18,8 @@ public class SearchDBBean implements SearchDao {
 		return session.selectOne("Search.getCount");		
     }
     
-    public List<SearchDataBean> getSearchList(Map<String, Object>map){
+   
+    public List<SearchDataBean> getSearchList(Map<String, Integer>map){
     	return session.selectList("Search.getSearchList", map);
     }
     
@@ -26,9 +27,7 @@ public class SearchDBBean implements SearchDao {
 	    return session.selectOne("Search.getSearch", keyword);
     }
     
-    public void addCount( int num ) {    			
-   	 session.update("Search.addCount", num);
-   	}
+    
     public SearchDataBean getType(String type) {
     	return session.selectOne("Search.getType", type);
     }
@@ -51,6 +50,7 @@ public class SearchDBBean implements SearchDao {
     }
     */
 	
+    
     public int checkSearch( String type, String keyword ) {    	   	
 	    	int result = 0;
 		    if( checkSearch(type) !=0 ) {
@@ -108,13 +108,12 @@ public class SearchDBBean implements SearchDao {
 		return null;
 	}	          
 
-	public List<SearchDataBean> searchByKeyword(String type, String keyword, int start, int count){
-    	Map<String, Object>map= new HashMap<>();
-    	map.put("type",type);
-    	map.put("keyword", keyword);
-    	map.put("start", start);
-    	map.put("count", count);
-    	
-    	return SearchDao.getSearchList(map);
-    }
+	public List<SearchDataBean> getSearchResultBymediname(Map<String, Integer>map){
+		return session.selectList("Search.getSearchList", map);
+	}
+	
+	public List<SearchDataBean> getSearchResultBychiefingre(Map<String, Integer>map){
+		return session.selectList("Search.getSearchList", map);
+	}
+	
 }

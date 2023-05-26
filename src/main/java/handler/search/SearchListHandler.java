@@ -1,5 +1,6 @@
 package handler.search;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,13 +17,18 @@ import handler.CommandHandler;
 import search.SearchDao;
 import search.SearchDataBean;
 
+@Controller
 public class SearchListHandler implements CommandHandler {
 	@Resource(name="searchDao")
 	private SearchDao searchDao;
     
-	@RequestMapping("/searchsearchlist")	
+	@RequestMapping("/searchlist")	
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		String keyword= request.getParameter("keyword");
+		String type= request.getParameter("type");
+		
+		keyword= '%'+ keyword+ '%';
 		
 	    int pageBlock= 3;            //한 번에 출력할 페이지 번호 개수
 	    int pageSize= 10;            //한 페이지에 출력할 글의 개수
@@ -60,6 +67,9 @@ public class SearchListHandler implements CommandHandler {
 	    	endPage= pageCount;
 	    }
 	    
+	    request.setAttribute( "type", type);
+	    request.setAttribute( "keyword", keyword);
+	    
 	    request.setAttribute( "count", count );
 	    request.setAttribute( "number", number );
 	    
@@ -72,12 +82,28 @@ public class SearchListHandler implements CommandHandler {
 
 	    if(count>0) {
 	    	Map<String, Integer> map= new HashMap<String, Integer>();
+	    	
 	    	map.put("start", start);
 	    	map.put("end", end);
-	    	List<SearchDataBean> dtos= searchDao.getSearchList( map );   
-	    	request.setAttribute("dtos",dtos);
-	    }
+
+	    	List<SearchDataBean> dtos= null;
+	    	
+	    	if (type.equals("N")) {
+	    	    dtos= searchDao.getSearchResultBymediname(map);     
+	        	
+	    	} else if (type.equals("I")){
+	    		dtos= searchDao.getSearchResultBychiefingre(map);  
+	    		
+	    	} 
+	    	request.setAttribute("dtos", dtos);	
+	    } else {
+	    	request.setAttribute("dtos", new ArrayList<SearchDataBean>());    
+	    
+	    }	   
+	
 	    
         return new ModelAndView("search/searchlist");
     }
 }
+
+

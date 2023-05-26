@@ -3,6 +3,8 @@ package order;
 import java.sql.Timestamp;
 
 public class OrderDataBean {
+	
+	private int medi_code;
 	private String medi_name;
 	private String chief_ingre;
 	private int supply_value;
@@ -14,6 +16,13 @@ public class OrderDataBean {
 	private String memo;
 	private int sum_supply_value;
 	private int sum_order_count;
+	
+	public int getMedi_code() {
+		return medi_code;
+	}
+	public void setMedi_code(int medi_code) {
+		this.medi_code = medi_code;
+	}
 	
 	public int getSupply_value() {
 		return supply_value;

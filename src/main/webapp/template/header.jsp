@@ -1,48 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/misc/textSet.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, height=device-height ,initial-scale=1">
-		<link href="${path}design.css" rel="stylesheet" type="text/css">
-		<script src="${path}script.js"></script>
-<title>Insert title here</title>
-</head>
-<body>
-<header id="header">
+
 <c:set var="where" value="${param.where }"/>
 <c:if test="${where eq null }">
-<div id="header">
-	기본 헤더입니다
-</div>
+	<div class="container-fluid">
+		<div class="col-4 my-col"></div>
+			<a class="navbar-brand" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TabTab</a>
+		<div class="col-5 my-col"></div>
+	</div>
 </c:if>
 <c:if test="${where eq 1 }">
-
-	${findPasswd}
-
+	<div class="container-fluid">
+		<div class="col-4 my-col"></div>
+			<a class="navbar-brand" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${btnMyPage }</a>
+		<div class="col-5 my-col"></div>
+	</div>
 </c:if>
 <c:if test="${where eq 2 }">
-
-	${myPage}
-
+	<div class="container-fluid">
+		<div class="col-4 my-col"></div>
+			<a class="navbar-brand" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${btnQuestionBoard }</a>
+		<div class="col-5 my-col"></div>
+	</div>
 </c:if>
 <c:if test="${where eq 3 }">
-
-	${questionBoard}
-
+	<div class="container-fluid">
+		<div class="col-4 my-col"></div>
+			<a class="navbar-brand" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${btnInventory }</a>
+		<div class="col-5 my-col"></div>
+	</div>
 </c:if>
 <c:if test="${where eq 4 }">
-
-	${inventory}
-
+	<div class="container-fluid">
+		<div class="col-4 my-col"></div>
+			<a class="navbar-brand" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${btnOrder }</a>
+		<div class="col-5 my-col"></div>
+	</div>
 </c:if>
 <c:if test="${where eq 5 }">
-
-	${order}
-
+	<div class="container-fluid">
+		<div class="col-4 my-col"></div>
+			<a class="navbar-brand" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${btnSell }</a>
+		<div class="col-5 my-col"></div>
+	</div>
 </c:if>
-</header>
-</body>
-</html>
+<c:if test="${where eq 6 }">
+	<div class="container-fluid">
+		<div class="col-4 my-col"></div>
+			<a class="navbar-brand" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${btnSearch }</a>
+		<div class="col-5 my-col"></div>
+	</div>
+</c:if>

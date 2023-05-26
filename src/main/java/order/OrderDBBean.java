@@ -72,5 +72,9 @@ public class OrderDBBean implements OrderDao{
 		return session.selectList("order.getSimpleInven", mem_code);
 	}
 	
+	public List<AutoOrderListDataBean> getAutoOrderList(int mem_code){
+		return session.selectList("order.getAutoOrderList", mem_code);
+	}
+	
 
 }

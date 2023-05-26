@@ -10,21 +10,22 @@
     </select>
     
     <select id="getSearch" parameterType="map" resultType="search.SearchDataBean">
-        select num, medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date
+        select mi.medi_name, mi.supply_value, mi.selling_price, mi.manu_com, mi.chief_ingre, mv.vari_code
         from medi_information mi, medi_variation mv
-        where mi.medi_code= mv.medi_code
-        and num= #{num}   
+        where mi.medi_code= mv.medi_code 
     </select>
     
     <select id="getSearchList" parameterType="map" resultType="search.SearchDataBean">   
-        select rownum r, num, medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date  
-		from (select*from medi_information where medi_name like '%' || #{keyword} || '%' or chief_ingre like '%' || #{keyword} || '%'
-		order by medi_name desc))
+        select*from(select rownum r,  mi.medi_name, mi.supply_value, mi.selling_price, mi.manu_com, mi.chief_ingre, mv.vari_code 
+		from medi_information mi, medi_variation mv 
+		join medi_variation on mi.medi_code=mv.medi_code 
+		where (mi.medi_name like '%' || #{keyword}||'%' or mi.chief_ingre like '%' || #{keyword} ||'%')
+		order by mi.medi_name desc)
 		where r &gt;=#{start} and r &lt;=#{end} 	
     </select>
     
  <!--   <select id="searchByKeyword" parameterType="map" resultType="search.SearchDataBean">
-        select rownum r, num, medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date
+        select rownum r, medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date
         from (select*from medi_information where medi_name like '%' || #{keyword} || '%' order by medi_name desc)
         where r &gt;=#{start} and r &lt;=#{end}
     </select>
@@ -36,7 +37,7 @@
       <!--  Mapped Statements collection already contains value for Search.getSearchList. please check search/search.xml and search/search.xml 에러 발생   -->
  <!--   <select id="getSearchList" parameterType="map" resultType="search.SearchDataBean">
         select * from (
-            select rownum r, num, medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date
+            select rownum r, medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date
             from(
                 select * from medi_information
                 where medi_name like '%' || #{keyword} || '%' 
@@ -47,7 +48,7 @@
     
     <select id="getSearchList" parameterType="map" resultType="search.SearchDataBean">
         select * from (
-            select rownum r, num, medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date
+            select rownum r,  medi_name, supply_value, selling_price, manu_com, chief_ingre, vari_code, reg_date
             from(
                 select * from medi_information
                 where chief_ingre like '%' || #{keyword} || '%'

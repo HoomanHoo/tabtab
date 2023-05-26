@@ -5,6 +5,19 @@
   
   <mapper namespace="User">
   
+  
+	<select id="checkMC" resultType="int">
+		select mem_code from id_default_info where email=#{email, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectMy" resultType="user.ULogonDataBean">
+		select i.email, i.password, p.p_address
+		from id_default_info i, phar_information p
+		where i.mem_code=p.mem_code
+		and i.mem_code=#{mem_code}
+	</select>
+  
+  
 	<select id="findPasswd" resultType="String" parameterType="String">
   		select password from id_default_info where name=#{name} and email=#{email}
 	</select>

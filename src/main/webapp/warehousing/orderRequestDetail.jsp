@@ -17,31 +17,46 @@
 	<table>
 		<tr>
 			<td>${textMediName }</td>			
-			<td>${textDeliveryQuantity }</td>
-			<td>${textPrice }</td>
 			<td>${textOrderQuantity }</td>
+			<td>${textPrice }</td>
+			<td>${textDeliveryQuantity }</td>
 			<td>${textDeliveryPrice }</td>
 			<td>${textRemarks }</td>
-		</tr>	
-		<c:forEach var="dto" items="${dtos }">
-			<tr>
-				<td>${dto.medi_name}</td>
-				<td>${dto.order_quan }</td>
-				<td>${dto.supply_values}</td>
-				<td><input type="number" id="${dto.medi_name}" name="dwQuan" value="${dto.order_quan}" min="0" max="${dto.order_quan }"></td>
-				<td><input type="text" id="${dto.medi_name}2" name="dwSupplyValue" value="${dto.supply_values}" readonly></td>
-				<td><input type="text" id="${dto.medi_name}3" name="remarks"></td>
-			</tr>
-			<input type="hidden" id="${dto.medi_name}4" name="mediCode" value="${dto.medi_code}">
-			<input type="hidden" id="${dto.medi_name}5" name="orderQuan" value="${dto.order_quan}">
-			<input type="hidden" id="${dto.medi_name}6" name="supplyValues" value="${dto.supply_values}">
-		</c:forEach>
+		</tr>
+		<c:if test="${d_code eq 10}">
+			<c:forEach var="dto" items="${dtos }">
+				<tr>
+					<td>${dto.medi_name}</td>
+					<td>${dto.order_quan }</td>
+					<td>${dto.supply_values}</td>
+					<td><input type="number" id="${dto.medi_name}" name="dwQuan" value="${dto.order_quan}" min="0" max="${dto.order_quan }"></td>
+					<td><input type="text" id="${dto.medi_name}2" name="dwSupplyValue" value="${dto.supply_values}" readonly></td>
+					<td><input type="text" id="${dto.medi_name}3" name="remarks"></td>
+				</tr>
+				<input type="hidden" id="${dto.medi_name}4" name="mediCode" value="${dto.medi_code}">
+				<input type="hidden" id="${dto.medi_name}5" name="orderQuan" value="${dto.order_quan}">
+				<input type="hidden" id="${dto.medi_name}6" name="supplyValues" value="${dto.supply_values}">
+			</c:forEach>
+		</c:if>
+		
+		<c:if test="${d_code ne 10}">
+			<c:forEach var="dto" items="${dtos }">
+				<tr>
+					<td>${dto.medi_name}</td>
+					<td>${dto.order_quan }</td>
+					<td>${dto.supply_values}</td>
+					<td><input type="text" id="${dto.medi_name}" name="dwQuan" value="${dto.dw_quan}" readonly></td>
+					<td><input type="text" id="${dto.medi_name}2" name="dwSupplyValue" value="${dto.dw_supply_values}" readonly></td>
+					<td><input type="text" id="${dto.medi_name}3" name="remarks" value="${dto.un_delivery_reason }"></td>
+				</tr>
+			</c:forEach>
+		</c:if>
 		<tr>
 			<td colspan="6">
 				<c:if test="${d_code eq 10}">
 					<input type="submit" value="${btnDelivery }">
 				</c:if>
-				<input type="button" name="back" value="${btnBack }">
+				<input type="button" id="back" value="${btnBack }">
 			</td>
 		</tr>
 	</table>

@@ -7,7 +7,6 @@ public class WarehousingDataBean {
 	private int w_num;
 	private int o_num;
 	private int mem_code;
-	private int medi_code;
 	private int supply_values;
 	private int warehousing_quans;
 	private Timestamp w_date;
@@ -50,12 +49,7 @@ public class WarehousingDataBean {
 	public void setMem_code(int mem_code) {
 		this.mem_code = mem_code;
 	}
-	public int getMedi_code() {
-		return medi_code;
-	}
-	public void setMedi_code(int medi_code) {
-		this.medi_code = medi_code;
-	}
+
 	
 	
 

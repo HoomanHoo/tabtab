@@ -7,7 +7,7 @@
  
     <c:set var="project" value="/tabtab/search/"/>
     
-    <c:set var="msg_searchlist_x" value="약품명 또는 주성분을 입력해 주세요"/>
+    <c:set var="msg_searchlist_x" value="약품명 또는 주성분을 검색창에 입력해 주세요"/>
     
     <c:set var="page_search" value="의 약 품 검 색"/>
     <c:set var="page_searchlist" value="검 색 목 록"/>

@@ -2,6 +2,7 @@ package handler;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
@@ -37,6 +38,7 @@ public class JavaBeans {
 	}
 	
 	@Bean
+	@SessionScope
 	public AdminDao adminDao() {
 		return new AdminDBBean();
 	}

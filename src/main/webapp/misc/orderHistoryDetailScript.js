@@ -10,17 +10,18 @@ function back(){
 
 function warehousing(event){
 	let mediCode = Array.from(document.querySelectorAll("input[name=mediCode]"));
-	let orderQuan = Array.from(document.querySelectorAll("input[name=orderQuan]"));
+	let dwQuan = Array.from(document.querySelectorAll("input[name=dwQuan]"));
 	let oNum = document.querySelector("input[name=oNum]").value;
 	let mediCodeArr = [];
-	let orderQuanArr = [];
+	let dwQuanArr = [];
+
 	for(var i = 0; i < mediCode.length; i++){
 		mediCodeArr[i] = mediCode[i].value;
-		orderQuanArr[i] = orderQuan[i].value;
+		dwQuanArr[i] = dwQuan[i].value;
 	}
 	let param1 = {
 					mediCode:mediCodeArr,
-					orderQuan:orderQuanArr,
+					dwQuan:dwQuanArr,
 					orderNumber:oNum
 				};
 	$.ajax(
@@ -50,10 +51,12 @@ function warehousing(event){
 				}
 				$("#default").remove();
 				$("#warehousing").remove();
+				alert(mediCode.length + "개 입고되었습니다");
 				document.querySelector("#newTable").innerHTML = txt;
+				
 			},
 			error:function(request, status, error){
-				alert("fail");
+				alert("처리에 실패했습니다 잠시 뒤에 시도해주세요");
 			}
 		}
 	);

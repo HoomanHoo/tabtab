@@ -4,8 +4,8 @@
 <link href="${project}style.css" rel="stylesheet" type="text/css">
 <script src="${project}script_user.js"></script>
 
-<h2>${user_mypage}</h2>
-    <form method="post" action="usermypage.net" name="usermypage">
+<h2>${user_mypagemodi}</h2>
+ <form method="post" action="usermypagemodi.net" name="usermypagemodi">
 		<table border="1">
 			<tr>
 				<th> ${str_email}</th>
@@ -13,18 +13,24 @@
 			</tr>
 			<tr>
 				<th> ${str_passwd}</th>
-				<td> ${dto.password}</td>
+				<td> 
+					<input class="input" type="password" name="passwd" maxlength="30"
+					value="${dto.password}">
+				</td>
 			</tr>
 			<tr>
 				<th> ${str_p_address}</th>
-				<td> ${dto.p_address}</td>
+				<td> 
+					<input class="input" type="text" name="p_address" maxlength="300"
+					value="${dto.p_address}">
+				</td>
 			</tr>
 			<tr>
 				<th colspan="2">
 					<input class="inputbutton" type="button" value="${btn_u_modify}"
-						onclick="location='usermypagemodi.net'"><!-- 가입누르면 넘어가는데 -->
-					<input class="inputbutton" type="button" value="${btn_u_delete}"
-						onclick="location='userdeleteform.net'">
+						onclick="location='usermypage.net'"><!-- 가입누르면 넘어가는데 -->
+					<input class="inputbutton" type="button" value="${btn_cancel}"
+						onclick="location='usermypage.net'">
 				
 				</th>
 			</tr>

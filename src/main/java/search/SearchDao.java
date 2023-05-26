@@ -5,13 +5,13 @@ import java.util.Map;
 
 public interface SearchDao {
 	public int getCount();	
-	public static List<SearchDataBean> getSearchList(Map<String, Object>map) {
+	public default List<SearchDataBean>getSearchList(Map<String, Integer>map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public SearchDataBean getSearch(String keyword);
-	public void addCount( int num );
+	//public void addCount( int num );
 	public SearchDataBean getType(String type);
 	
 	//public int checkType(String type);
@@ -21,5 +21,7 @@ public interface SearchDao {
 	public int checkMediname( String keyword, String medi_name );
 	public int checkChiefingre( String keyword, String chief_ingre );
 	//public List<SearchDataBean> getSearchList(String keyword, int startRow, int endRow);
-	public List<SearchDataBean>searchByKeyword(String type, String keyword, int start, int count);
+	//public List<SearchDataBean>searchByKeyword(String type, String keyword, int start, int count);
+	public List<SearchDataBean> getSearchResultBymediname(Map<String, Integer>map);
+	public List<SearchDataBean> getSearchResultBychiefingre(Map<String, Integer>map);
 }

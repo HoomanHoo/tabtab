@@ -1,6 +1,7 @@
 package warehousing;
 
 public class DetailWarehousingDataBean {
+	
 	private int w_num;
 	private int medi_code;
 	private int dw_quan;

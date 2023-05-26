@@ -3,7 +3,7 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fnc" uri="http://java.sun.com/jsp/jstl/functions" %>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 
 
@@ -16,7 +16,7 @@
 <c:set var="textQuantity" value="수량"/>
 <c:set var="textOrderQuantity" value="발주수량(EA)"/>
 <c:set var="textDeliveryQuantity" value="공급수량(EA)"/>
-<c:set var="textDeliveryPrice" value="공급가액"/>
+<c:set var="textDeliveryPrice" value="공급가액(원)"/>
 <c:set var="textPrice" value="발주가(원)"/>
 <c:set var="textMediName" value="제품명"/>
 <c:set var="textChiefIngre" value="주성분"/>
@@ -24,6 +24,8 @@
 <c:set var="textEtc" value="전문"/>
 <c:set var="textOtc" value="일반"/>
 <c:set var="textPName" value="약국명"/>
+<c:set var="triggerQuan" value="발주 기준 수량"/>
+<c:set var="aoQuan" value="발주 수량"/>
 <c:set var="findPasswd" value="비밀번호 찾기"/>
 <c:set var="myPage" value="마이페이지"/>
 <c:set var="questionBoard" value="문의사항"/>
@@ -67,3 +69,4 @@
 <c:set var="btnWarehousing" value="입고"/>
 <c:set var="btnDetailRequest" value="내용확인"/>
 <c:set var="btnDelivery" value="배송"/>
+

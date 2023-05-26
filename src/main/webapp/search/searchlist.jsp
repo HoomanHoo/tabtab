@@ -13,7 +13,7 @@
         <table>
             <thead>
                 <tr>
-			        <td colspan="8" style="text-align:right">
+			        <td colspan="7" style="text-align:right">
 			            <a href="aosetting.net">${str_ao_setting}</a>&nbsp;&nbsp;&nbsp;
 			        </td>
 			    </tr>
@@ -24,9 +24,7 @@
 			        <th style="width:10%"> ${str_selling_price} </th>
 			        <th style="width:10%"> ${str_manu_com} </th>
 			        <th style="width:18%"> ${str_chief_ingre} </th>
-			        <th style="width:10%"> ${str_vari_code} </th>
-			        <th style="width:10%"> ${str_reg_date} </th>
-			               
+			        <th style="width:10%"> ${str_vari_code} </th>			               
 			    </tr>               
             </thead>
             <tbody>
@@ -53,14 +51,16 @@
 		    		    </td>
 		    		    <td style= "text-align:center">
 		    		        ${dto.vari_code}
-		    		    </td>
-		    		    <td style= "text-align:center">
-		    		        <fmt:formatDate value="${dto.reg_date}" type="both"
-		    		             pattern="yyyy-MM-dd HH:mm"/>
-		    		    </td>       		        
+		    		    </td>		    		           		        
 		    		</tr>
 	            </c:forEach>                   
             </tbody>
+	            <tr>
+				    <td colspan="7" style= "text-align:right">
+   		                 <fmt:formatDate value="${dto.reg_date}" 
+   		                 type="both" pattern="yyyy-MM-dd HH:mm"/>
+   		            </td>   	        
+				</tr>
         </table>
     </c:when> 
     <c:otherwise>
@@ -70,19 +70,19 @@
 <br>
 <center>
     <c:if test="${startPage gt pageBlock}">
-        <a href="search.net">[◀◀]</a>
-        <a href="search.net?pageNum=${startPage-pageBlock}">[◀]</a>
+        <a href="searchlist.net">[◀◀]</a>
+        <a href="searchlist.net?pageNum=${startPage-pageBlock}">[◀]</a>
     </c:if>
     <c:forEach var="i" begin="${startPage}" end="${endPage}">
         <c:if test="${i eq currentPage}">
     	    <span>[${i}]</span>
     	</c:if>
     	<c:if test="${i ne currentPage}">
-    		<a href="search.net?pageNum=${i}">[${i}]</a>
+    		<a href="searchlist.net?pageNum=${i}">[${i}]</a>
         </c:if>
     </c:forEach>
     <c:if test="${pageCount gt endPage}">
-        <a href="search.net?pageNum=${startPage + pageBlock}">[▶]</a>
-    	<a href="search.net?pageNum=${pageCount}">[▶▶]</a>
+        <a href="searchlist.net?pageNum=${startPage + pageBlock}">[▶]</a>
+    	<a href="searchlist.net?pageNum=${pageCount}">[▶▶]</a>
     </c:if>
 </center>
