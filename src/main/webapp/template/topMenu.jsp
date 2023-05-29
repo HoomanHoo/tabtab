@@ -3,6 +3,7 @@
 <%@include file="/misc/textSet.jsp" %>
 
 
+
 		<input class="col" type="button" id="btnAutoOrder" class="btn btn-outline-secondary" value="${btnSetAutoOrder}">
 		<input class="col" type="button" id="btnSetOrder" class="btn btn-outline-secondary" value="${btnSetOrder }" >
 		<input class="col" type="button" id="btnCheckOrder" class="btn btn-outline-secondary" value="${btnCheckOrder }">

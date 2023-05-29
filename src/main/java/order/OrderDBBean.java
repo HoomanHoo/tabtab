@@ -37,8 +37,7 @@ public class OrderDBBean implements OrderDao{
 	}
 
 	public int order(OrderDataBean dto) {
-		int result = 0;
-		result = session.insert("order.insertOrder", dto);
+		session.insert("order.insertOrder", dto);
 		int o_num = getOrderNum(dto.getMem_code());
 		session.insert("order.insertDeliCode", o_num);
 		return o_num;
@@ -51,7 +50,7 @@ public class OrderDBBean implements OrderDao{
 		Iterator<DetailOrderDataBean> dOrder = detailOrders.iterator();
 		while(dOrder.hasNext()) {
 			DetailOrderDataBean detailOrder = dOrder.next();
-			result += session.insert("order.detailOrder", detailOrder);
+			result += session.insert("order.insertDetailOrder", detailOrder);
 		}
 		return result;
 	}
@@ -76,5 +75,25 @@ public class OrderDBBean implements OrderDao{
 		return session.selectList("order.getAutoOrderList", mem_code);
 	}
 	
+	public List<OrderDataBean> getSelectableMediList(int mem_code){
+		return session.selectList("order.getSelectableMediList", mem_code);
+	}
+	
+	
+	public int insertAutoOrderSetting(AutoOrderSettingDataBean dto) {
+		return session.insert("order.insertAutoOrderSetting", dto);
+	}
+	public String deleteAutoOrderSetting(AutoOrderListDataBean dto) {
+		
+		int result = session.delete("order.deleteAutoOrderSetting", dto);
+		if(result == 1) {
+			int medi_code = dto.getMedi_code();
+			String mediName = session.selectOne("order.getMediName", medi_code);
+			return mediName;
+		}
+		else {
+			return "삭제에 실패했습니다";
+		}
+	}
 
 }

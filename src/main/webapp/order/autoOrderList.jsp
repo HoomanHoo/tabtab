@@ -7,6 +7,7 @@
 <head>
 <link href="${path}design.css" rel="stylesheet" type="text/css">
 <script src="${path}jquery-3.6.4.js"></script>
+<script src="${path}autoOrderListScript.js" defer></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -27,15 +28,20 @@
 	  				<div class="col">${triggerQuan }</div>
 	  				<div class="col">${aoQuan }</div>
 	  				<div class="col">${textPrice }</div>
+	  				<div class="col"></div>
 	  			</div>
+	  			<div id="list">
 				<c:forEach var="dto" items="${dtos }">	
-					<div id="list" class="row" style="text-align:center">
-						<div class="col">${dto.medi_name }</div>
-						<div class="col">${dto.trigger_quan }</div>
-						<div class="col">${dto.ao_quan }</div>
-						<div class="col">${dto.supply_value }</div>
+					<div class="row" style="text-align:center">
+						<input type="hidden" id="${dto.medi_name }6" value="${dto.medi_code }">
+						<div id="${dto.medi_name}2" class="col">${dto.medi_name }</div>
+						<div id="${dto.medi_name}3" class="col">${dto.trigger_quan }</div>
+						<div id="${dto.medi_name}4" class="col">${dto.ao_quan }</div>
+						<div id="${dto.medi_name}5" class="col">${dto.supply_value }</div>
+						<input type="button" id="${dto.medi_name}" class="col btn btn-outline-secondary" name="btnDelete" value="${btnDelete}">
 					</div>
 				</c:forEach>
+				</div>
 				<div class="row" style="text-align:center">
 					<div class="col">
 					</div>
@@ -52,14 +58,4 @@
 	  </div>
 	</main>
 </body>
-<script type="text/javascript">
-
-	let btnSetAutoOrder = document.querySelector("input[name=btnOrderSetting]");
-	btnSetAutoOrder.addEventListener("click", send);
-	
-	function send(){
-		window.location.href = "autoordersetting.net";
-	}
-
-</script>
 </html>

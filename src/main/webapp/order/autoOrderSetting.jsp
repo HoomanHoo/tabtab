@@ -32,7 +32,7 @@
 							</tr>
 							<c:forEach var="dto" items="${dtos }">
 								<tr>
-									<td><input class="form-control" type="text" id="${dto.medi_name }" name="mediName" value="${dto.medi_name }" readonly></td>
+									<td><input class="form-control" type="text" name="mediName" value="${dto.medi_name }" readonly></td>
 									<td><input class="form-control" type="text" id="${dto.medi_name }2" value="${dto.chief_ingre }" readonly></td>
 								</tr>
 								<input type="hidden" id="${dto.medi_name }3" value="${dto.medi_code }">
@@ -41,7 +41,7 @@
 						</table>
 					</div>
 					<div id="selectList" class="col-sm-8" style="float:rignt">
-						<form name="autoOrderSetList" method="post" action="autoorderpro.net">
+						<form name="autoOrderSetList" method="post" action="autoordersettingpro.net">
 							<div id="upperList" class="row" style="text-align:center">
 								<div class="col">${textMediName }</div>
 								<div class="col">${triggerQuan }</div>
@@ -49,6 +49,15 @@
 								<div class="col">${textPrice }</div>	
 							</div>
 							<div id="newList" style="height:73vh">
+							</div>
+							<div id="buttonArea" class="row">
+								<div class="col">
+								</div>
+								<div class="col">
+									<input type="submit" class="btn btn-outline-secondary" value="${btnSetting }">
+								</div>
+								<div class="col">
+								</div>
 							</div>
 						</form>
 					</div>

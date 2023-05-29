@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fnc" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -69,4 +69,5 @@
 <c:set var="btnWarehousing" value="입고"/>
 <c:set var="btnDetailRequest" value="내용확인"/>
 <c:set var="btnDelivery" value="배송"/>
-
+<c:set var="btnSetting" value="설정"/>
+<c:set var="btnDelete" value="삭제"/>

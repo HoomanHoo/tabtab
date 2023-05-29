@@ -23,9 +23,9 @@ public class AutoOrderSettingHandler implements CommandHandler{
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		List<OrderDataBean> dtos = orderDao.mediList();
 		
-		
+		int mem_code = 1;
+		List<OrderDataBean> dtos = orderDao.getSelectableMediList(mem_code);
 		
 		request.setAttribute("dtos", dtos);
 		

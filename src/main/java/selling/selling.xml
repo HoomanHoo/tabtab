@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="selling">
+  	<select id="getInventory" parameterType="int" resultType="inventory.InventoryDataBean">
+  		select inv.medi_code, mi.medi_name, mi.selling_price, inv.rt_inven
+		from inventory inv
+    		,medi_information mi
+		where inv.mem_code = #{mem_code}
+		and inv.medi_code = mi.medi_code
+  	</select>
+  
+  
+  
+  
+  
+  </mapper>

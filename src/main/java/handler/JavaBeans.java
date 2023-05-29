@@ -18,6 +18,8 @@ import question.QuestionDBBean;
 import question.QuestionDao;
 import search.SearchDBBean;
 import search.SearchDao;
+import selling.SellingDBBean;
+import selling.SellingDao;
 import user.ULogonDBBean;
 import user.ULogonDao;
 import warehousing.WarehousingDBBean;
@@ -74,5 +76,9 @@ public class JavaBeans {
 	@Bean
 	public InventoryDao inventoryDao() {
 		return new InventoryDBBean();
+	}
+	@Bean
+	public SellingDao sellingDao() {
+		return new SellingDBBean();
 	}
 }

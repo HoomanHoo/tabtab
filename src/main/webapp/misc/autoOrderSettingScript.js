@@ -7,12 +7,10 @@ for(var i = 0; i < selectElement.length; i++){
 let count = 0;
 
 function add(){
-	let tid = this.id; //mediName 의 값
-	let tid2 = tid + "2"; //주성분
-	let tid3 = tid + "3"; //mediCode
-	let tid4 = tid + "4"; //supplyValue
-	let tid5 = tid + "5"; //식별값
-	let tid6 = tid + "6";
+	let tval = this.value; //mediName 의 값
+	let tid3 = tval + "3"; //mediCode
+	let tid4 = tval + "4"; //supplyValue
+	let tid5 = tval + "5"; //식별값
 	
 	if(document.querySelector("#" + CSS.escape(tid5))){
 		alert("이미 선택된 제품입니다");
@@ -21,14 +19,13 @@ function add(){
 		let mediCode = document.createElement("input");
 		mediCode.setAttribute("type", "hidden");
 		mediCode.setAttribute("name", "mediCode");
-		mediCode.setAttribute("id", CSS.escape(tid5));
-		mediCode.setAttribute("value", document.querySelector("#" + CSS.escape(tid3)).value);
+		mediCode.setAttribute("value", document.getElementById(tid3).value);
 		
 		let mediName = document.createElement("input");
 		mediName.setAttribute("type", "text");
 		mediName.setAttribute("name", "mediName");
 		mediName.setAttribute("class", "col");
-		mediName.setAttribute("value", document.querySelector("#" + CSS.escape(tid)).value);
+		mediName.setAttribute("value", tval);
 		mediName.setAttribute("readonly", "true");
 		
 		let triggerQuan = document.createElement("input");
@@ -36,7 +33,6 @@ function add(){
 		triggerQuan.setAttribute("name", "triggerQuan");
 		triggerQuan.setAttribute("class", "col")
 		triggerQuan.setAttribute("min", 0);
-		triggerQuan.setAttribute("id", document.querySelector("#" + CSS.escape(tid)).id);
 		triggerQuan.setAttribute("value", "0");
 		
 		let aoQuan = document.createElement("input");
@@ -44,15 +40,15 @@ function add(){
 		aoQuan.setAttribute("name", "aoQuan");
 		aoQuan.setAttribute("class", "col");
 		aoQuan.setAttribute("min", 1);
-		aoQuan.setAttribute("id", document.querySelector(CSS.escape(tid6)));
+		aoQuan.setAttribute("id", tval);
 		aoQuan.setAttribute("value", 1);
 		
 		let supplyValue = document.createElement("input");
 		supplyValue.setAttribute("type", "text");
 		supplyValue.setAttribute("name", "supplyValue");
 		supplyValue.setAttribute("class", "col");
-		supplyValue.setAttribute("id", document.querySelector( CSS.escape(tid)) + 7);
-		supplyValue.setAttribute("value", "0");
+		supplyValue.setAttribute("id", tid5);
+		supplyValue.setAttribute("value", document.querySelector("#" + CSS.escape(tid4)).value);
 		supplyValue.setAttribute("readonly", "true");
 		
 		let div = document.createElement("div");
@@ -69,15 +65,21 @@ function add(){
 		
 		
 	}
-		let addedElement = document.querySelector("#" + CSS.escape(tid6));
+		document.getElementById(tval).addEventListener("input", calc);
+		document.getElementById(tval).addEventListener("change", calc);
 		
-		addedElement.addEventListener("input", calc);
-		addedElement.addEventListener("change", calc);
+		
+		console.log(tval);
 }
 
 function calc(){
-	
-	
-	
+	let tid = this.id;
+	console.log(tid);
+	let tid4 = tid + "4"; //supplyValue
+	let tid5 = tid + "5";
+	let aoQuan = this.value;
+	let supplyValue = document.getElementById(tid4).value;
+	let selected = document.querySelector("#" + CSS.escape(tid5));
+	selected.setAttribute("value",aoQuan * supplyValue );
 }
 	

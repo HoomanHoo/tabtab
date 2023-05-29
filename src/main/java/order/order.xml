@@ -13,6 +13,9 @@
   	<select id="getMediCode" parameterType="String" resultType="int">
   		select medi_code from medi_information where medi_name = #{medi_name}
   	</select>
+  	<select id="getMediName" parameterType="int" resultType="String">
+  		select medi_name from medi_information where medi_code = #{medi_code}
+  	</select>
   	<select id="getOrderNum" parameterType="int" resultType="int">
   		select max(o_num) from order_info where mem_code = #{mem_code}
   	</select>
@@ -47,13 +50,16 @@
 		select d_code from delivery_state where o_num = #{o_num}
 	</select>
 	<select id="getAutoOrderList" parameterType="int" resultType="order.AutoOrderListDataBean">
-		select mi.medi_name, ao.trigger_quan, ao.ao_quan, (mi.supply_value * ao.ao_quan) supply_value
+		select ao.medi_code, mi.medi_name, ao.trigger_quan, ao.ao_quan, (mi.supply_value * ao.ao_quan) supply_value
 		from auto_order_setting ao
 	    	,medi_information mi
 		where ao.mem_code = #{mem_code}
 		and ao.medi_code = mi.medi_code
 	</select>
-	
+	<select id="getSelectableMediList" parameterType="int" resultType="order.OrderDataBean">
+		select medi_code, medi_name, supply_value, chief_ingre  from medi_information
+		where medi_code != all (select medi_code from auto_order_setting where mem_code = #{mem_code})
+	</select>
 	
 	
 	
@@ -64,13 +70,20 @@
   	<insert id="insertDeliCode" parameterType="int">
   		insert into delivery_state (o_num, d_code) values(#{o_num}, '10')
   	</insert>
-  	<insert id="detailOrder" parameterType="order.DetailOrderDataBean">
+  	<insert id="insertDetailOrder" parameterType="order.DetailOrderDataBean">
   		insert into detail_order values(detail_order_seq.nextval, #{o_num}, #{medi_code}, #{order_quan}, #{supply_values}, #{memo, jdbcType=VARCHAR} )
+  	</insert>
+  	<insert id="insertAutoOrderSetting" parameterType="order.AutoOrderSettingDataBean">
+  		insert into auto_order_setting values(auto_order_setting_seq.nextval, #{mem_code}, #{medi_code}, #{trigger_quan}, #{ao_quan})
   	</insert>
 
   	<update id="updateDeliState" parameterType="order.DeliStateDataBean">
   		update delivery_state set d_code = #{d_code} where o_num = #{o_num}
   	</update>
+  	
+  	<delete id="deleteAutoOrderSetting" parameterType="order.AutoOrderListDataBean">
+  		delete from auto_order_setting where mem_code = #{mem_code} and medi_code = #{medi_code}
+  	</delete>
 
 
   
