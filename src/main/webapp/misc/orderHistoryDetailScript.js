@@ -51,7 +51,7 @@ function warehousing(event){
 				}
 				$("#default").remove();
 				$("#warehousing").remove();
-				alert(mediCode.length + "개 입고되었습니다");
+				alert(mediCode.length + "개 항목 입고되었습니다");
 				document.querySelector("#newTable").innerHTML = txt;
 				
 			},

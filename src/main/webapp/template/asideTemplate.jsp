@@ -14,10 +14,10 @@
        
       </div>
       <div id="jb-sidebar">
-        <c:import url="/template/sidebar.jsp"></c:import>
+        <c:import url="/template/adminSidebar.jsp"/>
       </div>
       <div id="jb-footer">
-        <c:import url="/template/footer.jsp"></c:import>
+        <c:import url="/template/footer.jsp"/>
       </div>
     </div>
   </body>

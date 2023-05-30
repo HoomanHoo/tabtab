@@ -35,11 +35,14 @@ public class OrderDBBean implements OrderDao{
 	public int getOrderNum(int mem_code) {
 		return session.selectOne("order.getOrderNum", mem_code);
 	}
+	
+	public int insertDeliCode(DeliStateDataBean dto) {
+		return session.insert("order.insertDeliCode", dto);
+	}
 
 	public int order(OrderDataBean dto) {
 		session.insert("order.insertOrder", dto);
 		int o_num = getOrderNum(dto.getMem_code());
-		session.insert("order.insertDeliCode", o_num);
 		return o_num;
 	}
 	

@@ -65,9 +65,9 @@
 	
 	
 	<insert id="insertOrder" parameterType="order.OrderDataBean">
-  		insert into order_info values(order_info_seq.nextval, #{mem_code}, #{supplier_code}, sysdate, #{memo, jdbcType=VARCHAR}, #{sum_supply_value}, #{sum_order_count})
+  		insert into order_info values(order_info_seq.nextval, #{mem_code}, #{supplier_code}, #{o_date}, #{memo, jdbcType=VARCHAR}, #{sum_supply_value}, #{sum_order_count})
   	</insert>
-  	<insert id="insertDeliCode" parameterType="int">
+  	<insert id="insertDeliCode" parameterType="order.DeliStateDataBean">
   		insert into delivery_state (o_num, d_code) values(#{o_num}, '10')
   	</insert>
   	<insert id="insertDetailOrder" parameterType="order.DetailOrderDataBean">

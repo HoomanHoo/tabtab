@@ -27,13 +27,13 @@
     	</a>
 	</li>
 	<li>
-    	<a href="#" class="nav-link text-black">
+    	<a href="/tabtab/autoorder.net" class="nav-link text-black">
       		<svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
      		${btnOrder }
     	</a>
 	</li>
 	<li>
-    	<a href="#" class="nav-link text-black">
+    	<a href="/tabtab/sellingpage.net" class="nav-link text-black">
       		<svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
     		${btnSell }
     	</a>

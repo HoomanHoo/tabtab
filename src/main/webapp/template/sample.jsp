@@ -16,6 +16,7 @@
   		<div class="row" style="margin-right:0">
 	  		<div class="col-sm-2" style="margin-right:0">
 			    <c:import url="/template/sidebar.jsp"/>
+			  <%--  <c:import url="/template/adminSidebar.jsp"/>  --%>
 	  		</div>
 	  		<div class="col-sm-10" style="margin-right:0">
 	  			<div class="container">

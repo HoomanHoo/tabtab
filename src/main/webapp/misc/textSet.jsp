@@ -24,6 +24,9 @@
 <c:set var="textEtc" value="전문"/>
 <c:set var="textOtc" value="일반"/>
 <c:set var="textPName" value="약국명"/>
+<c:set var="textSellPrice" value="판매가(EA/원)"/>
+<c:set var="textRealPrice" value="판매가(원)"/>
+<c:set var="textNowQntity" value="현재 수량"/>
 <c:set var="triggerQuan" value="발주 기준 수량"/>
 <c:set var="aoQuan" value="발주 수량"/>
 <c:set var="findPasswd" value="비밀번호 찾기"/>
@@ -55,6 +58,7 @@
 <%--버튼 --%>
 <c:set var="btnMyPage" value="마이페이지"/>
 <c:set var="btnQuestionBoard" value="문의사항"/>
+<c:set var="btnRegistRequest" value="가입신청"/>
 <c:set var="btnInventory" value="재고확인"/>
 <c:set var="btnOrder" value="발주"/>
 <c:set var="btnSell" value="판매"/>

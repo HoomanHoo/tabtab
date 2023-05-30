@@ -1,6 +1,7 @@
 package handler.order;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
+import order.DeliStateDataBean;
 import order.DetailOrderDataBean;
 import order.OrderDao;
 import order.OrderDataBean;
@@ -38,6 +40,9 @@ public class OrderProHandler implements CommandHandler{
 		int[] supplyPrice = new int[supplyPriceStr.length];
 		int allSupplyValue = 0;
 		int allOrderQuan = 0;
+		LocalDateTime now = LocalDateTime.now();
+		Timestamp date = Timestamp.valueOf(now); 
+		
 		
 		for(int i = 0; i < orderQuanStr.length; i++) {
 			supplyPrice[i] = Integer.parseInt(supplyPriceStr[i]);
@@ -54,11 +59,14 @@ public class OrderProHandler implements CommandHandler{
 		dto.setSupplier_code("2");
 		dto.setSum_supply_value(allSupplyValue);
 		dto.setSum_order_count(allOrderQuan);
-		dto.setMemo("그냥 메모 뺄까?");
-		dto.setO_date(new Timestamp(System.currentTimeMillis()));
+		dto.setMemo("");
+		dto.setO_date(date);
 //		o_num은 시퀀스로 자동 생성, memo 안 만들었음 o_date는 sysdate
 		
 		int o_num = orderDao.order(dto);
+		DeliStateDataBean dsDto = new DeliStateDataBean();
+		dsDto.setO_num(o_num);
+		orderDao.insertDeliCode(dsDto);
 		
 		List<DetailOrderDataBean> detailOrders = new ArrayList<DetailOrderDataBean>();
 		

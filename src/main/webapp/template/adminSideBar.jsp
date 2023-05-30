@@ -11,7 +11,7 @@
 	<li class="nav-item">
     	<a href="#" class="nav-link text-black" aria-current="page">
       		<svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-      		${btnMyPage }
+      		${btnRegistRequest }
     	</a>
 	</li>
 	<li>
@@ -21,28 +21,10 @@
     	</a>
 	</li>
 	<li>
-    	<a href="#" class="nav-link text-black">
+    	<a href="/tabtab/orderrequest.net" class="nav-link text-black">
       		<svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-			${btnInventory }
+			${btnCheckOrder }
     	</a>
-	</li>
-	<li>
-    	<a href="#" class="nav-link text-black">
-      		<svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-     		${btnOrder }
-    	</a>
-	</li>
-	<li>
-    	<a href="#" class="nav-link text-black">
-      		<svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-    		${btnSell }
-    	</a>
-	</li>
-	 <li>
-    	<a href="#" class="nav-link text-black">
-      		<svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-     		${btnSearch }
-   		</a>
 	</li>
 </ul>
 <hr>

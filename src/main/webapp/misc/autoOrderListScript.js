@@ -35,9 +35,9 @@ function deleteSetting(){
 			//	document.getElementById(tid4).remove();
 			//	document.getElementById(tid5).remove();
 				document.querySelector("#list").replaceChildren();
-				document.querySelector("#list").innerHTML = result;
+				document.querySelector("#list").insertAdjacentHTML("afterbegin", result);
 				alert(tid + "가 삭제되었습니다");
-				let btnDelete = document.querySelectorAll("input[name=btnDelete");
+				let btnDelete = document.querySelectorAll("input[name=btnDelete]");
 				for(var i = 0; i < btnDelete.length; i++){
 					btnDelete[i].addEventListener("click", deleteSetting);
 				}
@@ -45,7 +45,7 @@ function deleteSetting(){
 			}
 			else{
 				let result = xhr.responseText;
-				alert(result);
+				alert("처리에 실패했습니다 잠시 후 다시 시도해주세요");
 			}
 		}
 	};

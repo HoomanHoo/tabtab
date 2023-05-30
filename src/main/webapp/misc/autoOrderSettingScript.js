@@ -1,10 +1,9 @@
-
 let selectElement = document.querySelectorAll("input[name=mediName]");
+let count = 0;
+
 for(var i = 0; i < selectElement.length; i++){
 	selectElement[i].addEventListener("click", add);
 }
-
-let count = 0;
 
 function add(){
 	let tval = this.value; //mediName 의 값
@@ -62,21 +61,15 @@ function add(){
 		document.getElementById("innerList" + count).appendChild(aoQuan);
 		document.getElementById("innerList" + count).appendChild(supplyValue);
 		count++;
-		
-		
 	}
-		document.getElementById(tval).addEventListener("input", calc);
-		document.getElementById(tval).addEventListener("change", calc);
-		
-		
-		console.log(tval);
+	document.getElementById(tval).addEventListener("input", calc);
+	document.getElementById(tval).addEventListener("change", calc);
 }
 
 function calc(){
 	let tid = this.id;
-	console.log(tid);
 	let tid4 = tid + "4"; //supplyValue
-	let tid5 = tid + "5";
+	let tid5 = tid + "5"; //supplyValue * aoQuan 값이 들어갈 자리
 	let aoQuan = this.value;
 	let supplyValue = document.getElementById(tid4).value;
 	let selected = document.querySelector("#" + CSS.escape(tid5));

@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<head>
  <link href="${path}design.css" rel="stylesheet" type="text/css">
 <script src="${path}jquery-3.6.4.js"></script>
 <script src="${path}orderPageScript.js" defer></script>
@@ -24,10 +23,8 @@
 				<div class="row" style="height:5vh">
 	  				<c:import url="/template/topMenu.jsp"/>
 	  			</div>
-				<div id="content" class="row">
-					<div id="wrapper" class="col">
-						<form class="mediList" name="sList">
-							<div id="list" style="height:75vh">
+					<div id="wrapper" class="row">
+							<div id="list" class="col-sm-4" style="height:73vh">
 								<div class="row">
 									<div class="col" style="text-align:center">${textMediName}</div>
 									<div class="col" style="text-align:center">${textChiefIngre}</div>
@@ -41,32 +38,30 @@
 									<input type="hidden" id="${dto.medi_name}" value="${dto.supply_value}">
 								<c:set var="i" value="${i + 1}"/>
 								</c:forEach> 
-
 							</div>
-						</form>
-					</div>
-					<div id="wrapper" class="col">
-						<form name="selectList" method="post" action="orderpagepro.net" onsubmit="return checkOrderList()">
-						<div id="orderList" class="row" style="height:24px">
-							<div id="selectDiv" class="col" style="text-align:center; height:24px">${textMediName}</div>
-							<div id="selectDiv" class="col-2" style="text-align:center; height:24px">${textQuantity}</div>
-							<div id="selectDiv" class="col" style="text-align:center; height:24px">${textPrice}</div>
-							<div id="selectDiv" class="col-1" style="height:24px"></div>
+							<div id="wrapper" class="col-sm-8" style="float:right">
+								<form name="selectList" method="post" action="orderpagepro.net" onsubmit="return checkOrderList()">
+									<div id="orderList" class="row" style="height:24px">
+										<div id="selectDiv" class="col" style="text-align:center; height:24px">${textMediName}</div>
+										<div id="selectDiv" class="col-2" style="text-align:center; height:24px">${textQuantity}</div>
+										<div id="selectDiv" class="col" style="text-align:center; height:24px">${textPrice}</div>
+										<div id="selectDiv" class="col-1" style="height:24px"></div>
+									</div>
+									<div id="newList" style="height:70vh">
+									</div>
+									<div id="buttonArea" class="row" style="float:bottom; margin-bottom:2px">
+										<div class="col"></div>
+										<div class="col" style="text-align:center">
+											<input type="submit" class="btn btn-outline-secondary" value="${btnOrder}">
+										</div>
+										<div class="col">
+										</div>
+									</div>
+								</form>
+							</div>
 						</div>
-						<div id="newList" class="row" style="height:74h">
-						</div>
-							<div id="buttonArea" class="row" style="float:bottom; margin-bottom:2px">
-							<div class="col"></div>
-							<div class="col" style="text-align:center">
-								<input type="submit" class="btn btn-outline-secondary" value="${btnOrder}">
-							</div>
-							<div class="col"></div>
-							</div>
-						</form>
-					</div>
-				</div>
-			  </div>
-  		</div>
+			 	 </div>
+  			</div>
 	 	<div class="container">
 	  		<c:import url="/template/footer.jsp"/>
 	 	</div>

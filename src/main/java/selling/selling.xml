@@ -11,9 +11,46 @@
 		where inv.mem_code = #{mem_code}
 		and inv.medi_code = mi.medi_code
   	</select>
+  	<select id="getSnum" parameterType="int" resultType="int">
+  		select max(s_num) from selling_info where mem_code = #{mem_code}
+  	</select>
+  	<select id="checkValue" parameterType="int" resultType="selling.CheckValueDataBean">
+  		select ao.medi_code, ao.ao_quan, (ao.ao_quan * mi.supply_value) supply_values
+		from auto_order_setting ao
+    		,inventory inv
+    		,medi_information mi
+		where ao.mem_code = 1
+		and ao.mem_code = inv.mem_code
+		and ao.medi_code = inv.medi_code
+		and ao.medi_code = mi.medi_code
+		and ao.trigger_quan >= inv.rt_inven
+  	</select>
+  	
+  	
+  	
+  	
+  	
+  	
+  	<insert id="insertSelling" parameterType="selling.SellingDataBean">
+  		insert into selling_info values(selling_info_seq.nextval, #{mem_code}, #{s_date}, #{selling_quans}, #{selling_prices})
+  	</insert>
+  	<insert id="insertDetailSelling" parameterType="selling.DetailSellingDataBean">
+  		insert into detail_selling values(detail_selling_seq.nextval, #{s_num}, #{medi_code}, #{ds_selling_quan}, #{ds_selling_price})
+  	</insert>
+  	<insert id="makeOrder" parameterType="order.OrderDataBean">
+  		insert into order_info(o_num, o_date, mem_code) values(order_info_seq.nextval, #{o_date}, #{mem_code})
+  	</insert>
   
-  
-  
-  
+  	<update id="updateInventory" parameterType="selling.DetailSellingDataBean">
+  		update inventory set rt_inven = (rt_inven - #{ds_selling_quan}) where mem_code = #{mem_code} and medi_code = #{medi_code}
+  	</update>
+  	<update id="updateOrder" parameterType="order.OrderDataBean">
+  		update order_info 
+  		set supplier_code = #{supplier_code}
+			, sum_supply_value = #{sum_supply_value}
+			, sum_order_count = #{sum_order_count}
+			, memo = #{memo}
+		where o_num = #{o_num}
+  	</update>
   
   </mapper>

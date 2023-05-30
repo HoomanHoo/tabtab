@@ -50,7 +50,7 @@
  
  
    <insert id="warehousing" parameterType="warehousing.WarehousingDataBean">
-		insert into warehousing_info values(warehousing_info_seq.nextval, #{mem_code}, #{o_num}, sysdate, #{supply_values}, #{warehousing_quans})
+		insert into warehousing_info values(warehousing_info_seq.nextval, #{mem_code}, #{o_num}, #{w_date}, #{supply_values}, #{warehousing_quans})
 	</insert>
 	<insert id="detailWarehousing" parameterType="warehousing.DetailWarehousingDataBean">
 		insert into detail_warehousing values(detail_warehousing_seq.nextval, #{w_num}, #{medi_code}, #{dw_quan}, #{dw_supply_values}, #{un_delivery_reason, jdbcType=VARCHAR})

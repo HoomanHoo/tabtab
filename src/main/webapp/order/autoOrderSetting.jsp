@@ -7,7 +7,6 @@
 <head>
 <link href="${path}design.css" rel="stylesheet" type="text/css">
 <script src="${path}autoOrderSettingScript.js" defer></script>
-<script src="${path}jquery-3.6.4.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -25,20 +24,18 @@
 	  			</div>
 	  			<div class="row">
 					<div id="list" class="col-sm-4" style="height:73vh">
-						<table>
-							<tr>
-								<td>${textMediName }</td>
-								<td>${textChiefIngre }</td>
-							</tr>
-							<c:forEach var="dto" items="${dtos }">
-								<tr>
-									<td><input class="form-control" type="text" name="mediName" value="${dto.medi_name }" readonly></td>
-									<td><input class="form-control" type="text" id="${dto.medi_name }2" value="${dto.chief_ingre }" readonly></td>
-								</tr>
-								<input type="hidden" id="${dto.medi_name }3" value="${dto.medi_code }">
-								<input type="hidden" id="${dto.medi_name }4" value="${dto.supply_value }">
-							</c:forEach>
-						</table>
+						<div class="row">
+							<div class="col">${textMediName }</div>
+							<div class="col">${textChiefIngre }</div>
+						</div>
+						<c:forEach var="dto" items="${dtos }">
+							<div class="row">
+								<input class="col" type="text" name="mediName" value="${dto.medi_name }" readonly>
+								<input class="col" type="text" id="${dto.medi_name }2" value="${dto.chief_ingre }" readonly>
+							</div>
+							<input type="hidden" id="${dto.medi_name }3" value="${dto.medi_code }">
+							<input type="hidden" id="${dto.medi_name }4" value="${dto.supply_value }">
+						</c:forEach>
 					</div>
 					<div id="selectList" class="col-sm-8" style="float:rignt">
 						<form name="autoOrderSetList" method="post" action="autoordersettingpro.net">
@@ -48,7 +45,7 @@
 								<div class="col">${aoQuan }</div>
 								<div class="col">${textPrice }</div>	
 							</div>
-							<div id="newList" style="height:73vh">
+							<div id="newList" style="height:70vh">
 							</div>
 							<div id="buttonArea" class="row">
 								<div class="col">

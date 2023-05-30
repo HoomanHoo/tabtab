@@ -6,7 +6,6 @@
 <html>
 <head>
 <link href="${path}design.css" rel="stylesheet" type="text/css">
-<script src="${path}jquery-3.6.4.js"></script>
 <script src="${path}sellingPageScript.js" defer></script>
 <title>TabTab</title>
 </head>
@@ -20,26 +19,49 @@
 			    <c:import url="/template/sidebar.jsp"/>
 	  		</div>
 	  		<div class="col-sm-10">
-	  			<div class="col">
-	  				<div class="row" style="text-align:center">
-	  					<div class="col">제품명</div>
-	  					<div class="col">판매가</div>
-	  					<div class="col-1">현재 수량</div>
+	  			<div class="row">
+		  			<div class="col-sm-5">
+			  			<div class="row" style="height:70vh">
+			  				<div class="row" style="text-align:center">
+			  					<div class="col">${textMediName }</div>
+			  					<div class="col">${textSellPrice }</div>
+			  					<div class="col-2">${textNowQntity }</div>
+			  				</div>
+				  				<div id="invenList">
+					  				<c:forEach var="dto" items="${dtos }">
+					  					<div id="list" class="row" style="text-align:center">
+											<input type="text" name="mediName" class="col" value="${dto.medi_name }" readonly>
+											<input type="text" id="${dto.medi_name }2" class="col" value="${dto.selling_price }" readonly>
+											<input type="text" id="${dto.medi_name }3" class="col-2" value="${dto.rt_inven }" readonly>
+											<input type="hidden" id="${dto.medi_name }4" value="${dto.medi_code }">					
+					  					</div>
+					  				</c:forEach>
+				  				</div>
+			  			</div>
+		  			</div>
+	  				<div class="col">
+		  				<div class="row" style="text-align:center">
+		  					<div class="col">${textMediName }</div>
+		  					<div class="col-2">${textQuantity }</div>
+		  					<div class="col">${textRealPrice }</div>
+		  					<div class="col"></div>
+		  				</div>
+		  				<div id="sellList" style="height:68vh">
+		  				</div>
+		  				<div class="row">
+		  					<input type="text" id="allPrice" value="합계: 0원" readonly>
+		  				</div>
+		  				<div id="buttonArea" class="row">
+		  					<div class="col">
+		  					</div>
+		  					<input type="button" id="btnSell" class="col" value="${btnSell }">
+		  					<input type="button" id="btnCancel" class="col" value="${btnCancel }">
+		  					<div class="col">
+		  					</div>
+		  				</div>
 	  				</div>
-	  				<c:forEach var="dto" items="${dtos }">
-	  					<div class="row">
-							<input type="text" id="${dto.medi_name }" name="mediName" class="col" value="${dto.medi_name }" readonly>
-							<input type="text" id="${dto.medi_name }2" class="col" value="${dto.selling_price }" readonly>
-							<input type="text" id="${dto.medi_name }3" class="col-1" value="${dto.rt_inven }" readonly>
-							<input type="hidden" id="${dto.medi_name }4" value="${dto.medi_code }">					
-	  					</div>
-	  				</c:forEach>
 	  			</div>
-	  			<div class="col">
-	  				<div id="sellList" class="row">
-	  				</div>
 	  			
-	  			</div>
 	  		
 	  		</div>
 	  		

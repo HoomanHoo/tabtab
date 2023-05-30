@@ -1,5 +1,8 @@
 package handler.warehousing;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +37,8 @@ public class OrderRequestDetailProHandler implements CommandHandler{
 		int mem_code = 1;
 		int supplyValues = 0;
 		int warehousingQuans = 0;
+		LocalDateTime now = LocalDateTime.now();
+		Timestamp date = Timestamp.valueOf(now); 
 		
 		for(int i = 0; i < mediCode.length; i++) {
 			int supplyValue = Integer.parseInt(dwSupplyValue[i]);
@@ -49,6 +54,7 @@ public class OrderRequestDetailProHandler implements CommandHandler{
 		warehousingDataBean.setO_num(o_num);
 		warehousingDataBean.setSupply_values(supplyValues);
 		warehousingDataBean.setWarehousing_quans(warehousingQuans);
+		warehousingDataBean.setW_date(date);
 		int w_num = warehousingDao.warehousing(warehousingDataBean);
 		if(Integer.toString(w_num) != null) {
 			int result = 0;
@@ -65,6 +71,7 @@ public class OrderRequestDetailProHandler implements CommandHandler{
 			DeliStateDataBean deliStateDataBean = new DeliStateDataBean();
 			deliStateDataBean.setO_num(o_num);
 			deliStateDataBean.setD_code(d_code);
+			deliStateDataBean.setD_date(date);
 			warehousingDao.updateDeliState(deliStateDataBean);
 			request.setAttribute("result", result);
 			return new ModelAndView("warehousing/orderRequestDetailPro");
