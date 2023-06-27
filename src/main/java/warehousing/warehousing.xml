@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="warehousing">  
+  
+	<select id="checkInventory" parameterType="inventory.InventoryDataBean" resultType="int">
+		select count (*) from inventory where mem_code = #{mem_code} and medi_code = #{medi_code}
+	</select>
+ 
+ 	<select id="getOrderRequest" resultType="warehousing.OrderRequestDataBean">
+		select pi.p_name p_name, o.o_num o_num ,o.o_date o_date
+		from order_info o
+		    ,phar_information pi
+		where o.mem_code = pi.mem_code
+		order by o.o_num desc
+	</select>
+	<select id="getDetailOrderRequest" parameterType="int" resultType="warehousing.DetailOrderRequestDataBean">
+		select mi.medi_name, d.order_quan, d.supply_values, d.medi_code
+		from detail_order d
+		    ,medi_information mi
+		where d.medi_code = mi.medi_code
+		and d.o_num = #{o_num}
+	</select>
+	<select id="getWarehousingNumber" parameterType="warehousing.WarehousingDataBean" resultType="int">
+		select max(w_num) from warehousing_info where mem_code = #{mem_code} order by w_num desc
+	</select>
+	<select id="getDetailWarehousing" parameterType="int" resultType="warehousing.DetailWarehousingDataBean">
+		select * from detail_warehousing where w_num = #{w_num}
+	</select>
+ 	<select id="getOrderNumber" parameterType="int" resultType="int">
+ 		select w_num from warehousing_info where o_num = #{o_num}
+ 	</select>
+ 	<select id="getOrderRequestAndWarehousingDetail" parameterType="int" resultType="warehousing.OrderRequestDetailAndWarehousingDataBean">
+	 	select mi.medi_name, dw.medi_code, d.order_quan, d.supply_values, dw.dw_quan, dw.dw_supply_values, dw.un_delivery_reason
+		from detail_order d
+		    ,detail_warehousing dw
+		    ,order_info oi
+		    ,warehousing_info wi
+		    ,medi_information mi
+		where wi.o_num = #{o_num}
+		and wi.w_num = dw.w_num
+		and dw.medi_code = mi.medi_code
+		and mi.medi_code = d.medi_code
+		and wi.o_num = oi.o_num
+		and oi.o_num = d.o_num
+ 	</select>
+ 	<select id="getMemCode" parameterType="int" resultType="int">
+ 		select mem_code from order_info where o_num = #{o_num}
+ 	</select>
+ 
+   <insert id="warehousing" parameterType="warehousing.WarehousingDataBean">
+		insert into warehousing_info values(warehousing_info_seq.nextval, #{mem_code}, #{o_num}, #{w_date}, #{supply_values}, #{warehousing_quans})
+	</insert>
+	<insert id="detailWarehousing" parameterType="warehousing.DetailWarehousingDataBean">
+		insert into detail_warehousing values(detail_warehousing_seq.nextval, #{w_num}, #{medi_code}, #{dw_quan}, #{dw_supply_values}, #{un_delivery_reason, jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertQuan" parameterType="inventory.InventoryDataBean">
+		insert into inventory values(inventory_seq.nextval, #{mem_code}, #{medi_code}, #{rt_inven})
+	</insert>
+	
+	<update id="updateQuan" parameterType="inventory.InventoryDataBean">
+		update inventory set rt_inven = (rt_inven + #{rt_inven}) where mem_code = #{mem_code} and medi_code = #{medi_code}
+	</update>
+ 	
+ 	
+ 	
+ 	
+ 	
+ </mapper>
