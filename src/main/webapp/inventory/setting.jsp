@@ -11,7 +11,7 @@
     <c:set var="page_inventory" value="재 고 현 황"/>
     <c:set var="page_inventorylist" value="재 고 목 록"/>
     <c:set var="str_count" value="전체목록"/>
-    <c:set var="str_num" value="번호"/>
+    
     <c:set var="str_medi_name" value="약품명"/>
     <c:set var="str_supply_value" value="공급가"/>
     <c:set var="str_selling_price" value="판매가"/>

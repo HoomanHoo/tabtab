@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
- <link href="${path}design.css" rel="stylesheet" type="text/css">
-<script src="${path}jquery-3.6.4.js"></script>
-<script src="${path}orderPageScript.js" defer></script>
-<title>Insert title here</title>
+	<link href="${path}design.css" rel="stylesheet" type="text/css">
+	<script src="${path}jquery-3.6.4.js"></script>
+	<script src="${path}orderPageScript.js" defer></script>
+	<title>TabTab</title>
 </head>
 <body>
 	<main>
@@ -67,5 +67,4 @@
 	 	</div>
 	</main>
 </body>
-
 </html>

@@ -6,7 +6,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TabTab</title>
 </head>
 <body>
 
@@ -26,7 +26,7 @@
 <script type="text/javascript">
 	let code = document.querySelector("#result");
 	let result = code.value;
-	alert(result + "개 배송되었습니다");
+	alert(result + "개 품목 배송되었습니다");
 
 
 </script>

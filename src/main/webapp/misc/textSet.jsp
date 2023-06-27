@@ -52,7 +52,13 @@
 <c:set var="deliNotYet" value="미배송"/>
 <c:set var="deliStart" value="배송중"/>
 <c:set var="deliEnd" value="배송완료"/>
-<c:set var="footer" value="소재지: 서울특별시 서초구 서초대로74길33 Tel: 02-4023-0088 Email: vocustomer@tabtab.com"/>
+<c:set var="footer" value="소재지: 서울특별시 서초구 서초대로74길33 Tel: 02-4023-0088 Email: whgusgh111@naver.com"/>
+<c:set var="signUpList" value="가입 요청"/>
+<c:set var="signUpD" value="상세 정보"/>
+<c:set var="signUpIn" value="회원 정보 등록"/>
+<c:set var="mypage" value="마이페이지"/>
+<c:set var="mypagemodi" value="내 정보 수정"/>
+
 
 
 <%--버튼 --%>
@@ -75,3 +81,4 @@
 <c:set var="btnDelivery" value="배송"/>
 <c:set var="btnSetting" value="설정"/>
 <c:set var="btnDelete" value="삭제"/>
+<c:set var="btnlogout" value="로그아웃"/>

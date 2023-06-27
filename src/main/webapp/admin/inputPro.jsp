@@ -1,10 +1,8 @@
-<%@page import="admin.AdminDBBean"%>
-<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="setting.jsp"%>
-<script src="${project}script_admin.js"></script>
+<%@ include file="asetting.jsp"%>
+<script src="${path}script_admin.js"></script>
 
 <h2>${page_input}</h2>
 
@@ -14,7 +12,13 @@
 		erroralert(inputerror);
 		//-->
 	</script>
+	<meta http-equiv=refresh content="0;url=adminloginform.net">
 </c:if>
 <c:if test="${result eq 1}">
-	<c:redirect url="adminloginform.net"/>
+<script type="text/javascript">
+		//<!--
+		erroralert("회원가입이 성공하였습니다");
+		//-->
+	</script>
+	<meta http-equiv=refresh content="0;url=adminloginform.net">
 </c:if>

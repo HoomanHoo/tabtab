@@ -10,6 +10,7 @@
     		,medi_information mi
 		where inv.mem_code = #{mem_code}
 		and inv.medi_code = mi.medi_code
+		and not inv.rt_inven = 0
   	</select>
   	<select id="getSnum" parameterType="int" resultType="int">
   		select max(s_num) from selling_info where mem_code = #{mem_code}
@@ -19,7 +20,7 @@
 		from auto_order_setting ao
     		,inventory inv
     		,medi_information mi
-		where ao.mem_code = 1
+		where ao.mem_code = #{mem_code}
 		and ao.mem_code = inv.mem_code
 		and ao.medi_code = inv.medi_code
 		and ao.medi_code = mi.medi_code

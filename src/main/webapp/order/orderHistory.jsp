@@ -8,7 +8,7 @@
 <link href="${path}design.css" rel="stylesheet" type="text/css">
 <script src="${path}orderHistoryScript.js" defer></script>
 <script src="${path}jquery-3.6.4.js"></script>
-<title>Insert title here</title>
+<title>TabTab</title>
 </head>
 <body>
 	<main>
@@ -20,7 +20,7 @@
 			    <c:import url="/template/sidebar.jsp"/>
 	  		</div>
 	  		<br>
-			<div class="col-sm-10">
+			<div class="col">
 			<div id="selectBoxDiv" class="row">
 				<div class="row" style="height:5vh">
 	  				<c:import url="/template/topMenu.jsp"/>
@@ -44,8 +44,8 @@
 							<div class="col" style="text-align:center">${sumOrderQuan}</div>
 							<div class="col" style="text-align:center">${sumSupplyValue}</div>
 							<div class="col" style="text-align:center">${orderSupplier}</div>
-							<div class="col" style="text-align:center">${orderMemo}</div>
 							<div class="col" style="text-align:center">${textDeliveryState}</div>
+							<div class="col"></div>
 						</div>
 		 				<c:forEach var="dto" items="${dtos}">
 		 				<c:set var="orderDate">
@@ -66,12 +66,13 @@
 		 				</c:if>
 							<div class="row row-cols-7">
 								<input type="text" class="col-1" name="${orderDate }1" value="${orderDateView }" readonly>
-								<a class="col-1" href = "orderhistorydetail.net?onum=${dto.o_num}&&delistate=${dto.d_code}"><input type="text" name="${orderDate }2" value="${dto.o_num}" readonly></a>
+								<input type="text" class="col-1" id="t${dto.o_num }2" name="${orderDate }2" value="${dto.o_num}" readonly>
 								<input type="text" class="col" name="${orderDate }3" value="${dto.sum_order_count}" readonly>
 								<input type="text" class="col" name="${orderDate }4" value="${dto.sum_supply_value}" readonly>
 								<input type="text" class="col" name="${orderDate }5" value="${dto.supplier_name}" readonly>
-								<input type="text" class="col" name="${orderDate }6" value="${dto.memo}" readonly>
 								<input type="text" class="col" name="${orderDate }7" value="${deliState }" readonly>
+								<input type="hidden" id="t${dto.o_num }3" value="${dto.d_code}">
+								<input type="button" id="t${dto.o_num }" class="col btn btn-outline-secondary" value="${btnDetailRequest }">
 							</div>
 						</c:forEach>  
 					</div>
@@ -83,5 +84,4 @@
 	  </div>
 	</main>
 </body>
-
 </html>

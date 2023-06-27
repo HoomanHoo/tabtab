@@ -6,8 +6,26 @@
   <mapper namespace="Admin">
 	<!-- 파라미터 타입은 문자열로 아이디 하나 넘어옴>> -->
 	
-	<select id="checkMC" resultType="int">
-		select mem_code from id_default_info where email=#{email, jdbcType=VARCHAR}
+	
+	<select id="sendPasswd" resultType="String">
+  		select password from id_default_info 
+  		where email=#{email}
+  	</select>
+  
+	
+	
+	<delete id="deleteO" parameterType="int">
+  		delete from phar_information
+  	 	where mem_code = #{mem_code}
+  	</delete>
+  	<delete id="deleteT" parameterType="int">
+  		delete from id_default_info
+  	 	where mem_code = #{mem_code}
+  	</delete>
+	
+	
+	<select id="checkMC" resultType="admin.AdminDataBean">
+		select mem_code, mem_desc_code from id_default_info where email=#{email, jdbcType=VARCHAR}
 	</select>
 	
 	 <select id="checkEmail" parameterType="String" resultType="int">
@@ -18,36 +36,39 @@
 	<select id="getMember" parameterType="String" resultType="admin.AdminDataBean"><!-- 바구니가 어디 들어있나 -->
 		select * from id_default_info where email=#{email, jdbcType=VARCHAR}	
 	</select>
+
 	
 	
 	 <!-- 로그온에 인풋프로 핸들러가 처리 --><!----><!---->
 	<insert id="insertM" parameterType="admin.AdminDataBean">
 		insert into id_default_info(mem_code, name, email, password, r_date, mem_desc_code) 
 		values( 
-			mem_code_seq.NEXTVAL, #{name}, #{email, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR}, #{r_date},
+			id_default_info_seq.NEXTVAL, #{name}, #{email, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR}, #{r_date},
 			#{mem_desc_code, jdbcType=VARCHAR}
 		)
 	</insert>
-	
-	<insert id="insertMember" parameterType="admin.AdminDataBean">
-		<selectKey resultType="int" keyProperty="mem_code" order="BEFORE">
+	<select id="getMemCode" parameterType="String" resultType="int" >
 			select mem_code from id_default_info where email=#{email, jdbcType=VARCHAR} 
-		</selectKey>
+	</select>
+	<insert id="insertMember" parameterType="admin.AdminDataBean">
+		
 		insert into supplier_information 
-		values( #{mem_code}, sup_code_seq.NEXTVAL, #{supplier_name} )
+		values( #{mem_code}, supplier_information_seq.NEXTVAL, #{supplier_name} )
 	</insert>
 	
 	
 	<select id="getCount" resultType="int">
-		select count(*) from id_default_info where password='!00000'
+		select count(*) from phar_information where apply_desc_code = '1'
 	</select><!-- password가 !00000인 애들의 수>관리자는 직접입력하니까 관리자 제외 수  >5돌려보냄>값있슴-->
 
 
-	<select id="getArticles" parameterType="java.util.Map" resultType="admin.AdminDataBean">
-		select mem_code, email
-    		from id_default_info 
-    		where password='!00000' 
-    		order by mem_code desc
+	<select id="getArticles"  resultType="admin.AdminDataBean">
+		select idi.mem_code, idi.email
+		from id_default_info idi
+    		, phar_information pi
+		where pi.apply_desc_code = '1'
+		and idi.mem_code = pi.mem_code
+		order by mem_code desc
 	</select>
 
 
@@ -69,7 +90,7 @@
 	</update>
 	<update id="updateIDI" parameterType="admin.AdminDataBean">
 		update  id_default_info set 
-		name=#{name, jdbcType=VARCHAR}, mem_desc_code='1' where mem_code=#{mem_code}    
+		name=#{name, jdbcType=VARCHAR}, mem_desc_code='3' where mem_code=#{mem_code}    
 	</update>
 
   <!--

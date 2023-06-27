@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +25,19 @@ public class AutoOrderSettingHandler implements CommandHandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		int mem_code = 1;
-		List<OrderDataBean> dtos = orderDao.getSelectableMediList(mem_code);
+		HttpSession session = request.getSession();
 		
-		request.setAttribute("dtos", dtos);
-		
-		return new ModelAndView("order/autoOrderSetting");
+		if(session.getAttribute("mem_code") == null) {
+			return new ModelAndView("user/loginForm");
+		}
+		else {
+			int mem_code = (int)session.getAttribute("mem_code");
+			List<OrderDataBean> dtos = orderDao.getSelectableMediList(mem_code);
+			
+			request.setAttribute("dtos", dtos);
+			
+			return new ModelAndView("order/autoOrderSetting");
+		}
 	}
 
 }

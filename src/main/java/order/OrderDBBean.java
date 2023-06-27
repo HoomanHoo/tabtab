@@ -98,5 +98,9 @@ public class OrderDBBean implements OrderDao{
 			return "삭제에 실패했습니다";
 		}
 	}
+	
+	public List<OrderCheckDataBean> getTodayOrder(OrderCheckDataBean dto){
+		return session.selectList("order.getTodayOrder", dto);
+	}
 
 }

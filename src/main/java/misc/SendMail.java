@@ -42,7 +42,6 @@ public class SendMail {
 			message.setText(email + "회원님의 비밀번호는 " + result + "입니다");
 			
 			Transport.send(message);
-			System.out.println(" email send ");
 			
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block

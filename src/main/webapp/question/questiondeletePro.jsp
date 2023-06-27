@@ -7,32 +7,27 @@
 
 <h2> ${page_delete} </h2>
 
-<c:if test="${resultCheck eq 0}">
-   	<script type="text/javascript">
-   	    //<!--
-   	    erroralert( passerror );
-   	    -->
-   	</script>
+<c:if test="${result eq 0}"> 
+	<script type="text/javascript">
+		// <!--
+		alert( deleteerror );
+		// -->   		
+	</script>
+
+	<meta http-equiv="refresh" content="0; url='question.net?pageNum=${pageNum}'">
 </c:if>
-<c:if test="${resultCheck eq 1}">
-    <c:if test="${result eq 0}"> 
-   		<script type="text/javascript">
-   		    //<!--
-   		    alert( deleteerror );
-   		    -->   		
-   		</script>
-   		<meta http-equiv="refresh" content="0; url='question.net?pageNum=${pageNum}'">
-    </c:if>
-    <c:if test="${result eq -1}">
-   		<script type="text/javascript">
-   		    //<!--
-   		    alert( replyerror );
-   		    -->
-   		</script>
-   		<meta http-equiv="refresh" content="0; url='question.net?pageNum=${pageNum}'">
-   	</c:if>
-    <c:if test="${result eq 1}">
-    		<c:redirect url= "question.net?pageNum=${pageNum}"/>
-    </c:if>
+
+<c:if test="${result eq -1}">
+	<script type="text/javascript">
+		// <!--
+		alert( replyerror );
+		// -->
+	</script>
+
+	<meta http-equiv="refresh" content="0; url='question.net?pageNum=${pageNum}'">
+</c:if>
+
+<c:if test="${result eq 1}">
+	<c:redirect url= "question.net?pageNum=${pageNum}"/>
 </c:if>
 

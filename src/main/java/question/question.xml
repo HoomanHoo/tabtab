@@ -10,26 +10,31 @@
     </select>
     
      <select id="getMem_code" resultType="int">
-        select mem_code from id_default_info where email=#{email}
+        select mem_code from id_default_info where mem_code=#{mem_code}
+    </select>
+    
+    <select id="getMem_desc_code" resultType="int">
+        select mem_desc_code from id_default_info where mem_code=#{mem_code}
     </select>
     
     <select id="getArticles" parameterType="java.util.Map" resultType="question.QuestionDataBean">
     
-            select con_num, mem_code, con_subject, 
+            select con_num, mem_code, con_subject,
 			w_date, ref, re_step, re_level, content, r 
 			from (select con_num, mem_code, con_subject, w_date, ref, re_step
 			, re_level, content, rownum r from 
 			(select con_num, mem_code, con_subject, w_date, ref, re_step, re_level 
-			, content from question_board qb 
-			inner join id_default_info idi on qb.mem_code= idi.mem_code order by ref desc, re_step asc) 
+			, content from question_board order by ref desc, re_step asc) 
 			order by ref desc, re_step asc ) where r &gt;= #{start} and r &lt;= #{end}
     </select>
     
     <select id="getArticle" parameterType="int" resultType="question.QuestionDataBean">
-        select * from question_board where con_num= #{con_num}
-    </select>
-    
-     
+		select *
+		from question_board b, id_default_info i
+		where   b.mem_code = i.mem_code
+			and b.con_num = #{con_num}
+	</select>
+
     <select id="maxNum" resultType="int">
         select max(con_num) from question_board       
     </select>
@@ -40,7 +45,7 @@
     
     <insert id="insertArticle" parameterType="question.QuestionDataBean">
         insert into question_board( con_num, mem_code, con_subject, w_date, ref, re_step, re_level, content ) 
-	    values(question_board_seq.NEXTVAL, question_board_seq.NEXTVAL, #{con_subject}, #{w_date},
+	    values(question_board_seq.NEXTVAL, #{mem_code}, #{con_subject}, #{w_date},
 	    #{ref}, #{re_step}, #{re_level}, #{content})
     </insert>
     

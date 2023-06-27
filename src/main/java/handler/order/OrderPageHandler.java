@@ -23,20 +23,18 @@ public class OrderPageHandler implements CommandHandler{
 	@RequestMapping("/selforder")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-/*		
-		HttpSession session = request.getSession();
-		int mem_code = (int)session.getAttribute("mem_code");
-		int result = orderDao.checkId(mem_code);
 		
-		if(result == 0) {
-			return new ModelAndView("order/testLogin");
+		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("mem_code") == null) {
+			return new ModelAndView("user/loginForm");
 		}
-		else {*/
+		else {
 			List<OrderDataBean> dtos = orderDao.mediList();
 			request.setAttribute("dtos", dtos);
 			
 			return new ModelAndView("order/orderPage");
-	//	}
+		}
 	}
 
 }

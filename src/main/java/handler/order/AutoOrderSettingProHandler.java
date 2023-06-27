@@ -3,6 +3,7 @@ package handler.order;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,29 +23,35 @@ public class AutoOrderSettingProHandler implements CommandHandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		//checkId 해야함
-		int mem_code = 1;
+		HttpSession session = request.getSession();
 		
-		String[] mediCode = request.getParameterValues("mediCode");
-		String[] triggerQuan = request.getParameterValues("triggerQuan");
-		String[] aoQuan = request.getParameterValues("aoQuan");
-		int result = 0;
-		
-		for(int i = 0; i < mediCode.length; i++) {
-			int medi_code = Integer.parseInt(mediCode[i]);
-			int trigger_quan = Integer.parseInt(triggerQuan[i]);
-			int ao_quan = Integer.parseInt(aoQuan[i]);
-			
-			AutoOrderSettingDataBean dto = new AutoOrderSettingDataBean();
-			dto.setMem_code(mem_code);
-			dto.setMedi_code(medi_code);
-			dto.setTrigger_quan(trigger_quan);
-			dto.setAo_quan(ao_quan);
-			result += orderDao.insertAutoOrderSetting(dto);
+		if(session.getAttribute("mem_code") == null) {
+			return new ModelAndView("user/loginForm");
 		}
-		
-		request.setAttribute("result", result);
-		
-		return new ModelAndView("order/autoOrderSettingPro");
+		else {
+			int mem_code = (int) session.getAttribute("mem_code");
+			String[] mediCode = request.getParameterValues("mediCode");
+			String[] triggerQuan = request.getParameterValues("triggerQuan");
+			String[] aoQuan = request.getParameterValues("aoQuan");
+			int result = 0;
+			
+			for(int i = 0; i < mediCode.length; i++) {
+				int medi_code = Integer.parseInt(mediCode[i]);
+				int trigger_quan = Integer.parseInt(triggerQuan[i]);
+				int ao_quan = Integer.parseInt(aoQuan[i]);
+				
+				AutoOrderSettingDataBean dto = new AutoOrderSettingDataBean();
+				dto.setMem_code(mem_code);
+				dto.setMedi_code(medi_code);
+				dto.setTrigger_quan(trigger_quan);
+				dto.setAo_quan(ao_quan);
+				result += orderDao.insertAutoOrderSetting(dto);
+			}
+			
+			request.setAttribute("result", result);
+			
+			return new ModelAndView("order/autoOrderSettingPro");
+		}
 	}
 
 }

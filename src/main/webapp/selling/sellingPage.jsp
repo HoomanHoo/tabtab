@@ -21,7 +21,7 @@
 	  		<div class="col-sm-10">
 	  			<div class="row">
 		  			<div class="col-sm-5">
-			  			<div class="row" style="height:70vh">
+			  			<div  style="height:70vh">
 			  				<div class="row" style="text-align:center">
 			  					<div class="col">${textMediName }</div>
 			  					<div class="col">${textSellPrice }</div>
@@ -61,14 +61,7 @@
 		  				</div>
 	  				</div>
 	  			</div>
-	  			
-	  		
-	  		</div>
-	  		
-	  		
-	  		
-	  		
-	  		
+	  		</div>	
   		</div>
 	  <div class="container">
 	  	<c:import url="/template/footer.jsp"/>

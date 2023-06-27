@@ -2,7 +2,9 @@ package user;
 
 public interface ULogonDao {
 	
-	public int checkMC(String email);
+	public int deleteT(int mem_code);
+	public int updateMy( ULogonDataBean dto);
+	public ULogonDataBean checkMC(String email);
 	public ULogonDataBean selectMy( int mem_code);
 	
 	public String findPasswd(String name, String email);

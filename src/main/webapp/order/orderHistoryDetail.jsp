@@ -8,7 +8,7 @@
 <link href="${path}design.css" rel="stylesheet" type="text/css">
 <script src="/tabtab/misc/orderHistoryDetailScript.js" defer></script>
 <script src="/tabtab/misc/jquery-3.6.4.js"></script>
-<title>Insert title here</title>
+<title>TabTab</title>
 </head>
 <body>
 	<main>

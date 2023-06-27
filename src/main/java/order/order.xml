@@ -5,7 +5,7 @@
   
   <mapper namespace="order">
     <select id="checkId" parameterType="int" resultType="int">
-  		select count(*) from phar_information where mem_code = #{mem_code}
+  		select count(*) from id_default_info where mem_code = #{mem_code}
   	</select>
   	<select id="mediList" resultType="order.OrderDataBean">
   		select medi_code, medi_name, supply_value, chief_ingre from medi_information
@@ -60,7 +60,17 @@
 		select medi_code, medi_name, supply_value, chief_ingre  from medi_information
 		where medi_code != all (select medi_code from auto_order_setting where mem_code = #{mem_code})
 	</select>
-	
+	<select id="getTodayOrder" parameterType="order.OrderCheckDataBean" resultType="order.OrderCheckDataBean">
+		select o.o_date, o.o_num, o.sum_order_count, o.sum_supply_value, s.supplier_name, o.memo, ds.d_code
+		from order_info o
+		    ,supplier_information s
+		    ,delivery_state ds
+		where to_char(o_date, 'yy/mm/dd') = to_char(#{o_date}, 'yy/mm/dd')
+		and o.mem_code = #{mem_code}
+		and o.o_num = ds.o_num
+		and o.supplier_code = s.supplier_code
+		order by o.o_num desc 
+	</select>
 	
 	
 	

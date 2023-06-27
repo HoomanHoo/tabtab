@@ -14,7 +14,6 @@
 		from order_info o
 		    ,phar_information pi
 		where o.mem_code = pi.mem_code
-		and o.mem_code = #{mem_code}
 		order by o.o_num desc
 	</select>
 	<select id="getDetailOrderRequest" parameterType="int" resultType="warehousing.DetailOrderRequestDataBean">
@@ -47,7 +46,9 @@
 		and wi.o_num = oi.o_num
 		and oi.o_num = d.o_num
  	</select>
- 
+ 	<select id="getMemCode" parameterType="int" resultType="int">
+ 		select mem_code from order_info where o_num = #{o_num}
+ 	</select>
  
    <insert id="warehousing" parameterType="warehousing.WarehousingDataBean">
 		insert into warehousing_info values(warehousing_info_seq.nextval, #{mem_code}, #{o_num}, #{w_date}, #{supply_values}, #{warehousing_quans})

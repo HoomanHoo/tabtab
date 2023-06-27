@@ -12,13 +12,31 @@ public class ULogonDBBean implements ULogonDao{
 
 	private static SqlSession session = SqlMapClient.getSession();
 	
+	//delete
+	public int deleteT(int mem_code) {
+		int result1 = session.delete("User.deleteO", mem_code);
+		int result2 = session.delete("User.deleteT", mem_code);
+		return result2;
+		
+	}
+	
+	//update
+	public int updateMy( ULogonDataBean dto) {
+		int result1 = session.update("User.updateP",dto);
+		int result2 = session.update("User.updateMy", dto);
+		return  result2;
+	}
+	
 	//session
-	public int checkMC( String email) {
-		return  session.selectOne("User.checkMC", email);
+	public ULogonDataBean checkMC(String email) {
+		return session.selectOne("User.checkMC", email);
+				
 	}
 	//selectMy
 	public ULogonDataBean selectMy(int mem_code) {
-		return  session.selectOne("User.selectMy", mem_code);
+		ULogonDataBean result = session.selectOne("User.selectMy", mem_code);
+		return  result;
+				
 	}
 	
 	//findpasswd
@@ -26,15 +44,14 @@ public class ULogonDBBean implements ULogonDao{
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("name", name);
 		map.put("email", email);
-		System.out.println(name);
 		return session.selectOne("User.findPasswd", map);
 	}
 	
-	//·Î±×ÀÎ 
+	//ë¡œê·¸ì¸ 
 	public int ucheck (String email, String password) {
 		int result = 0;
 		if( ucheckEmail( email ) != 0 ) {
-			//¾ÆÀÌµğ°¡ ÀÖ´Ù
+			//ì•„ì´ë””ê°€ ìˆë‹¤
 			ULogonDataBean dto = ugetMember( email );
 			if(password.equals( dto.getPassword() ) ) {
 				result = 1;
@@ -42,26 +59,29 @@ public class ULogonDBBean implements ULogonDao{
 				result = 0;
 			}
 		}else {
-			//¾ÆÀÌµğ°¡ ¾ø´Ù
+			//ì•„ì´ë””ê°€ ì—†ë‹¤
 			result = -1;
 		}
 		return result;
 	}
 	
-	 //Áßº¹È®ÀÎ
+	 //ì¤‘ë³µí™•ì¸
 	public int ucheckEmail( String email) {
-		return session.selectOne( "User.ucheckEmail", email);//email>¸Å°³º¯¼ö
+		return session.selectOne( "User.ucheckEmail", email);//email>ë§¤ê°œë³€ìˆ˜
 	}
 
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	public ULogonDataBean ugetMember(String email) {
 		return session.selectOne( "User.ugetMember", email);
 	}
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	public int uinsertMember(ULogonDataBean dto) {
 		int result1 = session.insert("User.uinsertM",dto);
+		String email = dto.getEmail();
+		int mem_code = session.selectOne("User.getMemCode", email);
+		dto.setMem_code(mem_code);
 		int result2 = session.insert("User.uinsertMember", dto);
 		return  result2;
 	}

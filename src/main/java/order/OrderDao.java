@@ -18,4 +18,5 @@ public interface OrderDao {
 	public String deleteAutoOrderSetting(AutoOrderListDataBean dto);
 	public List<OrderDataBean> getSelectableMediList(int mem_code);
 	public int insertDeliCode(DeliStateDataBean dto);
+	public List<OrderCheckDataBean> getTodayOrder(OrderCheckDataBean dto);
 }

@@ -6,7 +6,6 @@
 <html>
 <head>
 <link href="${path}design.css" rel="stylesheet" type="text/css">
-<script src="${path}jquery-3.6.4.js"></script>
 <script src="${path}autoOrderListScript.js" defer></script>
 <title>Insert title here</title>
 </head>

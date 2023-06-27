@@ -33,14 +33,13 @@ function modifycheck(){
 }
 
 //글삭제
-function mem_codecheck(){
-	if( ! mem_codeform.mem_code.value ){
-		alert( mem_codeerror );
-		mem_codeform.mem_code.focus();
-		return false;
+	function deleteContent() {
+		if(confirm("정말 삭제하시겠습니까?") == true) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-}
-
 //글쓰기
 function writecheck(){
     if( ! writeform.con_subject.value ){

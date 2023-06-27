@@ -1,10 +1,8 @@
 package inventory;
 
-import java.sql.Timestamp;
-
 public class InventoryDataBean {
-    
-	private int num;                 //목록번호
+
+	private int inven_num;           //재고번호
 	private int mem_code;            //약사넘버
 	private int medi_code;           //약넘버	
 	private String medi_name;        //약품명
@@ -14,14 +12,12 @@ public class InventoryDataBean {
 	private String manu_com;         //제조사
     private String chief_ingre;      //주성분
     private int vari_code;           //구분   
-    private Timestamp reg_date;      //검색일
-    private String keyword;          //검색어
-    private String type;             //검색타입
-	public int getNum() {
-		return num;
+   
+	public int getInven_num() {
+		return inven_num;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setInven_num(int inven_num) {
+		this.inven_num = inven_num;
 	}
 	public int getMem_code() {
 		return mem_code;
@@ -77,23 +73,6 @@ public class InventoryDataBean {
 	public void setVari_code(int vari_code) {
 		this.vari_code = vari_code;
 	}
-	public Timestamp getReg_date() {
-		return reg_date;
-	}
-	public void setReg_date(Timestamp reg_date) {
-		this.reg_date = reg_date;
-	}
-	public String getKeyword() {
-		return keyword;
-	}
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}    
+	
           
 }

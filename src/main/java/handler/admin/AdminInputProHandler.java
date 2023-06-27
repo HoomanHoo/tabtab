@@ -27,16 +27,15 @@ public class AdminInputProHandler implements CommandHandler{
 		
 		request.setCharacterEncoding("utf-8");
 		
+		String memDescCode = "4";
+		
 		AdminDataBean dto = new AdminDataBean();
-		dto.setPassword (request.getParameter("password") );
 		dto.setName (request.getParameter("name") );
 		dto.setEmail(request.getParameter("email") );
-		dto.setMem_desc_code(request.getParameter("mem_desc_code") );
+		dto.setPassword (request.getParameter("password") );
 		dto.setSupplier_name (request.getParameter("supplier_name") );
-		//dto.setSupplier_code(request.getParameter("supplier_code") );
-		
 		dto.setR_date(new Timestamp(System.currentTimeMillis() ) );
-	
+		dto.setMem_desc_code(memDescCode);
 		int result = adminDao.insertMember(dto);
 		
 		request.setAttribute("result", result);//" 리설트"의 값은 리설트이다>>jsp에서 리설트 달라 하니까 담아만 둠
@@ -45,20 +44,3 @@ public class AdminInputProHandler implements CommandHandler{
 	}
 
 }
-/*
-  
-  
-  
-  String email1 = request.getParameter("email1");
- 
-		String email2 = request.getParameter("email2");
-		String email = null;
-		if( ! email1.equals("") ) {
-			if(email2.equals("0") ) {
-				//직접입력
-				email = email1;
-			}else {
-				//선택입력
-				email = email1 + "@" +email2;
-			}
-		}*/

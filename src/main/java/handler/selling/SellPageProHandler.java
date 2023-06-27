@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,12 +34,12 @@ public class SellPageProHandler {
 	
 	@RequestMapping("/sellingpro")
 	public ModelAndView process(@RequestBody Map<String, Object>map, HttpServletRequest request ,HttpServletResponse response) throws Exception {
+		
+		HttpSession session = request.getSession();
+		
 		List<String> mediCodeList = (List<String>) map.get("mediCode");
 		List<String> sellingQuanList = (List<String>)map.get("sellingQuan");
 		List<String> sellingPriceList = (List<String>)map.get("sellingPrice");
-		
-		
-		//checkId 필요
 		
 		int[] mediCodes = new int[mediCodeList.size()];
 		int[] sellingQuans = new int[mediCodeList.size()];
@@ -46,7 +47,7 @@ public class SellPageProHandler {
 		
 		
 		
-		int mem_code = 1;
+		int mem_code = (int)session.getAttribute("mem_code");
 		int allSellingQuan = 0;
 		int allPrice = 0;
 		
@@ -84,14 +85,14 @@ public class SellPageProHandler {
 			else {
 				String error = "오류가 발생했습니다 잠시 후 다시 시도해주세요";
 				request.setAttribute("error", error);
-				return new ModelAndView("selling/sellPagePro");
+				return new ModelAndView("selling/sellingPage");
 			}
 		}
 		if(result2 != 0) {
 			List<CheckValueDataBean> checks = sellingDao.checkValue(mem_code);
 			int sumSupplyValues = 0;
 			int sumOrderCount = 0;
-			String supplierCode = "2";
+			String supplierCode = "1";
 			if(checks.size() != 0) {
 				OrderDataBean oDto = new OrderDataBean();
 				oDto.setO_date(date);
@@ -113,7 +114,7 @@ public class SellPageProHandler {
 				oDto.setSum_supply_value(sumSupplyValues);
 				oDto.setSum_order_count(sumOrderCount);
 				oDto.setSupplier_code(supplierCode);
-				oDto.setMemo("");
+				oDto.setMemo(" ");
 				sellingDao.updateOrder(oDto);
 				DeliStateDataBean dsDto = new DeliStateDataBean();
 				dsDto.setO_num(o_num);
@@ -125,7 +126,7 @@ public class SellPageProHandler {
 		else {
 			String error = "오류가 발생했습니다 잠시 후 다시 시도해주세요";
 			request.setAttribute("error", error);
-			return new ModelAndView("selling/sellPagePro");
+			return new ModelAndView("selling/sellingPage");
 		}
 		
 		List<InventoryDataBean> dtos = sellingDao.getInventory(mem_code);

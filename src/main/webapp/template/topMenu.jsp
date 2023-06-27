@@ -2,12 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@include file="/misc/textSet.jsp" %>
 
-
-
-		<input class="col" type="button" id="btnAutoOrder" class="btn btn-outline-secondary" value="${btnSetAutoOrder}">
-		<input class="col" type="button" id="btnSetOrder" class="btn btn-outline-secondary" value="${btnSetOrder }" >
-		<input class="col" type="button" id="btnCheckOrder" class="btn btn-outline-secondary" value="${btnCheckOrder }">
-		<input class="col"type="button" id="btnOrderHistory" class="btn btn-outline-secondary" value="${btnOrderHistory }">
+	<input class="col" type="button" id="btnAutoOrder" class="btn btn-outline-secondary" value="${btnSetAutoOrder}">
+	<input class="col" type="button" id="btnSetOrder" class="btn btn-outline-secondary" value="${btnSetOrder }" >
+	<input class="col" type="button" id="btnCheckOrder" class="btn btn-outline-secondary" value="${btnCheckOrder }">
+	<input class="col" type="button" id="btnOrderHistory" class="btn btn-outline-secondary" value="${btnOrderHistory }">
 
 <script type="text/javascript">
 //<!--
@@ -32,7 +30,7 @@ function SetOrder(){
 }
 
 function checkOrder(){
-	//window.location.href = "/tabtab/orderhistory.net";
+	window.location.href = "/tabtab/ordercheck.net";
 }
 
 function orderHistory(){

@@ -25,21 +25,22 @@ public class AutoOrderListHandler implements CommandHandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		//checkId 필요
-	//	HttpSession session = request.getSession();
-	//	int mem_code = (int) session.getAttribute("mem_code");
-	//	int result = orderDao.checkId(mem_code);
-	//	if(result == 1) {
-		int mem_code = 1;
-		List<AutoOrderListDataBean> dtos = orderDao.getAutoOrderList(mem_code);
+		HttpSession session = request.getSession();
+
 		
-		request.setAttribute("dtos", dtos);
-		
-		
-		return new ModelAndView("order/autoOrderList");
-	//	}
-	//	else {
-	//		return new ModelAndView("에러페이지 경로");
-	//	}
+		if(session.getAttribute("mem_code") == null) {
+			return new ModelAndView("user/loginForm");
+		}
+		else {
+			int mem_code = (int) session.getAttribute("mem_code");
+			List<AutoOrderListDataBean> dtos = orderDao.getAutoOrderList(mem_code);
+			
+			request.setAttribute("dtos", dtos);
+			
+			
+			return new ModelAndView("order/autoOrderList");
+			
+		}
 	}
 
 }

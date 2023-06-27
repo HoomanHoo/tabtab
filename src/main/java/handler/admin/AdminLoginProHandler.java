@@ -23,22 +23,23 @@ public class AdminLoginProHandler implements CommandHandler{
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		javax.servlet.http.HttpSession session =  request.getSession();//¼¼¼Ç ¸¸µë
+		javax.servlet.http.HttpSession session =  request.getSession();
 		
-		String email = request.getParameter("email");//ÀÔ·Â¹ÞÀº>¿äÃ»¹ÞÀº°É °¡Á®¿À°Ú´Ù???
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		
 		
-		//session¿¡ ³ÖÀº°Å
-		int mem_code = adminDao.checkMC(email);
 		
+		AdminDataBean dto = adminDao.checkMC(email);
+		
+		int mem_code = dto.getMem_code();
+		String mem_desc_code = dto.getMem_desc_code();
 		
 		int result = adminDao.check(email, password);
 		
-		session.setAttribute("email", email);
 		session.setAttribute("mem_code", mem_code);
-		
+		session.setAttribute("mem_desc_code", mem_desc_code);
 		request.setAttribute("result", result);
 		request.setAttribute( "email", email);
 		
@@ -54,12 +55,12 @@ public class AdminLoginProHandler implements CommandHandler{
  * HttpSession session1 = request.getSession(true);
  
 
-@GetMapping("/test1")//ÀÌ°Å ¾È½áµµ µÇ³ª?
+@GetMapping("/test1")//ï¿½Ì°ï¿½ ï¿½È½áµµ ï¿½Ç³ï¿½?
 
 public String test1(HttpSession session) {
 
-session.setAttribute("data1","¹®ÀÚ¿­1");
-//¼¼¼Ç¿¡ data1ÀÌ¶ó´Â ÀÌ¸§, ¹®ÀÚ¿­1ÀÌ¶ó´Â ³»¿ëÀ» Áý¾î³Ö¾î¶ó
+session.setAttribute("data1","ï¿½ï¿½ï¿½Ú¿ï¿½1");
+//ï¿½ï¿½ï¿½Ç¿ï¿½ data1ï¿½Ì¶ï¿½ï¿½ ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½Ú¿ï¿½1ï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½
 return "test1";
 }
 @GetMapping("/result1")

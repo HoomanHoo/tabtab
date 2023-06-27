@@ -12,8 +12,24 @@ public class AdminDBBean implements AdminDao{
 	
 	public static SqlSession session = SqlMapClient.getSession();	//디비 연결해서 가져오는거
 
+	
+	//sendEmail
+	public String sendPasswd(String email) {
+		return session.selectOne("Admin.sendPasswd", email);
+	}
+	
+	
+	
+	//delete
+	public int deleteT(int mem_code) {
+		int result1 = session.delete("Admin.deleteO", mem_code);
+		int result2 = session.delete("Admin.deleteT", mem_code);
+		
+		return result2;
+	}
+	
 	//session
-	public int checkMC( String email) {
+	public AdminDataBean checkMC( String email) {
 		return  session.selectOne("Admin.checkMC", email);
 	}
 
@@ -21,6 +37,9 @@ public class AdminDBBean implements AdminDao{
 	//회원가입
 	public int insertMember(AdminDataBean dto) {
 		int result1 = session.insert("Admin.insertM",dto);
+		String email = dto.getEmail();
+		int mem_code = session.selectOne("Admin.getMemCode", email);
+		dto.setMem_code(mem_code);
 		int result2 = session.insert("Admin.insertMember", dto);
 		return  result2;
 	}
@@ -53,9 +72,9 @@ public class AdminDBBean implements AdminDao{
 	}
 	
 	//관리자>유저회원가입
-	public int updateMember(AdminDataBean dto) {
-		int result1 = session.update("Admin.updatePI",dto);
-		int result2 = session.update("Admin.updateIDI", dto);
+	public int updateMember(AdminDataBean dtos) {
+		int result1 = session.update("Admin.updatePI",dtos);
+		int result2 = session.update("Admin.updateIDI", dtos);
 		return  result2;
 	}
 	/*
@@ -90,8 +109,6 @@ public class AdminDBBean implements AdminDao{
 		return session.selectOne( "Admin.selectMember", mem_code);
 	} 
 /**/
-
-	
 	
 	/*public int modifyArticle( BoardDataBean dto ) {	//이 공간에서 에러나는지 수정후 리스트로 가지 않고 500에러 어디가 오타인걸까~~~~~~
 		return session.update( "Board.modifyArticle", dto);

@@ -28,8 +28,6 @@ public class UserPasswdView implements CommandHandler{
 		
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		System.out.println(name);
-		System.out.println(email);
 		String result = uLogonDao.findPasswd(name, email);
 		
 		if(result == null) {
@@ -39,9 +37,7 @@ public class UserPasswdView implements CommandHandler{
 			request.setAttribute("result", result);
 			sendMail.sendMail(email, result);
 		}
-		
-		System.out.println(result);
-		
+
 		
 		return new ModelAndView("user/userPasswdView");
 	}

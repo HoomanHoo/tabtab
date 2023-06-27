@@ -9,19 +9,19 @@
 <hr>
 <ul class="nav nav-pills flex-column mb-auto">
 	<li class="nav-item">
-    	<a href="#" class="nav-link text-black" aria-current="page">
+    	<a href="/tabtab/usermypage.net" class="nav-link text-black" aria-current="page">
       		<svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
       		${btnMyPage }
     	</a>
 	</li>
 	<li>
-    	<a href="#" class="nav-link text-black">
+    	<a href="/tabtab/question.net" class="nav-link text-black">
       		<svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
      		${btnQuestionBoard }
     	</a>
 	</li>
 	<li>
-    	<a href="#" class="nav-link text-black">
+    	<a href="/tabtab/inventory.net" class="nav-link text-black">
       		<svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
 			${btnInventory }
     	</a>
@@ -39,7 +39,7 @@
     	</a>
 	</li>
 	 <li>
-    	<a href="#" class="nav-link text-black">
+    	<a href="/tabtab/search.net" class="nav-link text-black">
       		<svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
      		${btnSearch }
    		</a>

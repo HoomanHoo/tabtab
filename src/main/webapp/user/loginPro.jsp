@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="setting.jsp"%>
-<script src="${project}script_user.js"></script>
+<%@ include file="usetting.jsp"%>
+<script src="${path}script_user.js"></script>
 
 
 <h2>${user_page_login}</h2>
@@ -25,6 +25,5 @@
 </c:if>
 
 <c:if test="${result eq 1}">
-	${sessionScope.memEmail = email}
 	<c:redirect url="userloginform.net"/>
 </c:if>

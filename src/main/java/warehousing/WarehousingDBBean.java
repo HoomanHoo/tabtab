@@ -38,8 +38,8 @@ public class WarehousingDBBean implements WarehousingDao{
 		return session.update("order.updateDeliState", dto);
 	}
 	
-	public List<OrderRequestDataBean> getOrderReqList(int mem_code){
-		return session.selectList("warehousing.getOrderRequest", mem_code);
+	public List<OrderRequestDataBean> getOrderReqList(){
+		return session.selectList("warehousing.getOrderRequest");
 	}
 	
 	public List<DetailOrderRequestDataBean> getDetailOrderRequest(int o_num){
@@ -61,5 +61,9 @@ public class WarehousingDBBean implements WarehousingDao{
 	}
 	public List<OrderRequestDetailAndWarehousingDataBean>getOrderRequestAndWarehousingDetail(int o_num){
 		return session.selectList("warehousing.getOrderRequestAndWarehousingDetail", o_num);
+	}
+	
+	public int getMemCode(int o_num) {
+		return session.selectOne("warehousing.getMemCode", o_num);
 	}
 }

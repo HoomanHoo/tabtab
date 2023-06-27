@@ -9,12 +9,12 @@
 
 <c:if test="${result eq 0}">
    	<script type="text/javascript">
-   	    //<!--
+   	    // <!--
    	    alert( modifyerror );
-   	    -->
+   	    // -->
    	</script>
    	<meta http-equiv="refresh" content="0; url=question.net?pageNum=${pageNum}">  
 </c:if>
 <c:if test="${result eq 1}">
-    <c:redirect url="quetion.net?pageNum=${pageNum}"/>
+    <c:redirect url="question.net?pageNum=${pageNum}"/>
 </c:if>

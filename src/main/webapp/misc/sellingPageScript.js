@@ -109,46 +109,48 @@ function sell(){
 	let sellingQuanArr = [];
 	let sellingPriceArr = [];
 	
-	for(var i = 0; i < mediCodeElements.length; i++){
-		mediCodeArr[i] = mediCodeElements[i].value;
-		sellingQuanArr[i] = sellingQuanElements[i].value;
-		sellingPriceArr[i] = sellingPriceElements[i].value;
+	if(mediCodeElements[0] == null){
+		alert("판매 리스트에 등록된 상품이 없습니다");
 	}
-	
-	let data = JSON.stringify({
+	else{
+		for(var i = 0; i < mediCodeElements.length; i++){
+			mediCodeArr[i] = mediCodeElements[i].value;
+			sellingQuanArr[i] = sellingQuanElements[i].value;
+			sellingPriceArr[i] = sellingPriceElements[i].value;
+		}
 		
-		mediCode:mediCodeArr,
-		sellingQuan:sellingQuanArr,
-		sellingPrice:sellingPriceArr,
+		let data = JSON.stringify({
+			
+			mediCode:mediCodeArr,
+			sellingQuan:sellingQuanArr,
+			sellingPrice:sellingPriceArr,
+			
+		});
 		
-	});
-	
-	const xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState == 4){
-			if(xhr.status == 200){
-				let result = xhr.responseText;
-				cancel();
-				let invenList = document.querySelector("#invenList");
-				invenList.replaceChildren();
-				invenList.insertAdjacentHTML("afterbegin", result);
-				let elements = document.querySelectorAll("input[name=mediName]");
-				for (var i = 0; i < elements.length; i++){
-					elements[i].addEventListener("click", add);
+		const xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					let result = xhr.responseText;
+					cancel();
+					let invenList = document.querySelector("#invenList");
+					invenList.replaceChildren();
+					invenList.insertAdjacentHTML("afterbegin", result);
+					let elements = document.querySelectorAll("input[name=mediName]");
+					for (var i = 0; i < elements.length; i++){
+						elements[i].addEventListener("click", add);
+					}
+				}
+				else{
+					alert("처리에 실패했습니다 잠시 후 다시 시도해주세요");
 				}
 			}
-			else{
-				alert("처리에 실패했습니다 잠시 후 다시 시도해주세요");
-			}
 		}
-		else{
-			alert("처리에 실패했습니다 잠시 후 다시 시도해주세요");
-		}
+		
+		xhr.open("POST", "sellingpro.net", true);
+		xhr.setRequestHeader("Content-type", "application/json; charset=utf-8;");
+		xhr.send(data);
 	}
-	
-	xhr.open("POST", "sellingpro.net", true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=utf-8;");
-	xhr.send(data);
 	
 }
 

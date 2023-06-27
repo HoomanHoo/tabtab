@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="setting.jsp"%>
-<script src="${project}script_admin.js"></script>
+<%@ include file="asetting.jsp"%>
+<script src="${path}script_admin.js"></script>
 
 
 <h2>${admin_page_login}</h2>
@@ -25,9 +25,9 @@
 </c:if>
 
 <c:if test="${result eq 1}">
-	${sessionScope.memEmail = email}<!-- 세션에 값저장 -->
-		<!-- ${sessionScope.memCode = mem_code} -->
-	<c:redirect url="adminorderform.net"/>
+	<%--${sessionScope.memEmail = email}<!-- 세션에 값저장 -->
+		 ${sessionScope.memCode = mem_code}  --%>
+	<c:redirect url="orderrequest.net"/>
 </c:if>
 
 

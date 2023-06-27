@@ -1,9 +1,28 @@
 var setPeriod = document.querySelector("#setPeriod");
 var oDates = document.querySelectorAll("input[name=oDate]");
+var btnDetail = document.querySelectorAll("input[type=button]");
+
+
+for(var i = 0; i < btnDetail.length; i++){
+	btnDetail[i].addEventListener("click", showDetail);
+}
+
+function showDetail(){
+	let tid = this.id;
+	let tid2 = tid + 2; //o_num
+	let tid3 = tid + 3; //d_code
+	let oNum = document.querySelector("#" + tid2).value;
+	let dCode = document.querySelector("#" + tid3).value;
+	window.location.href = "orderhistorydetail.net?onum=" + oNum + "&&delistate=" + dCode;
+}
+
+
+
+
 
 setPeriod.addEventListener("change", calc); 
 
-function calc(event){
+function calc(){
 	var date = new Date();
 	var settedPeriod = setPeriod.value;
 	

@@ -4,7 +4,7 @@ var passwderror = "비밀번호를 입력하세요.";
 var repasswderror ="비밀번호가 다릅니다.";
 var pl_imgerror = "약사 면허증을 등록하세요.";
 var pr_imgerror = "사업자등록증을 등록하세요.";
-//var telerror = "전화번호를 입력하세요.";
+var p_addresserror = "사업장 주소를 입력하세요.";
 
 var emailterror = "이메일 형식(@)에 맞지 않습니다.";
 
@@ -26,13 +26,14 @@ function erroralert(msg) {
 
 //회원정보 수정
 function usermodifycheck() {
-	if( ! usermodifyform.password.value) {
+	if( ! usermypagemodi.password.value) {
 		alert(passwderror);
-		usermodifyform.password.focus();
+		usermypagemodi.password.focus();
 		return false;
-	}else if (usermodifyform.password.value != usermodifyform.repasswd.value) {
-		alert(repasswderror);
-		usermodifyform.password.focus();
+	}
+	if ( ! usermypagemodi.p_address.value) {
+		alert(p_addresserror);
+		usermypagemodi.p_address.focus();
 		return false;
 	}
 }

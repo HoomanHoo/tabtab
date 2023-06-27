@@ -1,26 +1,29 @@
-package search;
-
-import java.sql.Timestamp;
-import java.util.Arrays;
+  package search;
 
 public class SearchDataBean {
-
-	private int num;                 //목록번호	
+    
+	private int num;                 //목록번호
+	private int medi_code;           //약품번호	
 	private String medi_name;        //약품명
 	private int supply_value;        //공급가
 	private int selling_price;       //판매가
     private String manu_com;         //제조사
     private String chief_ingre;      //주성분
     private int vari_code;           //구분   
-    private Timestamp reg_date;      //검색일
     private String keyword;          //검색어
-  
+    private String type;             //검색유형
     
     public int getNum() {
 		return num;
 	}
 	public void setNum(int num) {
 		this.num = num;
+	}	
+    public int getMedi_code() {
+		return medi_code;
+	}
+	public void setMedi_code(int medi_code) {
+		this.medi_code = medi_code;
 	}	
 	
 	public String getMedi_name() {
@@ -60,20 +63,19 @@ public class SearchDataBean {
 		this.vari_code = vari_code;
 	}
 	
-	public Timestamp getReg_date() {
-		return reg_date;
-	}
-	public void setReg_date(Timestamp reg_date) {
-		this.reg_date = reg_date;
-	}
 	public String getKeyword() {
 		return keyword;
 	}
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
-	}			
-	public Object getSearch() {		
-		return null;
+	}	
+	
+	public String getType() {
+		return type;
 	}
+	public void setType(String type) {
+		this.type = type;
+	}	
+	
 }
 

@@ -11,7 +11,7 @@ $(document).ready(
 				}
 				else{
 					$("#newList").append(
-							"<div class='row' style='height:30px'>"
+							"<div id='" + this.value + "5' class='row' style='height:30px'>"
 							+ "<input type='text' id='" + this.value + "1' name='mediName' class='col' value='" + this.value + "' readonly>"
 							+ "<input type='number' id='" + this.value + "2' name='orderQuan' class='col-2' value='1' min='1'>"
 							+ "<input type='text' id='" + this.value + "3' name='supplyPrice' class='col' value='" + hval + "' readonly>"
