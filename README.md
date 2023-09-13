@@ -1,4 +1,9 @@
 # tabtab
 
-하나의 기능 구현이 끝났을 때 꼭 한 번 실행 해보고 정상적으로 빌드가 되는지, 작동하는지 확인 해보세요
+약국 재고 관리 및 자동 발주 시스템 tabtab 입니다
+
+# Database 설계
+
+![tabtabERD](https://github.com/HoomanHoo/tabtab/assets/129934364/11dedd22-c2f7-4897-a8bf-c5ef85d88e6c)
+
 
