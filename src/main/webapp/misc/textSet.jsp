@@ -71,9 +71,10 @@
 <c:set var="btnSearch" value="검색"/>
 <c:set var="btnFindPasswd" value="비밀번호 찾기"/>
 <c:set var="btnCancel" value="취소"/>
-<c:set var="btnSetAutoOrder" value="자동발주설정"/>
+<c:set var="btnSetAutoOrder" value="자동발주"/>
 <c:set var="btnSetOrder" value="수동발주"/>
 <c:set var="btnCheckOrder" value="발주확인"/>
+<c:set var="btnOrderRequest" value="발주요청"/>
 <c:set var="btnOrderHistory" value="과거발주이력"/>
 <c:set var="btnBack" value="뒤로가기"/>
 <c:set var="btnWarehousing" value="입고"/>

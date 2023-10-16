@@ -19,7 +19,7 @@
 			    <c:import url="/template/sidebar.jsp"/>
 	  		</div>
 	  		<div class="col-sm-10" style="margin-right:0">
-	  			<div class="row" style="height:5vh">
+	  			<div class="row" style="height:5vh; margin-bottom:2px">
 	  				<c:import url="/template/topMenu.jsp"/>
 	  			</div>
 	  			<div class="row">

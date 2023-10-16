@@ -23,7 +23,7 @@
 	<li>
     	<a href="/tabtab/orderrequest.net" class="nav-link text-black">
       		<svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-			${btnCheckOrder }
+			${btnOrderRequest }
     	</a>
 	</li>
 </ul>

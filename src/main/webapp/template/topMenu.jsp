@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@include file="/misc/textSet.jsp" %>
 
-	<input class="col" type="button" id="btnAutoOrder" class="btn btn-outline-secondary" value="${btnSetAutoOrder}">
-	<input class="col" type="button" id="btnSetOrder" class="btn btn-outline-secondary" value="${btnSetOrder }" >
-	<input class="col" type="button" id="btnCheckOrder" class="btn btn-outline-secondary" value="${btnCheckOrder }">
-	<input class="col" type="button" id="btnOrderHistory" class="btn btn-outline-secondary" value="${btnOrderHistory }">
+	<input class="col btn btn-outline-secondary" type="button" id="btnAutoOrder" value="${btnSetAutoOrder}">
+	<input class="col btn btn-outline-secondary" type="button" id="btnSetOrder" value="${btnSetOrder }" >
+	<input class="col btn btn-outline-secondary" type="button" id="btnCheckOrder" value="${btnCheckOrder }">
+	<input class="col btn btn-outline-secondary" type="button" id="btnOrderHistory" value="${btnOrderHistory }">
 
 <script type="text/javascript">
 //<!--
