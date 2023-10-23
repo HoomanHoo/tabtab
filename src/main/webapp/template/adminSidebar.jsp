@@ -10,19 +10,19 @@
 <ul class="nav nav-pills flex-column mb-auto">
 	<li class="nav-item">
     	<a href="/tabtab/adminsignuplist.net" class="nav-link text-black" aria-current="page">
-      		<svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+      		<svg class="bi me-2" width="16" height="16"><use xlink:href="/adminsignok"></use></svg>
       		${btnRegistRequest }
     	</a>
 	</li>
 	<li>
     	<a href="/tabtab/question.net" class="nav-link text-black">
-      		<svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+      		<svg class="bi me-2" width="16" height="16"><use xlink:href="/question"></use></svg>
      		${btnQuestionBoard }
     	</a>
 	</li>
 	<li>
     	<a href="/tabtab/orderrequest.net" class="nav-link text-black">
-      		<svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+      		<svg class="bi me-2" width="16" height="16"><use xlink:href="/orderrequest"></use></svg>
 			${btnOrderRequest }
     	</a>
 	</li>

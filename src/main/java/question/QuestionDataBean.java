@@ -8,12 +8,13 @@ public class QuestionDataBean {
 	private String con_subject;		//
 	private String content;			//	
 	private Timestamp w_date;		//       
-    private int ref;				//
-    private int re_step;			//
-    private int re_level;			//  
+    private int content_group;				//
+    private int content_procedure;			//
+    private int content_level;			//  
     
     private	String	name;			// 
     private String	mem_desc_code;	// 계정구분
+    
     
 	public int getCon_num() {
 		return con_num;
@@ -45,23 +46,23 @@ public class QuestionDataBean {
 	public void setW_date(Timestamp w_date) {
 		this.w_date = w_date;
 	}
-	public int getRef() {
-		return ref;
+	public int getContent_group() {
+		return content_group;
 	}
-	public void setRef(int ref) {
-		this.ref = ref;
+	public void setContent_group(int content_group) {
+		this.content_group = content_group;
 	}
-	public int getRe_step() {
-		return re_step;
+	public int getContent_procedure() {
+		return content_procedure;
 	}
-	public void setRe_step(int re_step) {
-		this.re_step = re_step;
+	public void setContent_procedure(int content_procedure) {
+		this.content_procedure = content_procedure;
 	}
-	public int getRe_level() {
-		return re_level;
+	public int getContent_level() {
+		return content_level;
 	}
-	public void setRe_level(int re_level) {
-		this.re_level = re_level;
+	public void setContent_level(int content_level) {
+		this.content_level = content_level;
 	}
 	public String getName() {
 		return name;

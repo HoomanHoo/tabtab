@@ -20,12 +20,12 @@
     <select id="getArticles" parameterType="java.util.Map" resultType="question.QuestionDataBean">
     
             select con_num, mem_code, con_subject,
-			w_date, ref, re_step, re_level, content, r 
-			from (select con_num, mem_code, con_subject, w_date, ref, re_step
-			, re_level, content, rownum r from 
-			(select con_num, mem_code, con_subject, w_date, ref, re_step, re_level 
-			, content from question_board order by ref desc, re_step asc) 
-			order by ref desc, re_step asc ) where r &gt;= #{start} and r &lt;= #{end}
+			w_date, content_group, content_procedure, content_level, content, r 
+			from (select con_num, mem_code, con_subject, w_date, content_group, content_procedure
+			, content_level, content, rownum r from 
+			(select con_num, mem_code, con_subject, w_date, content_group, content_procedure, content_level 
+			, content from question_board order by content_group desc, content_procedure asc) 
+			order by content_group desc, content_procedure asc ) where r &gt;= #{start} and r &lt;= #{end}
     </select>
     
     <select id="getArticle" parameterType="int" resultType="question.QuestionDataBean">
@@ -40,13 +40,13 @@
     </select>
     
     <update id="insertReply" parameterType="question.QuestionDataBean">
-        update question_board set re_step=re_step+1 where ref= #{ref} and re_step &gt; #{re_step}
+        update question_board set content_procedure=content_procedure+1 where content_group= #{content_group} and content_procedure &gt; #{content_procedure}
     </update>
     
     <insert id="insertArticle" parameterType="question.QuestionDataBean">
-        insert into question_board( con_num, mem_code, con_subject, w_date, ref, re_step, re_level, content ) 
+        insert into question_board( con_num, mem_code, con_subject, w_date, content_group, content_procedure, content_level, content ) 
 	    values(question_board_seq.NEXTVAL, #{mem_code}, #{con_subject}, #{w_date},
-	    #{ref}, #{re_step}, #{re_level}, #{content})
+	    #{content_group}, #{content_procedure}, #{content_level}, #{content})
     </insert>
     
     <update id="modifyArticle" parameterType="question.QuestionDataBean">
@@ -54,7 +54,7 @@
     </update>
     
     <select id="reply" parameterType="question.QuestionDataBean" resultType="int">
-        select count(*) from question_board where ref= #{ref} and re_step=#{re_step}+1 and re_level &gt; #{re_level} 				
+        select count(*) from question_board where content_group= #{content_group} and content_procedure=#{content_procedure}+1 and content_level &gt; #{content_level} 				
     </select>
     
     <select id="check" parameterType="question.QuestionDataBean" resultType="int">
@@ -62,7 +62,7 @@
     </select>
     
     <update id="deleteReply" parameterType="question.QuestionDataBean">
-        update question_board set re_step=re_step-1 where ref= #{ref} and re_step &gt; #{re_step}
+        update question_board set content_procedure=content_procedure-1 where content_group= #{content_group} and content_procedure &gt; #{content_procedure}
     </update>
     
     <delete id="deleteArticle" parameterType="int">

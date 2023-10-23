@@ -26,9 +26,9 @@
 				<h2> ${page_question} </h2>
 				<form method="post" action="questionwritepro.net" name="writeform" onsubmit="return writecheck()">
 				    <input type="hidden" name="con_num"  value="${con_num}">
-				    <input type="hidden" name="ref"		 value="${ref}">
-				    <input type="hidden" name="re_step"  value="${re_step}">
-				    <input type="hidden" name="re_level" value="${re_level}">
+				    <input type="hidden" name="contentGroup" value="${contentGroup}">
+				    <input type="hidden" name="contentProcedure" value="${contentProcedure}">
+				    <input type="hidden" name="contentLevel" value="${contentLevel}">
 				<%--    <input type="hidden" name="mem_desc_code" value="${mem_desc_code}"> --%>
 				
 				    <table>

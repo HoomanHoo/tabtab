@@ -53,7 +53,7 @@
 	<insert id="insertMember" parameterType="admin.AdminDataBean">
 		
 		insert into supplier_information 
-		values( #{mem_code}, supplier_information_seq.NEXTVAL, #{supplier_name} )
+		values( supplier_information_seq.NEXTVAL, #{mem_code}, #{supplier_name} )
 	</insert>
 	
 	

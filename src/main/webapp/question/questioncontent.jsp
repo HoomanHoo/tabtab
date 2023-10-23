@@ -73,7 +73,7 @@
 					            <input class= "inputbutton" type="submit" value="${btn_delete}">
 							</c:if>
 					            <input class= "inputbutton" type="button" value="${btn_reply}"
-					                 onclick= "location='questionwriteform.net?con_num=${dto.con_num}&ref=${dto.ref}&re_step=${dto.re_step}&re_level=${dto.re_level}'">
+					                 onclick= "location='questionwriteform.net?con_num=${dto.con_num}&contentgroup=${dto.content_group}&contentprocedure=${dto.content_procedure}&contentlevel=${dto.content_level}'">
 					            <input class= "inputbutton" type="button" value="${btn_list}"
 					                 onclick= "location='question.net?pageNum=${pageNum}'">
 					        </th>

@@ -38,23 +38,24 @@ public class QuestionWriteProHandler implements CommandHandler{
 	    request.setCharacterEncoding( "utf-8" );
 
         String	strConNum		= request.getParameter("con_num");
-        String	strRef			= request.getParameter("ref");
-        String	strReStep		= request.getParameter("re_step");
-        String	strReLevel		= request.getParameter("re_level");
+        String	strContentGroup			= request.getParameter("contentGroup");
+        String	strContentProcedure		= request.getParameter("contentProcedure");
+        String	strContentLevel		= request.getParameter("contentLevel");
         String	strConSubject	= request.getParameter("con_subject");
         String	strContent		= request.getParameter("content");
+
         
         int		con_num		= Integer.parseInt(strConNum);
-        int		ref			= Integer.parseInt(strRef);
-        int		re_step		= Integer.parseInt(strReStep);
-        int		re_level	= Integer.parseInt(strReLevel);
+        int		contentGroup			= Integer.parseInt(strContentGroup);
+        int		contentProcedure		= Integer.parseInt(strContentProcedure);
+        int		contentLevel	= Integer.parseInt(strContentLevel);
         
 		QuestionDataBean	dto	= new QuestionDataBean();
 
 		dto.setCon_num( con_num );
-		dto.setRef( ref );
-		dto.setRe_step( re_step );
-		dto.setRe_level( re_level );		
+		dto.setContent_group( contentGroup );
+		dto.setContent_procedure( contentProcedure );
+		dto.setContent_level( contentLevel );		
 		dto.setCon_subject( strConSubject);
 		dto.setContent( strContent );
 		dto.setMem_code( mem_code );
@@ -63,9 +64,9 @@ public class QuestionWriteProHandler implements CommandHandler{
         System.out.println("con_num : " + con_num);
         System.out.println("mem_code		: " + mem_code);
         System.out.println("strConSubject	: " + strConSubject);
-        System.out.println("ref				: " + ref);
-        System.out.println("re_step			: " + re_step);
-        System.out.println("re_level		: " + re_level);
+        System.out.println("strContentGroup	: " + strContentGroup);
+        System.out.println("strContentProcedure	: " + strContentProcedure);
+        System.out.println("strContentLevel		: " + strContentLevel);
         System.out.println("strContent		: " + strContent);
         
 	    int result= questionDao.insertArticle( dto );

@@ -23,7 +23,7 @@
 		  		<div class="col">
 			  		<div class="row">
 			  			<div class="col">
-			  				<h4>¹ßÁÖ ¿äÃ»</h4>
+			  				<h4>ë°œì£¼ ìš”ì²­</h4>
 			  			</div>
 			  		</div>
 			  		<div class="row">

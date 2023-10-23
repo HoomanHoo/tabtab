@@ -28,9 +28,9 @@ private SqlSession session= SqlMapClient.getSession();
     public int insertArticle( QuestionDataBean dto ) {
 	
 		int con_num		= dto.getCon_num();		//제목글 0 / 답변글 !0
-		int ref			= dto.getRef();			//그룹화아이디
-		int re_step		= dto.getRe_step();		//그룹 내 글순서
-		int re_level	= dto.getRe_level();	//그룹 내 글레벨(들여쓰기 순서)
+		int contentGroup 		= dto.getContent_group();			//그룹화아이디
+		int contentProcedure	= dto.getContent_procedure();		//그룹 내 글순서
+		int contentLevel	= dto.getContent_level();	//그룹 내 글레벨(들여쓰기 순서)
 			
 		String	sql	= null;
 		
@@ -39,29 +39,29 @@ private SqlSession session= SqlMapClient.getSession();
 		if( con_num == 0 ) {
 			//제목글인 경우
 			if( getCount() != 0 ) {						    			    
-			    ref= ( (Integer)session.selectOne("Question.maxNum") ) + 1;
+			    contentGroup = ( (Integer)session.selectOne("Question.maxNum") ) + 1;
 		    } else {
 		    	 //글이 없는 경우
-		         ref=1;
+		         contentGroup = 1;
 		    }
 
-			re_step= 0;
-		    re_level=0;
+			contentProcedure = 0;
+		    contentLevel = 0;
 		} else {
 			//답변글인 경우					
 			session.update("Question.insertReply", dto );
 
-			re_step ++;  // 답글을 내리겠다
-		    re_level ++; // 답글을 내리겠다
+			contentProcedure ++;  // 답글을 내리겠다
+		    contentLevel ++; // 답글을 내리겠다
 		}
 
-		dto.setRef(ref);
-		dto.setRe_step(re_step);
-		dto.setRe_level(re_level);
+		dto.setContent_group(contentGroup);
+		dto.setContent_procedure(contentProcedure);
+		dto.setContent_level(contentLevel);
 
-		System.out.println(Thread.currentThread().getStackTrace()[1] + ">> ref : " + ref);
-	    System.out.println(Thread.currentThread().getStackTrace()[1] + ">> re_step : " + re_step);
-	    System.out.println(Thread.currentThread().getStackTrace()[1] + ">> re_level : " + re_level);
+		System.out.println(Thread.currentThread().getStackTrace()[1] + ">> contentGroup : " + contentGroup);
+	    System.out.println(Thread.currentThread().getStackTrace()[1] + ">> contentProcedure : " + contentProcedure);
+	    System.out.println(Thread.currentThread().getStackTrace()[1] + ">> contentLevel : " + contentLevel);
 
 		return session.insert( "Question.insertArticle", dto );
     }
@@ -79,13 +79,13 @@ private SqlSession session= SqlMapClient.getSession();
 	public int deleteArticle( int con_num ) {
 		QuestionDataBean	dto	= getArticle( con_num );
 		
-		int ref			= dto.getRef();
-		int re_step		= dto.getRe_step();
-		int re_level	= dto.getRe_level();
+		int contentGroup	 = dto.getContent_group();
+		int contentProcedure = dto.getContent_procedure();
+		int ContentLevel	 = dto.getContent_level();
 		
-		System.out.println(Thread.currentThread().getStackTrace()[1] + ">> ref : " + ref);
-		System.out.println(Thread.currentThread().getStackTrace()[1] + ">> re_step : " + re_step);
-		System.out.println(Thread.currentThread().getStackTrace()[1] + ">> re_level : " + re_level);
+		System.out.println(Thread.currentThread().getStackTrace()[1] + ">> contentGroup : " + contentGroup);
+		System.out.println(Thread.currentThread().getStackTrace()[1] + ">> contentProcedure : " + contentProcedure);
+		System.out.println(Thread.currentThread().getStackTrace()[1] + ">> ContentLevel : " + ContentLevel);
 		
 		int	replyCount	= session.selectOne("Question.reply", dto );
 						

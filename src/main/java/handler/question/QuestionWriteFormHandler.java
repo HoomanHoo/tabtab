@@ -31,23 +31,22 @@ public class QuestionWriteFormHandler implements CommandHandler {
 	    
 		//제목글
 	    int con_num		= 0;	//임시 구분용도   0제목글/ !0 답변글
-	    int ref			= 1;	//그룹화
-	    int re_step		= 0;	//그룹 내 글순서
-	    int re_level	= 0;	//그룹 내 들여쓰기 순서
+	    int contentGroup			= 1;	//그룹화
+	    int contentProcedure		= 0;	//그룹 내 글순서
+	    int contentLevel	= 0;	//그룹 내 들여쓰기 순서
 	    
 	    if( request.getParameter( "con_num" ) != null ) {
 	    	 //답변글
 		     con_num	= Integer.parseInt( request.getParameter( "con_num" ) );
-		     ref		= Integer.parseInt( request.getParameter( "ref" ) ); 
-		     re_step	= Integer.parseInt( request.getParameter( "re_step" ) );
-		     re_level	= Integer.parseInt( request.getParameter( "re_level" ) );
+		     contentGroup		= Integer.parseInt( request.getParameter( "contentgroup" ) ); 
+		     contentProcedure	= Integer.parseInt( request.getParameter( "contentprocedure" ) );
+		     contentLevel	= Integer.parseInt( request.getParameter( "contentlevel" ) );
 	    }
 
 	    request.setAttribute("con_num",	 con_num );
-	    request.setAttribute("ref",		 ref );
-	    request.setAttribute("re_step",	 re_step );
-	    request.setAttribute("re_level", re_level );
-	    request.setAttribute("mem_desc_code", mem_desc_code);
+	    request.setAttribute("contentGroup",		 contentGroup );
+	    request.setAttribute("contentProcedure",	 contentProcedure );
+	    request.setAttribute("contentLevel", contentLevel );
 
 		return new ModelAndView("question/questionwriteForm");
 	}

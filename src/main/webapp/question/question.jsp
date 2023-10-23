@@ -53,11 +53,11 @@
 				    		        <c:set var="number" value="${number-1}"/>   		        
 				    		    </td>
 				    		    <td>
-				    		        <c:if test="${dto.re_level gt 1}">   		       
-				    		            <c:set var="wid" value="${(dto.re_level-1)*10}"/>
+				    		        <c:if test="${dto.content_level gt 1}">   		       
+				    		            <c:set var="wid" value="${(dto.content_level-1)*10}"/>
 				    		        	<img src= "${project}images/level.gif" border="0" width="${wid}" height="15">
 				    		        </c:if>
-				    		        <c:if test="${dto.re_level gt 0}">
+				    		        <c:if test="${dto.content_level gt 0}">
 				    		        	<img src= "${project}images/re.gif" border="0" width="20" height="15">
 				    		        </c:if>
 				    		        <a href= "questioncontent.net?con_num=${dto.con_num}&pageNum=${pageNum}&number=${number+1}">
