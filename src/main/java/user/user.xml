@@ -46,13 +46,14 @@
 	<select id="getMemCode" parameterType="String" resultType="int">
 		select mem_code from id_default_info where email=#{email, jdbcType=VARCHAR}
 	</select>
+	
+	
   	<insert id="uinsertM" parameterType="user.ULogonDataBean">
 		insert into id_default_info(mem_code, name, email, password, r_date, mem_desc_code) 
 		values( 
 			id_default_info_seq.NEXTVAL, #{name}, #{email, jdbcType=VARCHAR}, #{password}, #{r_date}, #{mem_desc_code}
 		)
 	</insert> 
-	
 	
 	<insert id="uinsertMember" parameterType="user.ULogonDataBean">
 		insert into  phar_information(mem_code, apply_desc_code, pr_img, pl_img)

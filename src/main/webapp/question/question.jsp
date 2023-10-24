@@ -19,9 +19,16 @@
 		    <c:import url="/template/header.jsp"/>
   		</nav>
   		<div class="row" style="margin-right:0">
-	  		<div class="col-sm-2" style="margin-right:0">
-			    <c:import url="/template/sidebar.jsp"/>
-	  		</div>
+  			<c:if test="${memDescCode eq 3}">
+		  		<div class="col-sm-2" style="margin-right:0">
+				    <c:import url="/template/sidebar.jsp"/>
+		  		</div>
+	  		</c:if>
+	  		<c:if test="${memDescCode eq 4}">
+		  		<div class="col-sm-2" style="margin-right:0">
+				    <c:import url="/template/adminSidebar.jsp"/>
+		  		</div>
+	  		</c:if>
 			<div class="col-sm-10" style="margin-right:0; float:right">
 				<h2> ${page_questionlist} ( ${str_count} : ${count} ) </h2>	
 				<table>

@@ -22,27 +22,24 @@ public class UserLoginProHandler implements CommandHandler{
 	@RequestMapping("/userloginpro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		HttpSession session =  request.getSession();//���� ����
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		
 		int result = uLogonDao.ucheck(email, password);
 		if(result == 1) {
-			ULogonDataBean dto =uLogonDao.checkMC(email);
+			ULogonDataBean dto = uLogonDao.checkMC(email);
 			
-			
-			int mem_code = dto.getMem_code();
+			String mem_code = Integer.toString(dto.getMem_code());
 			String mem_desc_code = dto.getMem_desc_code();
 			
 			session.setAttribute("mem_code", mem_code);
 			session.setAttribute("mem_desc_code", mem_desc_code);
 		}
-		
-		
+
 		request.setAttribute("result", result);
-		
 		
 		return new ModelAndView("user/loginPro");
 	}

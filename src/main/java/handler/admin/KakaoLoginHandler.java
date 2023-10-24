@@ -59,7 +59,7 @@ public class KakaoLoginHandler implements CommandHandler{
 		KakaoLoginToken klToken = null;
 		
 		try {
-		klToken = objMapper.readValue(tokenResponse.getBody(), KakaoLoginToken.class);
+			klToken = objMapper.readValue(tokenResponse.getBody(), KakaoLoginToken.class);
 		}
 		catch(JsonMappingException e){
 			e.printStackTrace();
@@ -83,7 +83,7 @@ public class KakaoLoginHandler implements CommandHandler{
 		KakaoInfoToken kiToken = null;
 		
 		try {
-		kiToken = objMapper.readValue(tokenResponse2.getBody(), KakaoInfoToken.class);
+			kiToken = objMapper.readValue(tokenResponse2.getBody(), KakaoInfoToken.class);
 		}
 		catch(JsonMappingException e){
 			e.printStackTrace();

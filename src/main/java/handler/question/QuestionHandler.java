@@ -96,7 +96,7 @@ public class QuestionHandler implements CommandHandler{
 		    request.setAttribute( "endPage", endPage );
 		    request.setAttribute( "pageCount", pageCount );
 		    request.setAttribute( "pageBlock", pageBlock );
-		    request.setAttribute("mem_desc_code", mem_desc_code);
+		    request.setAttribute("memDescCode", mem_desc_code);
 	    }
 	    
         return new ModelAndView("question/question");

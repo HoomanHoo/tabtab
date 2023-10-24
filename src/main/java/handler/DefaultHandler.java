@@ -13,7 +13,9 @@ public class DefaultHandler implements CommandHandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setAttribute("result", "유효한 URL이 아닙니다");
 		
-		return new ModelAndView("member/default");
+		System.out.println("default handler");
+		
+		return new ModelAndView("template/defaultPage");
 	}
 
 }

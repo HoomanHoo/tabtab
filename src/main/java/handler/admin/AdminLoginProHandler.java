@@ -40,6 +40,7 @@ public class AdminLoginProHandler implements CommandHandler{
 		
 		session.setAttribute("mem_code", mem_code);
 		session.setAttribute("mem_desc_code", mem_desc_code);
+		
 		request.setAttribute("result", result);
 		request.setAttribute( "email", email);
 		

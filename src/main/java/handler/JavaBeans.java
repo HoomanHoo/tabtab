@@ -11,6 +11,9 @@ import admin.AdminDBBean;
 import admin.AdminDao;
 import inventory.InventoryDBBean;
 import inventory.InventoryDao;
+import misc.CheckAdminInfo;
+import misc.CheckMember;
+import misc.CheckUserInfo;
 import misc.SendMail;
 import order.OrderDBBean;
 import order.OrderDao;
@@ -26,6 +29,7 @@ import warehousing.WarehousingDBBean;
 import warehousing.WarehousingDao;
 
 
+//@Configuration 어노테이션이 붙은 클래스 내 @Bean 메서드들은 singleton으로 생성된다
 
 @Configuration
 public class JavaBeans {
@@ -43,11 +47,6 @@ public class JavaBeans {
 	@SessionScope
 	public AdminDao adminDao() {
 		return new AdminDBBean();
-	}
-	
-	@Bean
-	public SendMail sendMail() {
-		return new SendMail();
 	}
 	
 	@Bean
@@ -81,4 +80,22 @@ public class JavaBeans {
 	public SellingDao sellingDao() {
 		return new SellingDBBean();
 	}
+	
+	// sendMail은 동작 과정 보고 bean에 등록할지 말지 결정하기
+	@Bean
+	public SendMail sendMail() {
+		return new SendMail();
+	}
+	
+	@Bean
+	public CheckMember checkUser() {
+		return new CheckUserInfo();
+	}
+	
+	@Bean
+	public CheckMember checkAdmin() {
+		return new CheckAdminInfo();
+	}
+	
+	
 }

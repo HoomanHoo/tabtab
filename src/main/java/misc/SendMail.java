@@ -11,6 +11,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
 public class SendMail {
 	public void sendMail(String email, String result) {
 		final String myEmail = "whgusgh111@naver.com";
