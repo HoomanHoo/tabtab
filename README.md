@@ -21,5 +21,10 @@
 
 ![ERD최종](https://github.com/HoomanHoo/tabtab/assets/129934364/b5773cd7-286c-4ab2-9f94-68db0675ff5d)
 
+# 시스템 구조도
+
+![시스템 구조도](https://github.com/HoomanHoo/tabtab/assets/129934364/9032513a-b9fd-4135-b2b1-5ed496bcb7d4)
+
+
 
 
