@@ -4,7 +4,41 @@
 현 약국 재고 관리 어플리케이션은 난잡한 UI와 사용자의 PC에 설치하여 사용하는 형태로 보급률이 낮은 상황입니다. 
 따라서 저희는 웹 기반으로 간편하게 사용할 수 있으며 세련된 UI를 목표로 tabtab 서비스를 만들고자 하였습니다.
 
+# 프로젝트 실행 화면
+- 일반 사용자
+  - 자동 발주 설정
+  ![자동발주 설정](https://github.com/HoomanHoo/tabtab/assets/129934364/983b75dc-6ac2-4f80-b0f5-ef3557aa80e7)
+  
+  - 수동 발주
+  ![수동발주](https://github.com/HoomanHoo/tabtab/assets/129934364/daddb742-fe5a-4897-ad8e-1147d37dc9bb)
+  
+  - 발주 확인
+  ![발주 확인](https://github.com/HoomanHoo/tabtab/assets/129934364/07c9ca43-f044-4aba-8808-98a1726ed1bf)
+
+  - 입고
+  ![입고 페이지](https://github.com/HoomanHoo/tabtab/assets/129934364/b7b682b8-9486-4463-8ef4-ec0be87c3f74)
+
+  
+  - 문의 사항
+  ![문의사항 게시판](https://github.com/HoomanHoo/tabtab/assets/129934364/2a0780e0-b940-433c-bc8d-6e092d46d823)
+  
+  - 판매
+  ![판매](https://github.com/HoomanHoo/tabtab/assets/129934364/2ad7569b-2480-4696-adf4-083b82391edd)
+
+- 관리자
+  - 발주 요청
+  ![어드민 발주 요청](https://github.com/HoomanHoo/tabtab/assets/129934364/c31f5730-69f4-4385-8fae-986105a02a8f)
+
+  - 발주 승인
+  ![어드민 발주 승인](https://github.com/HoomanHoo/tabtab/assets/129934364/e951966d-7e74-46ea-8b24-9ce4141e103f)
+
+
+
+
+
+  
 # 사용 기술
+
 - Back-end
   - Java 11 (Oracle JDK)
   - Spring 4
