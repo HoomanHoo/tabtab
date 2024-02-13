@@ -32,7 +32,7 @@ public class UserMyPageModiHandler implements CommandHandler{
 			return new ModelAndView("user/loginForm");
 		}
 		else {
-			int mem_code = (int)session.getAttribute("mem_code");
+			int mem_code = Integer.parseInt((String)session.getAttribute("mem_code"));
 			ULogonDataBean dto = uLogonDao.selectMy(mem_code);
 			
 			request.setAttribute("dto", dto);

@@ -36,7 +36,7 @@ public class OrderHistoryDetailHanlder implements CommandHandler{
 			return new ModelAndView("user/loginForm");
 		}
 		else {
-			int mem_code = (int)session.getAttribute("mem_code");
+			int mem_code = Integer.parseInt((String)session.getAttribute("mem_code"));
 			int o_num = Integer.parseInt(request.getParameter("onum"));
 			String deliState = request.getParameter("delistate");
 			int d_code = Integer.parseInt(deliState);

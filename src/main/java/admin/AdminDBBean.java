@@ -72,7 +72,7 @@ public class AdminDBBean implements AdminDao{
 	}
 	
 	//관리자>유저회원가입
-	public int updateMember(AdminDataBean dtos) {
+	public int insertUser(AdminDataBean dtos) {
 		int result1 = session.update("Admin.updatePI",dtos);
 		int result2 = session.update("Admin.updateIDI", dtos);
 		return  result2;

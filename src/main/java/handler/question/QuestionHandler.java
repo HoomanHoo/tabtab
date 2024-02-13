@@ -98,7 +98,7 @@ public class QuestionHandler implements CommandHandler{
 		    request.setAttribute( "pageBlock", pageBlock );
 		    request.setAttribute("memDescCode", mem_desc_code);
 	    }
-	    
+	    System.out.println("유저 or 어드민" + mem_desc_code);
         return new ModelAndView("question/question");
     }
 }

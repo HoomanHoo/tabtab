@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import admin.AdminDao;
 import admin.AdminDataBean;
 import handler.CommandHandler;
+import misc.CheckMember;
 import misc.SendMail;
 import order.OrderDao;
 
@@ -21,12 +22,16 @@ import order.OrderDao;
 public class AdminSignUpInputProHandler implements CommandHandler{
 
 	@Resource(name="sendMail")
-	public SendMail sendMail;
+	private SendMail sendMail;
+	
 	@Resource(name="adminDao")
 	private AdminDao adminDao;
 	
 	@Resource(name="orderDao")
-	OrderDao orderDao;
+	private OrderDao orderDao;
+	
+	@Resource(name="checkAdmin")
+	private CheckMember checkMember;
 	
 	@RequestMapping("/adminsignupinputpro")
 	@Override
@@ -34,17 +39,19 @@ public class AdminSignUpInputProHandler implements CommandHandler{
 		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
+		String memberResult = checkMember.checkMemberInfo(session);
 		
-		if(session.getAttribute("mem_code") == null) {
+		if(!memberResult.equals("admin")) {
 			return new ModelAndView("admin/loginForm");
 		}
 		else {
 			int mem_code = Integer.parseInt(request.getParameter("mem_code") );
 			String email = request.getParameter("email");
 			
-			AdminDataBean dto = adminDao.selectMember(mem_code);
+			//용도 파악 후 주석처리 유지할지 기능 살릴지 결정
+			//AdminDataBean dto = adminDao.selectMember(mem_code);
 			
-			//update
+			//유저 회원가입 신청 승인
 			AdminDataBean dtos = new AdminDataBean();
 			dtos.setApply_desc_code (request.getParameter("apply_desc_code") );
 			dtos.setName (request.getParameter("auname") );
@@ -55,11 +62,11 @@ public class AdminSignUpInputProHandler implements CommandHandler{
 			dtos.setMem_code(Integer.parseInt( request.getParameter("mem_code") ));
 			dtos.setEmail(request.getParameter("email") );
 			
-			int resultCheck = adminDao.updateMember(dtos);
+			int resultCheck = adminDao.insertUser(dtos);
 			
 			
-			//
-			String result =adminDao.sendPasswd(email);
+			//비밀번호 찾기 + 찾은 비밀번호 이메일로 발송
+			String result = adminDao.sendPasswd(email);
 			
 			if(result == null) {
 				request.setAttribute("result", "메일이 보내지지 않았습니다.");

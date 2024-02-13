@@ -19,7 +19,7 @@ public class UserLogoutHandler implements CommandHandler{
 		request.setCharacterEncoding("utf-8");
 		
 		javax.servlet.http.HttpSession session =  request.getSession();
-		String email = (String)session.getAttribute("email");
+		//String email = (String)session.getAttribute("email");
 		int mem_code = (Integer)session.getAttribute("mem_code");
 		
 		session.invalidate();

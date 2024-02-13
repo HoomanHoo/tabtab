@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import admin.AdminDao;
 import admin.AdminDataBean;
 import handler.CommandHandler;
+import misc.CheckMember;
 
 @Controller
 public class AdminSignUpListHandler implements CommandHandler{
@@ -23,15 +24,22 @@ public class AdminSignUpListHandler implements CommandHandler{
 	@Resource(name="adminDao")
 	private AdminDao adminDao;
 	
+	@Resource(name="checkAdmin")
+	private CheckMember checkMember;
+	
 	@RequestMapping("/adminsignuplist")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 
 		HttpSession session = request.getSession();
+		String memberResult = checkMember.checkMemberInfo(session);
 		
-		if(session.getAttribute("mem_code") != null) {
-			int mem_code = (int) session.getAttribute("mem_code");
+		if(!memberResult.equals("admin")) {
+			return new ModelAndView("admin/loginForm");
+		}
+		else {
+			//int mem_code = (int) session.getAttribute("mem_code");
 		
 			int pageBlock = 3;							//한 번에 출력할 페이지 번호 개수
 			int pageSize = 10;							//한 페이지에 출력할 글의 개수
@@ -105,9 +113,6 @@ public class AdminSignUpListHandler implements CommandHandler{
 			}
 
 			return new ModelAndView("admin/signUpList");
-		}
-		else {
-			return new ModelAndView("admin/loginForm");
 		}
 	}
 

@@ -31,7 +31,7 @@ public class AutoOrderSettingHandler implements CommandHandler{
 			return new ModelAndView("user/loginForm");
 		}
 		else {
-			int mem_code = (int)session.getAttribute("mem_code");
+			int mem_code = Integer.parseInt((String)session.getAttribute("mem_code"));
 			List<OrderDataBean> dtos = orderDao.getSelectableMediList(mem_code);
 			
 			request.setAttribute("dtos", dtos);

@@ -55,7 +55,7 @@ public class OrderHistoryDetailProHandler {
 			
 			int o_num = Integer.parseInt(str);
 			String d_code = "12";
-			int mem_code = (int) session.getAttribute("mem_code");
+			int mem_code = Integer.parseInt((String)session.getAttribute("mem_code"));
 			
 			for(int i = 0; i < mediCode.size(); i++) {
 				

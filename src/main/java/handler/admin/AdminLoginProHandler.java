@@ -33,7 +33,7 @@ public class AdminLoginProHandler implements CommandHandler{
 		
 		AdminDataBean dto = adminDao.checkMC(email);
 		
-		int mem_code = dto.getMem_code();
+		String mem_code = Integer.toString(dto.getMem_code());
 		String mem_desc_code = dto.getMem_desc_code();
 		
 		int result = adminDao.check(email, password);

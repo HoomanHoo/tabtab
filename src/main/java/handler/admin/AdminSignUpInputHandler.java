@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import admin.AdminDao;
 import admin.AdminDataBean;
 import handler.CommandHandler;
+import misc.CheckMember;
 import order.OrderDao;
 
 @Controller
@@ -21,15 +22,19 @@ public class AdminSignUpInputHandler implements CommandHandler{
 	private AdminDao adminDao;
 	
 	@Resource(name="orderDao")
-	OrderDao orderDao; 
+	private OrderDao orderDao; 
+	
+	@Resource(name="checkAdmin")
+	private CheckMember checkMember;
 	
 	@RequestMapping("/adminsignupinput")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
+		String memberResult = checkMember.checkMemberInfo(session);
 		
-		if(session.getAttribute("mem_code") == null) {
+		if(!memberResult.equals("admin")) {
 			return new ModelAndView("admin/loginForm");
 		}
 		else {

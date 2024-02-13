@@ -29,7 +29,7 @@ public class AutoOrderSettingProHandler implements CommandHandler{
 			return new ModelAndView("user/loginForm");
 		}
 		else {
-			int mem_code = (int) session.getAttribute("mem_code");
+			int mem_code = Integer.parseInt((String)session.getAttribute("mem_code"));
 			String[] mediCode = request.getParameterValues("mediCode");
 			String[] triggerQuan = request.getParameterValues("triggerQuan");
 			String[] aoQuan = request.getParameterValues("aoQuan");

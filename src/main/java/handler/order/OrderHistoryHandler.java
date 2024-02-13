@@ -31,7 +31,7 @@ public class OrderHistoryHandler implements CommandHandler{
 			return new ModelAndView("user/loginForm");
 		}
 		else {
-			int mem_code = (int)session.getAttribute("mem_code");
+			int mem_code = Integer.parseInt((String)session.getAttribute("mem_code"));
 			List<OrderHistoryDataBean> dtos = orderDao.getOrderHistory(mem_code); 
 			
 			request.setAttribute("dtos", dtos);

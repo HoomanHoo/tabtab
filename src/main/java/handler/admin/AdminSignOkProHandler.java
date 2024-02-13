@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import admin.AdminDao;
 import admin.AdminDataBean;
 import handler.CommandHandler;
+import misc.CheckMember;
 import misc.SendMail;
 import order.OrderDao;
 
@@ -20,10 +21,15 @@ public class AdminSignOkProHandler implements CommandHandler{
 
 	@Resource(name="adminDao")
 	public AdminDao adminDao;
+	
 	@Resource(name="sendMail")
 	public SendMail sendMail;
+	
 	@Resource(name="orderDao")
 	OrderDao orderDao;
+	
+	@Resource(name="checkAdmin")
+	private CheckMember checkMember;
 	
 	@RequestMapping("adminsignokpro")
 	@Override
@@ -32,7 +38,9 @@ public class AdminSignOkProHandler implements CommandHandler{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("mem_code") == null) {
+		String memberResult = checkMember.checkMemberInfo(session);
+		
+		if(!memberResult.equals("admin")) {
 			return new ModelAndView("admin/loginForm");
 		}
 		else {
@@ -40,15 +48,12 @@ public class AdminSignOkProHandler implements CommandHandler{
 			String email = request.getParameter("email");
 			
 			AdminDataBean dto = adminDao.selectMember(mem_code);
-				
-				
+
 			String result = adminDao.sendPasswd(email);
 		
-			
 			request.setAttribute("dto", dto);
 			request.setAttribute("result", result);
 			sendMail.sendMail(email, result);
-			
 			
 			//System.out.println(result);
 			

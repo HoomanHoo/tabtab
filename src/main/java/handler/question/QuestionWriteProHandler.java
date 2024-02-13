@@ -33,7 +33,7 @@ public class QuestionWriteProHandler implements CommandHandler{
 	    	return new ModelAndView("user/loginForm");
 	    }
 
-	    int	mem_code	= (int) request.getSession().getAttribute("mem_code");
+	    int mem_code = Integer.parseInt((String)session.getAttribute("mem_code"));
 	    
 	    request.setCharacterEncoding( "utf-8" );
 

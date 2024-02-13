@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import admin.AdminDao;
 import handler.CommandHandler;
+import misc.CheckMember;
 import order.OrderDao;
 
 @Controller
@@ -20,7 +21,10 @@ public class AdminSignOkHandler implements CommandHandler{
 	private AdminDao adminDao;
 	
 	@Resource(name="orderDao")
-	OrderDao orderDao; 
+	private OrderDao orderDao; 
+	
+	@Resource(name="checkAdmin")
+	private CheckMember checkMember;
 	
 	@RequestMapping("/adminsignok")
 	@Override
@@ -28,7 +32,9 @@ public class AdminSignOkHandler implements CommandHandler{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("mem_code") == null) {
+		String memberResult = checkMember.checkMemberInfo(session);
+		
+		if(!memberResult.equals("admin")) {
 			return new ModelAndView("admin/loginForm");
 		}
 		else {

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import admin.AdminDao;
 import admin.AdminDataBean;
 import handler.CommandHandler;
+import misc.CheckMember;
 import order.OrderDao;
 
 @Controller
@@ -21,16 +22,21 @@ public class AdminSignUpDeleteProHandler implements CommandHandler{
 	private AdminDao adminDao;
 	
 	@Resource(name="orderDao")
-	OrderDao orderDao;
+	private OrderDao orderDao;
+	
+	@Resource(name="checkAdmin")
+	private CheckMember checkMember;
 	
 	@RequestMapping("adminsignupdeletepro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("signupdeleteproHandler");
+		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("mem_code") == null) {
+		String memberResult = checkMember.checkMemberInfo(session);
+		
+		if(!memberResult.equals("admin")) {
 			return new ModelAndView("admin/loginForm");
 		}
 		else {

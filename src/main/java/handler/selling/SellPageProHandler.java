@@ -47,7 +47,7 @@ public class SellPageProHandler {
 		
 		
 		
-		int mem_code = (int)session.getAttribute("mem_code");
+		int mem_code = Integer.parseInt((String)session.getAttribute("mem_code"));
 		int allSellingQuan = 0;
 		int allPrice = 0;
 		

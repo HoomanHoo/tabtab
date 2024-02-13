@@ -33,7 +33,7 @@ public class OrderCheckHandler implements CommandHandler{
 			return new ModelAndView("user/loginForm");
 		}
 		else {
-			int mem_code = (int) session.getAttribute("mem_code");
+			int mem_code = Integer.parseInt((String)session.getAttribute("mem_code"));
 			LocalDateTime now = LocalDateTime.now();
 			Timestamp date = Timestamp.valueOf(now); 
 			

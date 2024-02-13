@@ -32,7 +32,7 @@ public class AutoOrderListHandler implements CommandHandler{
 			return new ModelAndView("user/loginForm");
 		}
 		else {
-			int mem_code = (int) session.getAttribute("mem_code");
+			int mem_code = Integer.parseInt((String) session.getAttribute("mem_code"));
 			List<AutoOrderListDataBean> dtos = orderDao.getAutoOrderList(mem_code);
 			
 			request.setAttribute("dtos", dtos);

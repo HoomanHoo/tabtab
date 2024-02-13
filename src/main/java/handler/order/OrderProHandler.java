@@ -39,7 +39,7 @@ public class OrderProHandler implements CommandHandler{
 			return new ModelAndView("user/loginForm");
 		}
 		else {
-			int mem_code = (int)session.getAttribute("mem_code");
+			int mem_code = Integer.parseInt((String)session.getAttribute("mem_code"));
 			String[] mediNames = (String[])request.getParameterValues("mediName");
 			String[] orderQuanStr = (String[])request.getParameterValues("orderQuan");
 			String[] supplyPriceStr = (String[])request.getParameterValues("supplyPrice");

@@ -37,8 +37,8 @@ public class UserMyPageModiPro implements CommandHandler{
 			ULogonDataBean dto = new ULogonDataBean();
 			dto.setPassword (request.getParameter("password") );
 			dto.setP_address (request.getParameter("p_address") );
-			dto.setMem_code( (Integer) request.getSession().getAttribute("mem_code") );
-			
+			dto.setMem_code(Integer.parseInt((String)session.getAttribute("mem_code")));
+		
 			int result = uLogonDao.updateMy(dto);
 			
 			request.setAttribute("result", result);
